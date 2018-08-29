@@ -40,6 +40,7 @@ export class ControlNameComponent implements OnInit {
   public accountnum: any[] =[];
   public list: any;
   public other = [];
+  public loading:boolean = false;
   
 
   constructor(private _location: Location, private activatedRoute: ActivatedRoute,  private _apiservice: ApiserviceService, 
@@ -59,6 +60,7 @@ export class ControlNameComponent implements OnInit {
       this.getPolicy(this.policyUrlId);
       this.showDropdown();
   	this.fetchPolicies(1);
+    this.loading = true;
   }
   
   backClicked() {
@@ -68,6 +70,7 @@ export class ControlNameComponent implements OnInit {
   getPolicy(id){
   	this._apiservice.getPolicy(id)
       .subscribe((data: any) => {
+        this.loading = false;
       	this.policyAccess = data;
       	console.log(data);
       	console.log(this.policyAccess);

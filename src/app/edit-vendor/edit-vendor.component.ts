@@ -24,6 +24,7 @@ export class EditVendorComponent implements OnInit {
   public city: string;
   public state: string;
   public zipCode: string;
+  public loading:boolean = false;
   //public vendorDetails: VendorDetails;
 
 
@@ -58,6 +59,7 @@ export class EditVendorComponent implements OnInit {
       this.editVendorForm.disable();
     });
     this.onDisplayVendors();
+    this.loading = true;
 
   }
 
@@ -123,6 +125,7 @@ cancelButton(){
 
     this._apiservice.getVendorExtra(this.userId)
       .subscribe((data: any) => {
+        this.loading = false;
         console.log(data);
         (<FormGroup>this.editVendorForm)
             .patchValue(data, { onlySelf: true });

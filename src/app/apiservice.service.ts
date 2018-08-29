@@ -245,8 +245,9 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
 
   assignReviewers(data){
     let url = APP_CONFIG.assignReviewers;
-    
-      return this._httpService.post(url, data).map((res: Response) => res.json())
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+      return this._httpService.post(url, data, options).map((res: Response) => res.json())
                               .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
     
    } 
@@ -268,5 +269,20 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
       return this._httpService.get(url)
       .map(res =><Response>res.json());
     }
+  
+  updatePolicyGrp(data){
+     console.log(data);
+    let url = APP_CONFIG.updatePolicyGrp;
+ return this._httpService.post(url, data).map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+    
+    
+  }
+  
+  fetchPolicyGroup(id){
+    let url = APP_CONFIG.fetchPolicyGroup;
+    return this._httpService.get(url + '?' + 'auditTypeId' + '=' + id)
+    .map(res =><Response>res.json());
+  }
  
 }

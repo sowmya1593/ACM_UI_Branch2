@@ -304,7 +304,6 @@ span{
   display:block;
   width: 100%;
   overflow: auto;
-  height: 300px;
 }
 
 .fixed_header thead tr {

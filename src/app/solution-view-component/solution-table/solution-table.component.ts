@@ -9,19 +9,22 @@ import { FilterPipe } from '../../convertDate.pipe';
 })
 export class SolutionTableComponent implements OnInit {
   public solutions:any;
-  private desc = false;
+  public desc:boolean = false;
+  public loading:boolean = false;
 
   constructor(private _apiservice: ApiserviceService) { }
 
   ngOnInit() {
     this.getSolutions();
     console.log('SolutionTable');
+    this.loading = true;
   }
   
   getSolutions()
   {
      this._apiservice.getSolutions()
     .subscribe((data:any) => {
+      this.loading = false;
      this.solutions = data.solutionsDTOs;
       console.log(this.solutions);
       console.log(data);

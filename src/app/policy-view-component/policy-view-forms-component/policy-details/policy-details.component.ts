@@ -35,7 +35,8 @@ export class PolicyDetailsComponent implements OnInit {
     public updatedAt:any;
     public displayUpdatedAt: IMyDate = null;
     public policyDocumentsSubmit: PolicyGrp;
-    private desc = false;   
+    private desc:boolean = false;
+    public loading:boolean = false;   
 
   constructor(private modalService: NgbModal, private _apiservice: ApiserviceService, private  http: Http, 
     private utilservice: UtilService, private activatedRoute: ActivatedRoute) {
@@ -68,11 +69,13 @@ export class PolicyDetailsComponent implements OnInit {
     this.fetchPolicies(UtilService.policyGrpId);
     this.policyDropDownId = UtilService.policyGrpId;
     this.fetchPolicyGroup(UtilService.auditId);
+    this.loading = true;
   }
   
   fetchPolicies(id){
 	this._apiservice.fetchPolicies(id)
     .subscribe((data: any) => {
+      this.loading = false;
     	this.policyDisplay=data.policyGrpDTO;
     	this.policies = data.policyDTOs;
       this.policyGrpData = data.policyGrpDTO;

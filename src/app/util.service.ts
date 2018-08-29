@@ -7,6 +7,7 @@ export class UtilService{
 static localityName:string;
 static systemName:string;
 static policyGrpId: number;
+static auditId: number;
 static showTab:boolean;
 
 static active:boolean;

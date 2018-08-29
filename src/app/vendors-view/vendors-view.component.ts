@@ -16,10 +16,12 @@ export class VendorsViewComponent implements OnInit {
   public vendorsContact:any;
    private desc = false;
    public p:number =1;
+  public loading:boolean = false;
   constructor(private _apiservice: ApiserviceService,private router: Router) { }
 
   ngOnInit() {
     this.getVendors()
+    this.loading = true;
 
   }
   
@@ -27,6 +29,7 @@ export class VendorsViewComponent implements OnInit {
   {
      this._apiservice.getVendors()
     .subscribe((data:any) => {
+      this.loading = false;
     this.vendors = data.vendorsDTOs.sort(function(val1, val2){
     return val1.name > val2.name
 });

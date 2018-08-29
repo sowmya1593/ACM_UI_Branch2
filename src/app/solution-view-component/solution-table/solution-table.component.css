@@ -51,10 +51,6 @@ table-fixed thead {
   border-bottom-width: 0;
 }
 
-.pagination{
-	margin-top: 10px;
-}
-
 .sorting{
 	margin-left: 5px;
 }
@@ -297,7 +293,6 @@ span{
   display:block;
   width: 100%;
   overflow: auto;
-  height: 300px;
 }
 
 .fixed_header thead tr {

@@ -20,7 +20,8 @@ export class DocumentsComponent implements OnInit {
   	policyGrpData: PolicyGrp;
   	policyDocumentDTOobj: any;
   	showDocument: boolean;
-    public fetchPolicyDocuments: any
+    public fetchPolicyDocuments: any;
+    public loading:boolean = false;
 
   constructor(private modalService: NgbModal, private  http: Http, private utilservice:UtilService, private _apiservice: ApiserviceService) {
   	this.policyGrpData = new PolicyGrp();
@@ -47,11 +48,13 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit() {
     this.fetchPolicies(UtilService.policyGrpId);
+    this.loading = true;
   }
   
   fetchPolicies(id){
   this._apiservice.fetchPolicies(id)
     .subscribe((data: any) => {
+      this.loading = false;
       this.fetchPolicyDocuments=data.policyDocumentsDTOs;
       console.log(this.fetchPolicyDocuments);
       

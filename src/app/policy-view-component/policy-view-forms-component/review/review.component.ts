@@ -31,6 +31,7 @@ export class ReviewComponent implements OnInit {
   public reviewTableData :any;
   public policyData :any;
   private desc = false;
+  public loading:boolean = false;
 
   public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'yyyy-mm-dd'
@@ -46,7 +47,7 @@ export class ReviewComponent implements OnInit {
   this.createForm();
   this.getUsers();
   this.fetchPolicies(UtilService.policyGrpId);
-  
+  this.loading = true;
  }
  
  open(content) {
@@ -163,6 +164,7 @@ this._apiservice.getUseronName(name)
       .subscribe((data: any) => {
         console.log("inside get");
         console.log(data);
+        this.loading = false;
         this.policyData=data.policyReviewDTOs;
         console.log(this.policyData);
 
@@ -179,8 +181,9 @@ this._apiservice.assignReviewers(this.review)
       .subscribe((data: any) => {
       console.log(data);
       this.fetchPolicies(UtilService.policyGrpId);
-      
-      }, error => {console.log(error)});    
+      this.loading = true;
+      }, error => {
+        console.log(error)});    
   }
   
   getPolicyReviewDetails(id){

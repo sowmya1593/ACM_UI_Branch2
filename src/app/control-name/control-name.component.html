@@ -1,3 +1,6 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
 <app-navigation-component></app-navigation-component>
 <div class="navigate sticky-top" [ngStyle]="{'backgroundColor': getColor(), 'opacity': getOpacity()}">
             <!-- <div class="home">
@@ -240,7 +243,7 @@
 		</div>
 	<div *ngIf = "definitive == true && policy== true ">
 		<h5>CONTROLS</h5>
-		<table class="table table-bordered table-dark">
+		<table class="table table-bordered">
 		  <thead>
 		    <tr>
 		      <th scope="col">Control Number</th>

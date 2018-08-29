@@ -1,3 +1,17 @@
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-header">
+  <h4 class="modal-title">Success</h4>
+  <button type="button" class="close" aria-label="Close" (click)="d()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>The record has been successfully added{{name}}!</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+</div>
+</ng-template>
 <div class="form-div" >
     <form  class="forms" [formGroup]="editVendorForm" (ngSubmit)="createVendor(editVendorForm.value)">
         <div class="page-description">
@@ -126,7 +140,7 @@
         </div>
         <div class="buttons">
             <button type="cancel" class="btn btn-primary"(click)="cancelButton()">Cancel</button>
-            <button   type="submit" class="btn btn-primary"  [disabled]="editVendorForm.invalid">Submit</button>
+            <button   type="submit" class="btn btn-primary" (click)="open(content)" [disabled]="editVendorForm.invalid">Submit</button>
 
         </div>
     </form>

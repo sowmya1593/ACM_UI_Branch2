@@ -49,6 +49,7 @@ export class EditSolutionComponent implements OnInit {
   public solutionType: any;
   precinctTypes: any;
   public precinctTypeId: number;
+  public loading:boolean = false;
 //  public systemTyp:any
 
   constructor( private activatedRoute: ActivatedRoute,  private _apiservice: ApiserviceService,private   fb: FormBuilder
@@ -128,7 +129,7 @@ export class EditSolutionComponent implements OnInit {
       this.getSolutionsOnload();
 
     });
-
+    this.loading = true;  
 
   }
 
@@ -174,6 +175,7 @@ export class EditSolutionComponent implements OnInit {
 //        let systemType = JSON.stringify(data.systemTypeDTO.name);
 //        console.log(JSON.stringify(data.systemTypeDTO.name));
 //        console.log(systemType);
+        this.loading = false;
         this.solution = data;
         this.solution.systemTypeDTO = data.systemTypeDTO;
         this.solution.hostingTypeDTO = data.hostingTypeDTO;

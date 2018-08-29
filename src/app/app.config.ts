@@ -59,7 +59,9 @@ getUsers: apiBaseUrl+'getUsers',
 getUseronName: apiBaseUrl+'getUseronName',
 assignReviewers:apiBaseUrl+'assignReviewers',
 getPolicyReviewDetails: apiBaseUrl+'getPolicyReviewDetails',
-
+updatePolicyGrp: apiBaseUrl + 'updatePolicyGrp',
+addPolicyGrp: apiBaseUrl + 'addPolicyGrp',
+fetchPolicyGroup: apiBaseUrl + 'fetchPolicyGroup'
 }
 
 

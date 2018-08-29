@@ -1,3 +1,6 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
 <form class="forms">
   <table class="fixed_header">
     <thead>
@@ -32,5 +35,6 @@
                     </tr>
     </tbody>
   </table>
+  <br>
   <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
 </form>

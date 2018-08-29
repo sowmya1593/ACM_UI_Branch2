@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators,FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-forms',
@@ -11,7 +12,7 @@ export class FormsComponent implements OnInit {
   
   @Output() submitClick = new EventEmitter<object>();
    public editVendorForm: FormGroup;
-  constructor( private fb: FormBuilder) { }
+  constructor( private fb: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit() {
    this.createForm();
@@ -24,6 +25,12 @@ export class FormsComponent implements OnInit {
   }
   cancelButton(){
   }
+  
+  open(content) {
+   this.modalService.open(content);
+
+  }
+
 
 
  createForm() {

@@ -1,3 +1,6 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
 <app-navigation-component ></app-navigation-component>
 <ng-template #content let-c="close" let-d="dismiss">
 <div class="modal-header">
@@ -141,7 +144,7 @@
             </div>
         </div>
         <div class="buttons">
-          <button [disabled]="editVendorForm.invalid" type="submit" class="btn btn-primary"  *ngIf="!editVendorForm.disabled">Submit</button>
+          <button [disabled]="editVendorForm.invalid" type="submit" class="btn btn-primary" (click)="open(content)" *ngIf="!editVendorForm.disabled">Submit</button>
             <button type="cancel" class="btn btn-primary"(click)="cancelButton()" >Cancel</button>
              
          
