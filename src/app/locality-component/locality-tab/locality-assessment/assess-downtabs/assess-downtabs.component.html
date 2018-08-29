@@ -1,0 +1,75 @@
+
+    
+     <div class="form-div">
+        <form class="former">
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+    
+                    <label for="inputState">Acronym</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="lastName"  value="{{ mainData }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last updated by</label>
+    
+                    <input type="text" class="form-control" id="lastName"   value="{{ updatedTime }}" readonly>
+                </div>
+            </div>
+    
+    
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="lastName">Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="lastName" value="enter here">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Updated at</label>
+                    <input type="email" class="form-control" id="email" value="enter here">
+                </div>
+            </div>
+        </form>
+    </div>
+
+        <div class="form-div">
+                <div class="head">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active"  routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/first1" [routerLinkActiveOptions]="{exact: true}">Details</a>
+                        </li>
+                         <li class="nav-item"> 
+                             <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/find1">Findings</a> 
+                         </li> 
+                         <li class="nav-item"> 
+                             <a class="nav-link" routerLinkActive="active"  routerLink="/locality/tab/assessment/Tabs/recomendation1">Recomendations</a> 
+                         </li> 
+                         <li class="nav-item"> 
+                             <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/management1">Management Response</a> 
+                         </li> 
+                         <li class="nav-item"> 
+                             <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/action1">Action Plan</a> 
+                        </li> 
+                        
+                         <li class="nav-item"> 
+                             <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/brisk1">Business Risk</a> 
+                         </li> 
+                          <li class="nav-item"> 
+                             <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/srisk1">Security Risk</a> 
+                         </li> 
+                          <li class="nav-item"> 
+                             <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/budget1">Budget</a> 
+                         </li> 
+                         <li class="nav-item"> 
+                         <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/attachment1">Attachments</a> 
+                         </li> 
+                     <li class="nav-item"> 
+                            <a class="nav-link" routerLinkActive="active" routerLink="/locality/tab/assessment/Tabs/lessons1">Lessons Learned</a> 
+               </li> 
+                    </ul>
+                </div>
+              <router-outlet></router-outlet>
+            </div>
+           
+           

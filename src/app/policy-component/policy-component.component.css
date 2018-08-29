@@ -1,0 +1,13 @@
+
+.page-description{
+    text-align: center;
+    padding: 2%;
+    text-transform: uppercase;
+}
+
+.after-heading{
+	width: 10%;
+	margin: auto;
+	background-color: #3A539B;
+	margin-top: -15px;
+}

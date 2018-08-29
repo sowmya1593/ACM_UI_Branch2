@@ -1,0 +1,129 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Audit</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Legal document has been updated{{name}}!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+    </div>
+  </ng-template>
+  
+  
+  
+  <div class="plus">
+    <div class="save-edit" style="float: right">
+  
+      <fa class="edit-icon icons" [name]="'edit'" (click)="editClick()"></fa>
+    </div>
+  </div>
+  <div class="form-div">
+    <div class="former">
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+  
+          <label for="inputState">Acronym</label>
+          <div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="{{ acronym}}" readonly="readonly">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">Last updated by</label>
+          <input type="text" class="form-control" id="lastName" value="{{ updatedTime}}" readonly="readonly">
+        </div>
+      </div>
+  
+  
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="lastName">Name</label>
+          <div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="enter here">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Updated at</label>
+          <input type="email" class="form-control" id="email" value="enter here">
+        </div>
+      </div>
+  
+  
+    </div>
+    <form (ngSubmit)="saveMOU()" enctype="multipart/form-data"
+    class="former">
+    <div class="panel-heading">
+
+      <span class=" title elipsis pull-right"> <a
+        (click)="saveMOU()" *ngIf="!showLegalBox" title="Save MOU"
+        class="ng-hide"> <i class="fa fa-floppy-o" aria-hidden="true"
+          style="font-size: 24px;"></i></a>
+      </span> <span class=" title elipsis pull-right"> <a (click)="goBack()" title="Go back to audit section.">
+          <i class="fa fa-arrow-circle-o-left" aria-hidden="true"
+          style="font-size: 24px;"></i>
+      </a>
+      </span>
+
+    </div>
+    <fieldset [disabled]="showLegalBox">
+    <p>
+      <b>Legal Documents</b>
+    </p>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputState">Name</label> <input type="text"
+          class="form-control" name="name" [(ngModel)]="mou.name">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputState">Signed</label> <select id="modelSolution"
+          class="form-control" name="signed" [(ngModel)]="mou.signed">
+          <option selected>Choose...</option>
+          <option [value]="true">Yes</option>
+          <option [value]="false">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputState">Date of Receipt</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions"
+        (dateChanged) = "getDate($event)" [(ngModel)]="moureceiptdt"></my-date-picker>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputState">Recertification Date</label>
+
+        <my-date-picker name="myname" [options]="myDatePickerOptions"
+          (dateChanged) = "getNextDate($event)"	[(ngModel)]="mourecertdt"></my-date-picker>
+      </div>
+    </div>	
+    <hr class="former" />
+    <p>
+      <b>MOU Attachments</b>
+    </p>
+
+    <div>
+      <div class="col-sm-5 col-md-5 col-lg-5">
+        <input type="file" #fileInput (change)="createMOUDTO($event)">
+          <p *ngFor="let file of mou.mouDocDTOs let i=index">
+    <span *ngIf="file.status"><a (click)="getFile(file.mouDocId)" style="color:blue;cursor:pointer;">{{file.fileName}}</a>
+    <i (click)="deleteFile(file.mouDocId,i)" class="fa fa-trash" aria-hidden="true"
+          style="font-size: 24px;"></i>
+    </span>
+    </p>
+      </div>
+
+    </div>
+    </fieldset>
+  </form>

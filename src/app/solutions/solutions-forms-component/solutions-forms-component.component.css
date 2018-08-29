@@ -1,0 +1,120 @@
+form{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+.page-description{
+    text-align: center;
+    /*padding: 2%;*/
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+@keyframes slideInFromCenter {
+  0% {
+    transform: scale(0,1);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+
+.after-heading{
+	width: 10%;
+	margin: auto;
+	background-color: #3A539B;
+	animation: 1s ease-out 0s 1 slideInFromCenter;
+	/*border-radius: 10px solid #3A539B;*/
+	/*margin-bottom: 15px;*/
+}
+
+.tip{
+    width: 100%;
+}
+
+.tip-text{
+    background-color: #F8FFAE;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 5px;
+    color:  #3A539B;
+}
+
+.light-bulb{
+    margin-right: 3px;
+    padding: 2px;
+    margin-left: 3px;
+    color:  #3A539B;
+}
+
+.buttons{
+	float: right;
+}
+
+h4{
+	font-size: 18px;
+	font-weight: 500;
+}
+
+label{
+	font-weight: 300;
+	font-size: 15px;
+}
+
+.asterisk{
+	display: inline;
+	color: red;
+	margin-left: 2px;
+}
+
+.asterisk-inline{
+	float: right;
+}
+
+/*select, option{
+	width: 120px;
+	height: 35px;
+	border-radius: 4px;
+	border: 1px solid rgba(0,0,0,.15);
+	margin-left: 5px;
+}
+
+/*.label-form{
+	margin-right: 5px;
+}*/
+
+.model-solution-row{
+	padding: 1%;
+}
+
+.second-row{
+	margin-top: 1px;
+	padding: 1%;
+}
+
+.installation{
+	padding: 1%;
+}
+
+.hosting-notes{
+	display: block;
+	/*margin-top: 20px;*/
+}
+
+.certification-test{
+	margin-top: 10px;
+	padding: 1%;
+}
+
+.attachments-div{
+	margin-top: 25px;
+}
+
+.btn{
+	background-color: #3A539B;
+	border-color: #3A539B;
+}

@@ -1,0 +1,73 @@
+<div class="documents">
+				<span><b>DOCUMENTS</b></span>
+					<div class="policy-edit"><fa class="edit-icon icons" (click)="changeButton()" *ngIf="plus" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'"></fa>
+						<fa (click)="display(upload)" *ngIf="!plus" [name]="'upload'" class="download-icon icons"></fa>
+						<fa *ngIf="!plus" class="save-icon icons" [name]="'save'"></fa>
+						<fa (click)=close() *ngIf="!plus" class="close-icon icons" [name]="'times-circle'"></fa>
+					</div>
+			<hr />
+ 		</div>
+<ng-template #upload let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Policy Documents</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <form>
+    	<div class="form-row">
+    		<div class="form-group col-12">
+    			<label for="attachments"><b>Attachment</b></label>
+    			<input id="attachments" class="form-control" type="file" (change)="createPolicyDocumentDTO($event)" />
+    		</div>
+    	</div>
+    	<hr />
+    	<!-- <div class="form-row">
+    		<div class="form-group col-12">
+    			<label for="fileList"><b>Attachment</b></label>
+    		</div>
+    	</div> -->
+   	<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+    <button class="submit btn btn-outline-dark" (click) = "transferDocument();c('Save click')">Upload</button>
+  </div>
+    </form>
+  </div>
+
+</ng-template>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Success</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <p>Document Uploaded</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+  </div>
+</ng-template>
+<form (ngSubmit) = "submitDocument()">
+<div class="installation form-group">
+			<div *ngIf = "showDocument" class="display-file">
+            	<ul
+								*ngFor=" let policyDocDTO of policyDocumentDTO">
+								<li>
+									<a href = "#" style="cursor:pointer;color:blue;">{{policyDocDTO.documentName}}</a></li>
+							</ul>
+            </div>
+            <label class="hosting-notes" for="policyResources"><b>Policy Resources</b></label><!-- <div class="asterisk-inline asterisk">*</div> -->
+            <textarea cols="156" rows="7" id="Policy Resources" ngModel name="policyResources" [(ngModel)] = "policyGrpData.resourceLinks" [name] = "'resource_links'" *ngIf="!plus" required></textarea>
+          </div>
+          <div class="display-file">
+            	<ul
+								*ngFor=" let policyDocument of fetchPolicyDocuments">
+								<li>
+									<a href="#" style="cursor:pointer;color:blue;">{{policyDocument.documentName}}</a></li>
+							</ul>
+            </div>
+          <button type="submit" class="submit btn btn-outline-dark" (click)="open(content)">Submit</button>
+</form>

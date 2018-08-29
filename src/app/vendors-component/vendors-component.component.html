@@ -1,0 +1,20 @@
+<app-navigation-component></app-navigation-component>
+<!--  <div class="page-description"><h1>Vendors</h1></div>
+    <hr class="after-heading" />-->
+<app-option-list></app-option-list>
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-header">
+  <h4 class="modal-title">Success</h4>
+  <button type="button" class="close" aria-label="Close" (click)="d()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>The Vendor has been successfully added {{name}}!</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="c();goToPage()">Close</button>
+</div>
+</ng-template>
+<app-forms (submitClick) = "submitClicked($event)"></app-forms>
+

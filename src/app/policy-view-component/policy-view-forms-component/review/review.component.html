@@ -1,0 +1,118 @@
+<div class="review">
+	<span><b>POLICY REVIEWER(S)</b></span>
+	<div class="policy-edit">
+		<!-- <fa (click)="open(content)" *ngIf="plus" class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0" [name]="'edit'"></fa> -->
+		<fa (click)="changeButton()" *ngIf="plus" class="edit-icon icons"
+			data-toggle="tooltip" data-placement="right" title="Save"
+			data-animation="true" data-delay="0" [name]="'edit'"></fa>
+		<fa (click)="open(content)" *ngIf="!plus" class="plus-icon"
+			[name]="'plus'"></fa>
+	</div>
+	<hr />
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-header">
+	<h4 class="modal-title" id="modal-basic-title">Adding Policy
+		Reviewer(s)</h4>
+	<!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+</div>
+<div class="modal-body">
+	<form #form="ngForm" [formGroup]="reviewForm" >
+		<div class="form-row">
+			<div class="form-group col-12">
+				<label for="searchUser"><b>Search User</b></label>
+				<div class="asterisk">*</div>
+				<!-- <input type="text" class="form-control" id="searchUser" formControlName = "firstName" ngModel
+					name="searchUser"
+					[name]="'search_user'" placeholder="Search Users" required> -->
+					
+					   <select class="form-control" id="searchUsers" required formControlName = "firstName">
+                <option selected>Choose...</option>
+                <option *ngFor="let getUser of  users" value="{{ getUser.firstName}} {{getUser.lastName }}">{{ getUser.firstName}} {{getUser.lastName }} </option>
+              </select>
+			</div>
+			
+		<!-- 	
+			<div class="form-group col-md-6">
+			<label class="label-form" for="typePolicy"><b>Type/Policy</b></label><div class="asterisk">*</div>
+              <select class="form-control" id="typePolicy" required (change)="selectType($event.target.value)">
+                <option selected>Choose...</option>
+                <option *ngFor="let policyType of  policyTypes" value="{{ policyType.policyGrpId }}">{{ policyType.policyGrpName }}</option>
+              </select>
+		</div> -->
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="form-group col-12">
+				<label for="dueDate"><b>Due Date</b></label>
+				<my-date-picker name="myname" [options]="myDatePickerOptions" formControlName = "dueDate"></my-date-picker>
+			</div>
+		</div>
+		<button type="submit" class="add btn btn-primary"
+			[disabled]="!form.valid" (click)="data(reviewForm.value)">Add</button>
+		<hr />
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Due Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let user of addArray | paginate: { itemsPerPage: 10, currentPage: p }">
+					<td scope="col">{{ user.assignedTo}}</td>
+					<td scope="col">{{ user.dueDate}}</td>
+				</tr>
+			</tbody>
+		</table>
+	    <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark"
+				(click)="c('Save click')">Close</button>
+			<button type="button" class="btn btn-outline-dark" (click)=" postReview();c('Save click')">Assign</button>
+		</div>
+	</form>
+</div>
+</ng-template>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th (click)="handleSort()" scope="col">Policy Name<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+			<th (click)="handleSort()" scope="col">Assigned To<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+			<th scope="col">Assigned On</th>
+			<th scope="col">Due Date</th>
+			<th scope="col">Status</th>
+			<th scope="col">Notify</th>
+		</tr>
+	</thead>
+	<tbody>
+   <tr *ngFor="let tableData of policyData | paginate: { itemsPerPage: 10, currentPage: p }">
+                         <td>{{ tableData.policyGrpName }}</td>
+                         <td>{{ tableData.assignedTo }}</td>
+                         <td>{{ tableData.createdTs | filter }}</td> 
+                         <td>{{ tableData.dueDate | filter }}</td>
+                         <td>{{ tableData.status  }}</td> 
+                         <!-- <td>{{ solution.certRenewalDueDt }}</td> -->
+                    </tr> 
+    </tbody>
+</table>
+<pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>

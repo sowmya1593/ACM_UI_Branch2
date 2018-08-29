@@ -1,0 +1,106 @@
+
+<div class="form-div">    
+<form class="former">
+ <div class="panel-heading">
+ <label class="details">ACTION PLAN</label>
+      <div class="plus">
+      
+      <span class=" title elipsis pull-right">
+                <a title="Save Audit" class="ng-hide">
+                    <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
+                </a>
+            </span>
+        <span class=" title elipsis pull-right">
+           <a><fa class="edit-icon icons" [name]="'edit'"></fa></a>
+        </span>
+
+      
+  
+        <span class=" title elipsis pull-right">
+          <a  title="Application audit history">
+            <i class="fa fa-history" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+  
+        <span class=" title elipsis pull-right">
+  
+          <a data-ng-click="close()" title="Change to view mode. This reverts the changes">
+            <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+          <a title="Go back to audit section.">
+            <i class="fa fa-arrow-circle-o-left" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+  
+  
+      </div>
+     
+    </div>
+    <hr/>    
+        
+      <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Start date</label>
+
+                <my-date-picker name="startDate"></my-date-picker>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">End date</label>
+                <my-date-picker name="endDate"></my-date-picker>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Assigned to</label>
+
+                <input type="text" name="assignedTo" class="form-control" id="assignedTo">
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Summary</label>
+                <textarea name="summary" id="" rows="10" class="form-control"></textarea>
+
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Tasks</label>
+                <textarea name="tasks" id="" rows="10" class="form-control"></textarea>
+
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Closeout Comments</label>
+                <textarea name="Comments" id="" rows="10" class="form-control"></textarea>
+
+            </div>
+
+        </div>  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            </form>
+            </div>
+

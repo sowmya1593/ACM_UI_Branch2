@@ -1,0 +1,36 @@
+<form class="forms">
+  <table class="fixed_header">
+    <thead>
+    <tr>
+      <th (click)="handleSort()">Solution/Modal<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+      <th (click)="handleSort()">Vendor<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+      <th (click)="handleSort()">Equipment Type<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+      <th (click)="handleSort()">System Type<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+      <th>Certificate Date</th>
+      <th>Due Date</th> 
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let solution of solutions | paginate: { itemsPerPage: 10, currentPage: p }">
+                         <td><a routerLink="/editSolutions/{{ solution.solutionId }}">{{ solution.name }}</a></td>
+                         <td>{{ solution.vendor.name }}</td>
+                         <td>{{solution.solutionTypeName }}</td>
+                         <td>{{ solution.systemTypeDTO.name }}</td>
+                         <!-- <td>{{ solution.certDt }}</td> -->
+                         <td>{{ solution.certDt | filter  }}</td> 
+                         <td>{{ solution.certRenewalDueDt }}</td>
+                    </tr>
+    </tbody>
+  </table>
+  <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+</form>

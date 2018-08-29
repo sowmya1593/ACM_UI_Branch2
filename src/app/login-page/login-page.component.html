@@ -1,0 +1,43 @@
+<div class="my-container">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+      </div>
+<div class="pos-f-t">
+        <nav class="navbar">
+          <img src="assets/img/logo.png">
+          <h2 class="heading">Application and Audit Manager</h2>
+          <!-- <div class="login"><p class="user">Sunny Singh<fa class="down-icon" [name]="'chevron-down'"></fa></p></div> -->
+        </nav>
+  </div>
+<div class="jumbotron">
+       
+    <div class="container">
+           
+        <div class="row">
+                
+            <div class="col-sm-6 offset-sm-3">
+                    <alert></alert>
+                    <h2>Login</h2>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                <div *ngIf="f.username.errors.required">Username is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" #pass formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                            <input type="checkbox" (click)="showPassword()">Show Password
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div *ngIf="f.password.errors.required">Password is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button [disabled]="loading" class="btn btn-primary">Login</button>  
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

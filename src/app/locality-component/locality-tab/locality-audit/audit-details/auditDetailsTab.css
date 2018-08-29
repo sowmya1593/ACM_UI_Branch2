@@ -1,0 +1,24 @@
+.plus{
+	float:right;
+    font-size: 20px;
+    margin-right: 20px;
+    color: #3A539B;
+}
+
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+   
+}
+
+.nav-link{
+    color: black;
+    margin-left: 10px;
+    }
+    .icons{
+       vertical-align: middle;
+       font-size: 20px;
+       margin-bottom: 20px;
+       padding: 2px;
+       margin-left: 5px;
+    }

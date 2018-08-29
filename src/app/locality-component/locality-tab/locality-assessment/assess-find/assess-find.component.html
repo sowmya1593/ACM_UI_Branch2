@@ -1,0 +1,81 @@
+<div class="form-div">
+	<form class="former">
+
+
+		<div class="panel-heading">
+			<label class="details">FINDINGS</label>
+			<div class="plus">
+
+				<span class=" title elipsis pull-right"> <a
+					(click)="saveAssess()" title="Save Audit" class="ng-hide"> <i
+						class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
+				</a>
+				</span> <span class=" title elipsis pull-right"> <a><fa
+							class="edit-icon icons" [name]="'edit'"></fa></a>
+				</span> <span class=" title elipsis pull-right"> <a
+					title="Application audit history"> <i class="fa fa-history"
+						aria-hidden="true" style="font-size: 24px;"></i>
+				</a>
+				</span> <span class=" title elipsis pull-right"> <a
+					data-ng-click="close()"
+					title="Change to view mode. This reverts the changes"> <i
+						class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
+				</a> <a (click)="showLeft()"title="Go back to audit section."> <i
+						class="fa fa-arrow-circle-o-left" aria-hidden="true"
+						style="font-size: 24px;"></i>
+				</a>
+				</span>
+
+
+			</div>
+
+		</div>
+		<hr />
+		<fieldset [disabled]="showForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Type of Finding</label>
+
+                <input type="text" class="form-control" name="typeOfFindings" id="TypeOfFinding">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Overall risk level</label>
+                <input type="text" class="form-control" name="overallRiskLevel" id="overallRiskLevel" >
+            </div>
+        </div>
+        <hr/>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Description</label>
+
+                <textarea  id="" rows="10" name="description" class="form-control"></textarea>
+            </div>
+
+        </div>
+        <hr/>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Comments</label>
+
+                <textarea name="comments" id="" rows="10" class="form-control"></textarea>
+            </div>
+
+        </div>
+        <hr/>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="inputState">Responsible Party</label>
+                <input type="text" name="responsibleParty" class="form-control" id="responsibleParty">
+
+            </div>
+
+        </div>
+        </fieldset>
+
+	
+	</form>
+</div>

@@ -1,0 +1,48 @@
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-header">
+  <h4 class="modal-title">Success</h4>
+<!--   <button type="button" class="close" aria-label="Close" (click)="d()"> -->
+<!--     <span aria-hidden="true">&times;</span> -->
+<!--   </button> -->
+</div>
+<div class="modal-body">
+  <p>The record has been successfully Saved</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="c();redirect()">Ok</button>
+</div>
+</ng-template>
+
+
+
+
+<form class="forms">
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label class="label-form" for="policyEntity"><b>Policy Entity</b></label><div class="asterisk">*</div>
+              <select class="form-control" id="policyEntity" required (change)="policy($event.target.value)">
+                <option selected>Choose...</option>
+                <option *ngFor="let auditType of auditTypes" value="{{ auditType.auditTypeId }}">{{ auditType.auditTypeName  }}</option>
+              </select>
+		</div>
+	</div>
+</form>
+<form [formGroup]="policyGroupForm" (ngSubmit)="createPolicyGroup(policyGroupForm.value)">
+<div class="policy-add" *ngIf="policyEntity">
+	<div class="forms">
+		<div class="form-row">
+			<div class="installation form-group">
+			<label for="policyName"><b>Policy Name</b></label><div class="asterisk">*</div>
+            <input type="text" class="display form-control" id="policyName" formControlName="policyName"  required>
+            <label class="hosting-notes" for="policyDescription"><b>Policy Description</b></label></div> 
+            <textarea cols="156" rows="7" id="policyDescription" required formControlName="policyDescription"></textarea>
+          </div>
+		</div>
+	<div class="buttons">
+         	
+        	<button type="submit" class="submit btn btn-primary" [disabled]="policyGroupForm.invalid">Submit</button>
+        	<button type="cancel" class="cancel btn btn-primary">Cancel</button>
+        </div>
+	</div>
+</form>
+

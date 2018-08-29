@@ -1,0 +1,82 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Info</h4>
+  </div>
+  <div class="modal-body">
+    <p>{{info}}</p>
+  </div>
+  <div class="modal-footer">
+    <button  type="button" class="btn btn-outline-dark confbtn" (click)="c()">Ok</button>
+  </div>
+  </ng-template>
+<div class="form-div">
+  <form class="former">
+
+    <div class="panel-heading">
+      <label class="details">RECOMENDATIONS</label>
+      <div class="plus">
+
+        <span class=" title elipsis pull-right">
+          <a *ngIf="!showForm" (click)="saveRecommendations()" title="Save Audit" class="ng-hide">
+            <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+        <!-- <span class=" title elipsis pull-right">
+          <a>
+            <fa class="edit-icon icons" [name]="'edit'"></fa>
+          </a>
+        </span> -->
+
+
+
+        <span class=" title elipsis pull-right">
+          <a title="Application audit history">
+            <i class="fa fa-history" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+
+        <span class=" title elipsis pull-right">
+
+          <a data-ng-click="close()" title="Change to view mode. This reverts the changes">
+            <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+          <a (click)="showAudit()" title="Go back to audit section.">
+            <i class="fa fa-arrow-circle-o-left" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+
+
+      </div>
+
+    </div>
+    <hr/>
+
+    <fieldset [disabled]="showForm">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+
+          <label for="inputState">Recomended by</label>
+
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="appAudit.recomendedBy" id="recomendedBy" value="enter here">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">Estimated completion date</label>
+          <my-date-picker name="estDate" (dateChanged)="getEstDate($event)" [(ngModel)]="estDate"></my-date-picker>
+        </div>
+      </div>
+    </fieldset>
+
+
+
+
+
+
+
+
+
+
+  </form>
+</div>

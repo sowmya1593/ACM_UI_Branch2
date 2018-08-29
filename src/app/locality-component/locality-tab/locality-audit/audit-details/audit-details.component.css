@@ -1,0 +1,132 @@
+
+.pull-right {
+    float: right!important;
+     font-size: 20px;
+    margin-right: 20px;
+    color: #3A539B;
+  
+}
+#middle div.panel-heading {
+    color: #1E252D !important;
+    height: 51px;
+}
+.panel-default>.panel-heading {
+    padding: 15px 15px;
+    background: #fff;
+}
+
+i.fa {
+    text-decoration: none !important;
+   
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.htag{
+	margin-top:30px;
+}
+
+.modal-header{
+	background-color:#3A539B !important;
+	color:white;
+}
+
+.icons{
+		color:#3A539B;
+   vertical-align: middle;
+   font-size: 20px;
+   margin-bottom: 2px;
+   padding: 2px;
+  
+}
+  
+
+.plus{
+			color:#3A539B;
+   vertical-align: middle;
+   font-size: 20px;
+   margin-bottom: 20px;
+   padding: 2px;
+   margin-right: 20px;
+}
+
+
+
+
+
+
+
+
+th{
+    font-weight: bold;
+    color: black;
+   
+    text-align: left;
+}
+
+
+
+#searchtable table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+  
+    color: black;
+}
+
+
+
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+   
+}
+
+
+table {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    
+}
+tr{
+	background-color:#cecfd5;
+}
+tbody tr:nth-child(even) {
+  background-color:white;
+}
+
+
+.forms{
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  margin: 20px;
+  background-color: #EEEEEE;
+}
+.clear-right {
+	clear:right;
+	overflow: hidden;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}

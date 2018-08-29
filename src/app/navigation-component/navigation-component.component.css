@@ -1,0 +1,52 @@
+.p-4{
+    background-color: #2C3E50;
+    border-top: 1px solid #ECF0F1;
+}
+
+nav{
+    background-color: #3A539B;
+    text-align: center;
+    position: relative;
+}
+
+.sticky-top icons{
+	height: 10px;
+}
+
+.heading{
+    color: white;
+}
+
+img{
+    width: 10%;
+}
+
+.user{
+    position: absolute;
+    font-size: 10px;
+    color: white;
+    right: 50px;
+    margin-right: 10px;
+}
+
+.down-icon{
+    font-size: 10px;
+    margin-left: 3px;
+    color: white;
+}
+
+.navigate-toggle{
+    color: white;
+}
+
+.btn{
+    margin-left: 30px;
+}
+
+h1{
+    color: white;
+}
+
+.collapse-div{
+    background-color: #59ABE3;
+}

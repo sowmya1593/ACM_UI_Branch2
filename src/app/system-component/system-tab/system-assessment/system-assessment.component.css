@@ -1,0 +1,102 @@
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+   
+}
+/* .icons{ */
+/* 	color:#3A539B; */
+/*    vertical-align: middle; */
+/*    font-size: 20px; */
+/*    margin-bottom: 20px; */
+/*    padding: 2px; */
+/*    margin-right: 20px; */
+/* } */
+
+
+
+
+i.fa[_ngcontent-c23] {
+    text-decoration: none !important;
+    padding: 5px 4px;
+}
+
+
+
+
+.plus{
+
+	 vertical-align: middle;
+    font-size: 20px;
+   
+    padding: 10px;
+   
+    color: #3A539B;
+}
+
+th{
+    font-weight: bold;
+    color: black;
+   
+    text-align: left;
+}
+
+
+
+#searchtable table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+  
+    color: black;
+}
+
+
+
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+   
+}
+
+
+table {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    
+}
+tr{
+	background-color:#cecfd5;
+}
+tbody tr:nth-child(even) {
+  background-color:white;
+}
+
+
+.forms{
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  margin: 20px;
+  background-color: #EEEEEE;
+}
+.clear-right {
+	clear:right;
+	overflow: hidden;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}

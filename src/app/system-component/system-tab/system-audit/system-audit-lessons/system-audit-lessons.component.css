@@ -1,0 +1,44 @@
+
+
+i.fa {
+    text-decoration: none !important;
+    padding: 5px 4px;
+     color: #3A539B;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+     color: #3A539B;
+   }
+.plus{
+	float:right;
+	 vertical-align: middle;
+    font-size: 20px;
+ 
+    padding: 2px;
+    margin-left: 20px;
+    color: #3A539B;
+    margin-top: 15px;
+    
+}
+
+.policies{
+	margin-top: 15px;
+}
+
+.policy-edit{
+	float: right;
+}
+
+
+.icons{
+    vertical-align: middle;
+    font-size: 20px;
+    margin-top: -20px;
+    padding: 2px;
+   
+    font-size:20px;
+}
+

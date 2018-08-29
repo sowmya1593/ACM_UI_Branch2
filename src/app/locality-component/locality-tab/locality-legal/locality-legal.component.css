@@ -1,0 +1,141 @@
+.elipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+   
+}
+
+
+
+
+.plus{
+			color:#3A539B;
+   vertical-align: middle;
+   font-size: 20px;
+   margin-bottom: 20px;
+   padding: 2px;
+   margin-right: 20px;
+}
+
+
+
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+ 
+}
+
+
+
+
+.pull-right {
+    float: right!important;
+}
+#middle div.panel-heading {
+    color: #1E252D !important;
+    height: 51px;
+}
+.panel-default>.panel-heading {
+    padding: 15px 15px;
+    background: #fff;
+}
+
+.former{
+	
+	padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+}
+th{
+    font-weight: bold;
+    color: black;
+   
+    text-align: left;
+}
+
+
+
+#searchtable table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+  
+    color: black;
+}
+
+
+
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+    border-top: 0;
+}
+
+
+
+table {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    
+}
+tr{
+	background-color:#cecfd5;
+}
+tbody tr:nth-child(even) {
+  background-color:white;
+}
+
+
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}
+.clear-right {
+	clear:right;
+	overflow: hidden;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: #EEEEEE !important;
+}
+.box{
+  
+    cursor: pointer;
+    color: blue !important;
+}
+
+.nav-link{
+color: black;
+margin-left: 10px;
+}
+.icons{
+		color:#3A539B;
+   vertical-align: middle;
+   font-size: 20px;
+   margin-bottom: 20px;
+   padding: 2px;
+
+}
+  
+

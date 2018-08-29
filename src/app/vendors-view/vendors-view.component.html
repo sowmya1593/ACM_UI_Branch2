@@ -1,0 +1,30 @@
+<app-navigation-component></app-navigation-component>
+<app-option-list></app-option-list>
+<form class="forms">
+  <table class="fixed_header">
+    <thead>
+    <tr>
+     <th scope="col" (click)="handleSort()">Vendor Name
+     <i            class="fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="fa fa-arrow-up" *ngIf="desc"></i></th>
+      <th>Contact Name</th>
+      <th>Email Id</th>
+      <th>Phone Number</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vendor of vendors | paginate: { itemsPerPage: 10, currentPage: p }">
+                       <td><a routerLink="/editVendors/{{ vendor.vendorId }}">{{ vendor.name }}</a></td>
+                         <td>{{ vendor.vendorContact.firstName +" "+ vendor.vendorContact.lastName }}
+                         <td>{{ vendor.vendorContact.emailId }}</td>
+                          <td>{{ vendor.vendorContact.phoneNumber }}</td>
+                          
+                         
+                    </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <!-- <a (click)="openVendorEdit(10)">click here...........</a> -->
+</form>

@@ -1,0 +1,106 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Audit</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Legal document has been updated{{name}}!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+    </div>
+  </ng-template>
+  
+  
+  
+  <div class="plus">
+    <div class="save-edit" style="text-decoration: none !important">
+  
+      <fa class="edit-icon icons" [name]="'edit'" (click)="editClick()"></fa>
+    </div>
+  </div>
+  <div class="form-div">
+    <div class="former">
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+  
+          <label for="inputState">Acronym</label>
+          <div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="{{ acronym}}" readonly="readonly">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">Last updated by</label>
+          <input type="text" class="form-control" id="lastName" value="{{ updatedTime}}" readonly="readonly">
+        </div>
+      </div>
+  
+  
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="lastName">Name</label>
+          <div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="enter here">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Updated at</label>
+          <input type="email" class="form-control" id="email" value="enter here">
+        </div>
+      </div>
+  
+  
+    </div>
+    <div class="plus">
+  
+      <i class="fa fa-plus-square-o" aria-hidden="true" style="float:right;" *ngIf="showSigned" (click)="createMOU()"></i>
+  
+  
+  
+  
+    </div>
+  
+    <div class="former clear-right">
+      <table class="table table-striped table-hover table-bordere">
+        <thead>
+          <tr>
+  <th scope="col" (click)="handleSort()">Name <i
+					class="fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="fa fa-arrow-up" *ngIf="desc"></i></th>
+            <th scope="col">Signed</th>
+            <th scope="col">Recertification Date</th>
+            <th scope="col">Notify</th>
+          </tr>
+  
+  
+        </thead>
+        <tbody>
+  
+  
+          <tr *ngFor="let appsolution of appMOUs |  paginate: { itemsPerPage: 10, currentPage: p }">
+            <td>
+              <a class="box" (click)="getAppMOU(appsolution.mouId)" style="cursor: pointer;">{{ appsolution.name}}</a>
+            </td>
+            <td>{{ appsolution.signed}}</td>
+            <td>{{ appsolution.recertificationDt | filterDate }}</td>
+            <td>
+              <a>
+                <i class="fa fa-envelope" style="color:#3A539B !important"></i>
+              </a>
+            </td>
+  
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  
+  
+  </div>
+  <router-outlet></router-outlet>

@@ -1,0 +1,133 @@
+<div class="form-div" >
+    <form  class="forms" [formGroup]="editVendorForm" (ngSubmit)="createVendor(editVendorForm.value)">
+        <div class="page-description">
+            <h3>Vendors</h3>
+            <hr class="after-heading" />
+        </div>
+        <div class="tip">
+            <p class="tip-text">
+                <fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-12">
+                <label for="vendorName"><b>Vendor Name</b></label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="vendorName" placeholder="Vendor Name" formControlName="name">
+            </div>
+        </div>
+        <hr />
+        <!-- <h3>Contact Information</h3> -->
+        <div formGroupName="vendorContact">
+            <p><b>Contact Person</b></p>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstName">First Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email ID</label>
+                    <div class="asterisk">*</div>
+                    <input type="email" class="form-control"  id="email"  title='Email Id (Format: @example.com)' placeholder="Email ID" formControlName="emailId">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone Number</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone Number" pattern="^\d{3}-\d{3}-\d{4}$" required title='Phone Number (Format: 999-999-9999)' formControlName="phoneNumber">
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div formGroupName="vendorAddress" >
+            <p><b>Address</b></p>
+            <div class="form-group">
+                <label for="inputAddress">Street Name</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Street Name" formControlName="streetName">
+                <label for="city">City</label>
+                <div class="asterisk">*</div>
+                <input type="text" class="form-control" id="city" placeholder="City" formControlName="city">
+            </div>
+             <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputState">State</label>
+                    <div class="asterisk">*</div>
+                    <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option value="AL">AL</option>
+	<option value="AK">AK</option>
+	<option value="AR">AR</option>	
+	<option value="AZ">AZ</option>
+	<option value="CA">CA</option>
+	<option value="CO">CO</option>
+	<option value="CT">CT</option>
+	<option value="DC">DC</option>
+	<option value="DE">DE</option>
+	<option value="FL">FL</option>
+	<option value="GA">GA</option>
+	<option value="HI">HI</option>
+	<option value="IA">IA</option>	
+	<option value="ID">ID</option>
+	<option value="IL">IL</option>
+	<option value="IN">IN</option>
+	<option value="KS">KS</option>
+	<option value="KY">KY</option>
+	<option value="LA">LA</option>
+	<option value="MA">MA</option>
+	<option value="MD">MD</option>
+	<option value="ME">ME</option>
+	<option value="MI">MI</option>
+	<option value="MN">MN</option>
+	<option value="MO">MO</option>	
+	<option value="MS">MS</option>
+	<option value="MT">MT</option>
+	<option value="NC">NC</option>	
+	<option value="NE">NE</option>
+	<option value="NH">NH</option>
+	<option value="NJ">NJ</option>
+	<option value="NM">NM</option>			
+	<option value="NV">NV</option>
+	<option value="NY">NY</option>
+	<option value="ND">ND</option>
+	<option value="OH">OH</option>
+	<option value="OK">OK</option>
+	<option value="OR">OR</option>
+	<option value="PA">PA</option>
+	<option value="RI">RI</option>
+	<option value="SC">SC</option>
+	<option value="SD">SD</option>
+	<option value="TN">TN</option>
+	<option value="TX">TX</option>
+	<option value="UT">UT</option>
+	<option value="VT">VT</option>
+	<option value="VA">VA</option>
+	<option value="WA">WA</option>
+	<option value="WI">WI</option>	
+	<option value="WV">WV</option>
+	<option value="WY">WY</option>
+            
+            <option>...</option>
+          </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Zip Code</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" pattern="[0-9]{5}" title='Zip Code (Format: 00000)' id="inputZip" formControlName="zipcode">
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button type="cancel" class="btn btn-primary"(click)="cancelButton()">Cancel</button>
+            <button   type="submit" class="btn btn-primary"  [disabled]="editVendorForm.invalid">Submit</button>
+
+        </div>
+    </form>
+</div>

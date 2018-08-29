@@ -1,0 +1,78 @@
+<form class="forms">
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label class="label-form" for="definitiveSource"><b>Definitive Source</b></label><div class="asterisk">*</div>
+              <select class="form-control" id="definitiveSource" required (change)="selectDefinitive($event.target.value)">
+                <option selected>Choose...</option>
+                <option  *ngFor="let auditType of auditTypes" value="{{ auditType.auditTypeId }}">{{ auditType.auditTypeName  }}</option>
+              </select>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="label-form" for="typePolicy"><b>Type/Policy</b></label><div class="asterisk">*</div>
+              <select class="form-control" id="typePolicy" required (change)="selectType($event.target.value)">
+                <option selected>Choose...</option>
+                <option *ngFor="let policyType of  policyTypes" value="{{ policyType.policyGrpId }}">{{ policyType.policyGrpName }}</option>
+              </select>
+		</div>
+		
+	</div>
+<!-- 	<div class="prepopulated" *ngIf = "definitive == true && policy == true">
+		<div class="model-solution-row form-row">
+            	<div class="model form-group col-md-6">
+            <label class="label-form" for="definitiveSourceInput">Definitive Source</label><div class="asterisk">*</div>
+              <input type="text" class="edit-disable form-control" id="definitiveSourceInput" readonly [(ngModel)] = "policy.definitiveSource">
+              <div class="hover-icon"><fa class="ban" [name]="'ban'"></fa></div>
+            	</div>
+            	<div class="version form-group col-md-6">
+            		<label class="label-form" for="updatedBy">Updated By</label><div class="asterisk">*</div>
+		              <input type="text" class="edit-disable form-control" id="updatedBy" readonly [(ngModel)] = "policyDisplay.updatedBy" [name] = "'updated_by'">
+		              <input type="text" class="edit-disable form-control" id="updatedBy" readonly [(ngModel)] = "policyDisplay.updatedBy" [name] = "'updated_by'">
+            	</div>
+            	<div class="form-group col-md-6">
+            <label class="label-form" for="Type/Policy">Type/Policy</label><div class="asterisk">*</div>
+              <input type="text" class="edit-disable form-control" id="Type/Policy" readonly [(ngModel)] = "policy.description">
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="updtedAt">Updated At</label><div class="asterisk">*</div>
+		              <input type="text" class="edit-disable form-control" id="updatedAt" readonly [(ngModel)] = "policyDisplay.updatedTs" [name] = "'updated_ts'">
+		              <input type="text" class="edit-disable form-control" id="updatedAt" readonly [(ngModel)] = "date" [name] = "'updated_at'">
+            	</div> 
+            </div>
+	</div> -->
+</form>
+<div class="forms" *ngIf = "definitive == true && policy == true ">
+	<div class="policy-section">
+		<div><ul class="nav nav-tabs">
+		  <li class="nav-item">
+		    <!-- <a class="nav-link active" routerLinkActive="active" routerLink="policyDetails" [routerLinkActiveOptions]="{exact: true}"><fa class="help" [name]="'info-circle'"></fa>Policy Details</a> -->
+		    <a class="nav-link active" routerLinkActive="active" routerLink="policyDetails" [routerLinkActiveOptions]="{exact: true}"><fa class="help" [name]="'info-circle'"></fa>Policy Details</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" routerLinkActive="active" routerLink="review"><fa class="file-signature help" [name]="'info-circle'"></fa>Review Section</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" routerLinkActive="active" routerLink="documents"><fa class="file-alt help" [name]="'info-circle'"></fa>Documents</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" routerLinkActive="active" routerLink="applications"><fa class="mobile-android help" [name]="'info-circle'"></fa>Applications</a>
+		  </li>
+		</ul>
+		</div>
+		<router-outlet></router-outlet>
+	</div>
+</div>
+<!-- <ul class="nav nav-tabs">
+		  <li class="nav-item">
+		    <a class="nav-link active" routerLinkActive="active" routerLink="policyDetails" [routerLinkActiveOptions]="{exact: true}"><fa class="help" [name]="'info-circle'"></fa>Policy Details</a>
+		    <a class="nav-link active" routerLinkActive="active" routerLink="policyDetails/{{ policyDropDownId }}" [routerLinkActiveOptions]="{exact: true}"><fa class="help" [name]="'info-circle'"></fa>Policy Details</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" routerLinkActive="active" routerLink="review"><fa class="file-signature help" [name]="'info-circle'"></fa>Review Section</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" routerLinkActive="active" routerLink="documents"><fa class="file-alt help" [name]="'info-circle'"></fa>Documents</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" routerLinkActive="active" routerLink="applications"><fa class="mobile-android help" [name]="'info-circle'"></fa>Applications</a>
+		  </li>
+		</ul> -->

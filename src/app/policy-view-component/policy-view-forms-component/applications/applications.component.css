@@ -1,0 +1,22 @@
+.asterisk{
+	display: inline;
+	color: red;
+	margin-left: 2px;
+}
+
+.applications{
+	margin-top: 15px;
+}
+
+table{
+	background-color: #ffffff;
+}
+
+table thead tr th{
+	font-weight: 500;
+	color: black;
+}
+
+table thead tr td{
+	color: black;
+}

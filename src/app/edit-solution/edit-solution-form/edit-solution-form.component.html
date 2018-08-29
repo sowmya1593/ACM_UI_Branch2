@@ -1,0 +1,159 @@
+<form #form="ngForm">
+			<div class="page-description"><h3>Solutions</h3>
+    		<hr class="after-heading" />
+    		</div>
+        	<div class="tip"><p class="tip-text"><fa class="light-bulb" [name]="'lightbulb-o'"></fa>Tip:</p></div>
+        	<h4>General Information</h4>
+            <div class="model-solution-row form-row">
+            	<div class="model form-group col-md-6">
+            <label class="label-form" for="modelSolution"><b>Model/Solution</b></label>
+              <input type="text" class="asterisk form-control" id="modelSolution" ngModel name="modelSolution" readonly>
+            	</div>
+            	<div class="version form-group col-md-6">
+            		<label class="label-form" for="version"><b>Version</b></label>
+		              <input type="text" class="asterisk form-control" id="version" ngModel name="version" readonly>
+            	</div>
+            	<div class="form-group col-md-6">
+            <label class="label-form" for="systemType"><b>System Type</b></label>
+              <select class="form-control" id="systemType" ngModel name="systemType" value="solutionsInput.systemTypeDTO.name" readonly>
+                <option selected>Choose...</option>
+                <option value="1">EVS</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="equipmentType"><b>Equipment Type</b></label>
+		              <select class="form-control" id="equipmentType" ngModel name="equipmentType" value="solutionsInput.solutionTypeName" readonly>
+		                <option selected>Choose...</option>
+		                <option value="1">Optical/Digital Scan</option>
+		                <option value="2">Two</option>
+		                <option value="3">Three</option>
+		              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="vendor"><b>Vendor</b></label>
+		              <select class="form-control" id="vendor" ngModel name="vendor" value="solutionsInput.vendor.name" readonly>
+		                <option selected>Choose...</option>
+		                <option value="1">Dominion Voting</option>
+		                <option value="2">Two</option>
+		                <option value="3">Three</option>
+		              </select>
+            		
+            	</div>
+            </div>
+        	<!-- <div class="second-row form-row">
+            	<div class="form-group col-md-6">
+            <label class="label-form" for="systemType"><b>System Type</b></label><div class="asterisk">*</div>
+              <select class="form-control" id="systemType" required>
+                <option selected>Choose...</option>
+                <option value="1">EVS</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="equipmentType"><b>Equipment Type</b></label><div class="asterisk">*</div>
+		              <select class="form-control" id="equipmentType" required>
+		                <option selected>Choose...</option>
+		                <option value="1">Optical/Digital Scan</option>
+		                <option value="2">Two</option>
+		                <option value="3">Three</option>
+		              </select>
+            	</div>
+            	<div class="form-group col-md-6">
+            		<label class="label-form" for="vendor"><b>Vendor</b></label><div class="asterisk">*</div>
+		              <select class="form-control" id="vendor" required>
+		                <option selected>Choose...</option>
+		                <option value="1">Dominion Voting</option>
+		                <option value="2">Two</option>
+		                <option value="3">Three</option>
+		              </select>
+            		
+            	</div>
+            </div> -->
+            <hr />
+           <h4>Installation and Hosting</h4>
+            <div class="installation form-group col-md-6">
+            <label for="hostingType"><b>Hosting Type</b></label>
+            <select class="form-control" id="hostingType" ngModel name="hostingType" readonly>
+		                <option selected>Choose...</option>
+		                <option value="1">Not Applicable</option>
+		                <option value="2">Two</option>
+		                <option value="3">Three</option>
+		              </select>
+            </div>
+            <div class="installation form-group">
+            <label class="hosting-notes" for="hostingNotes"><b>Hosting Notes</b></label><!-- <div class="asterisk-inline asterisk">*</div> -->
+            <textarea cols="156" rows="7" id="hostingNotes" ngModel name="hostingNotes" readonly></textarea>
+          </div>
+            <!-- <p><b>Hosting Notes</b></p>
+            <textarea cols="100" rows="7" id="hostingNotes"></textarea> -->
+            <hr />
+            <h4>Certification Information</h4>
+            <div class="certification-test form-row">
+            <div class="form-group col-md-6">
+                <label for="approvedDate"><b>DoEL Approved Date</b></label>
+                <my-date-picker name="myname" readonly></my-date-picker> 
+                <!-- <input type="date" class="form-control" id="approvedDate"> -->
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dueDate"><b>Renewal Due Date</b></label>
+                <my-date-picker name="myname" readonly></my-date-picker> 
+                <!-- <input type="date" class="form-control" id="dueDate"> -->
+            </div>
+         </div>
+         <hr />
+          <h4>Voting System Test Laboratory - VSTL</h4>
+          <div class="certification-test form-group col-md-6">
+            <label for="label-form labVendor"><b>Lab Vendor</b></label>
+            <select class="form-control" id="labVendor" ngModel name="labVendor" readonly>
+		                <option selected>Choose...</option>
+		                <option value="PROV&V">PROV&V</option>
+		                <option value="SLI">SLI</option>
+		                <option value="Wyle Laboratories/NTS">Wyle Laboratories/NTS</option>
+		              </select>
+          </div>
+          <div class="contact">
+          
+          //solutionId
+          	<div class="certification-test form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName"><b>First Name</b></label>
+                <input type="text" class="asterisk form-control" id="firstName" ngModel name="firstName" readonly>
+                <input type="hidden" ngModel name="solutionId">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName"><b>Last Name</b></label>
+                <input type="text" class="asterisk form-control" id="lastName" ngModel name="lastName" readonly>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email"><b>Email Id</b></label>
+                <input type="email" class="asterisk form-control" id="email" ngModel name="email" readonly>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone"><b>Phone Number</b></label>
+                <input type="text" class="asterisk form-control" id="phone" ngModel name="phone" readonly>
+            </div>
+         </div>
+          <!-- <div class="certification-test form-row">
+            <div class="form-group col-md-6">
+                <label for="email"><b>Email Id</b></label><div class="asterisk">*</div>
+                <input type="email" class="asterisk form-control" id="email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone"><b>Phone Number</b></label><div class="asterisk">*</div>
+                <input type="text" class="asterisk form-control" id="phone" required>
+            </div>
+         </div> -->
+          </div>
+         <hr />
+         <h4>Attachments</h4>
+        <!--  <div class="attachments-div"><p class="attachments"><b>Attachments</b> --><!-- </p>
+            	<input type="file">	
+            </div> -->
+         <div class="buttons">
+         	<button type="cancel" class="cancel btn btn-primary">Cancel</button>
+        	<button type="submit" class="submit btn btn-primary" [disabled]="!form.valid">Submit</button>
+        </div>
+</form>

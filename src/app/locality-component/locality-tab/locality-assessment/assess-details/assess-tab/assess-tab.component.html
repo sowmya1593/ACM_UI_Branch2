@@ -1,0 +1,69 @@
+<div class="plus">
+
+        <fa *ngIf="showEdit" class="edit-icon icons" [name]="'edit'" style="float:right" (click)="showPlus()"></fa>
+    
+    </div>
+    
+    <div class="form-div">
+            <form class="former">
+        
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+        
+                        <label for="inputState">Acronym</label>
+                        <div class="asterisk">*</div>
+                        <input type="text" class="form-control" id="lastName" value="{{ mainData }}" readonly>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastName">Last updated by</label>
+        
+                        <input type="text" class="form-control" id="lastName" value="{{ updatedTime }}" readonly>
+                    </div>
+                </div>
+        
+        
+        
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="lastName">Name</label>
+                        <div class="asterisk">*</div>
+                        <input type="text" class="form-control" id="lastName" value="enter here">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Updated at</label>
+                        <input type="email" class="form-control" id="email" value="enter here">
+                    </div>
+                </div>
+            </form>
+        </div>
+ <div class="plus" *ngIf="showPlusButton">
+        <i class="fa fa-plus-square-o" aria-hidden="true" style="float:right;" (click)="goTo()"></i>
+    </div>
+    <div>
+        <form class="former">
+  <table class="table table-striped table-hover table-bordere">
+                <thead>
+                    <tr>
+    
+                        <th scope="col">Audit Type</th>
+                        <th scope="col">Assessment Name</th>
+                        <th scope="col">Assessment Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let  assess of assessmentDTOs">
+                         <td>
+                            <a (click)="getAudit(assess.assessmentId)" style="cursor:pointer;color:blue;">{{ assess.auditName}}</a>
+                        </td>
+                        <td>{{ assess.name }}</td>
+                        <td>{{ assess.assessmentDt | filterDate}}</td>
+                        <td>{{ assess.status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+                
+        </form>
+    </div>
+    <router-outlet></router-outlet>
+        

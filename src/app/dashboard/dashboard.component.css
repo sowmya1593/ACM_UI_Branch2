@@ -1,0 +1,81 @@
+.p-4{
+    background-color: #2C3E50;
+    border-top: 1px solid #ECF0F1;
+}
+
+nav{
+    background-color: #3A539B;
+    text-align: center;
+    position: relative;
+}
+
+.heading{
+    color: white;
+    text-align: center;
+}
+
+img{
+    width: 10%;
+}
+
+.login{
+	color: white;
+	font-size: 10px;
+	margin-top: 15px;
+	margin-right: 8px;
+}
+
+h1{
+    color: white;
+}
+
+.dashboard{
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 5%;
+    /*position: absolute;
+    top: 25%;
+    left: 5%;*/
+}
+
+.card{
+    float: left;
+    margin-left: 5px;
+    margin-bottom: 15px;
+}
+
+.card-heading{
+    background-color: #3A539B;
+    border-radius: 6%;
+}
+
+.card-title{
+    padding: 4%;
+    color: white;
+}
+
+.card-body{
+    background-color: #ECF0F1;
+}
+
+.card-link{
+    color: black;
+}
+
+.card-link:hover{
+    color: white;
+    background-color: #00B16A;
+    padding: 3%;
+}
+
+.view-edit{
+    margin-left: 20px;
+}
+
+/*.second-row{
+    margin-top: 20px;
+}
+
+.third-row{
+    
+}*/

@@ -1,0 +1,97 @@
+.form{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+    overflow: hidden;
+} 
+
+table{
+	background-color: #ffffff;
+	text-align: center;
+}
+
+table thead tr th{
+	font-weight: 500;
+}
+
+.btn{
+	background-color: #3A539B;
+	border-color: #3A539B;
+}
+
+.showList{
+	float: left;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff;
+}
+
+.navigate{
+    margin: 15px;
+    padding: 5px;
+}
+
+.sticky-top{
+	height: 30px;
+	border-radius: 5px;
+}
+
+.form-options{
+    margin-right: 15px;
+    margin-top: -15px;
+    padding: 5px;
+}
+
+.home-back{
+	float: left;
+}
+
+.save-edit{
+	float: right;
+}
+
+a{
+	text-decoration: none;
+}
+
+.icons{
+    vertical-align: middle;
+    font-size: 20px;
+    margin-top: -20px;
+    padding: 2px;
+    margin-left: 5px;
+}
+
+.home-icon{
+    color: #3A539B;
+}
+
+.home-icon:hover{
+	
+}
+
+.edit-icon{
+    /*margin-left: 10px;*/
+    color: #3A539B;
+}
+
+.left-icon{
+    /*margin-left: 10px;*/
+    color: #3A539B;
+}
+
+.save-icon{
+    color: #3A539B;
+}
+
+.download-icon{
+	 color: #3A539B;
+}
+
+.modal-header{
+	background-color: #3A539B;
+	color: #ffffff;
+}

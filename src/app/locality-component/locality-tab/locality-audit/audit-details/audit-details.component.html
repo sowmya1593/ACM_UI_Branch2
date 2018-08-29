@@ -1,0 +1,75 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+<div class="plus" *ngIf="showEdit">
+
+        <fa class="edit-icon icons" [name]="'edit'" style="float:right;" (click)="showPlus()"></fa>
+    
+    </div>
+    
+    
+    <div class="form-div">
+        <form class="former">
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+    
+                    <label for="inputState">Acronym</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="lastName" value="{{ mainData }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last updated by</label>
+    
+                    <input type="text" class="form-control" id="lastName" value="{{ updatedTime }}" readonly>
+                </div>
+            </div>
+    
+    
+    
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="lastName">Name</label>
+                    <div class="asterisk">*</div>
+                    <input type="text" class="form-control" id="lastName" value="enter here">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Updated at</label>
+                    <input type="email" class="form-control" id="email" value="enter here">
+                </div>
+            </div>
+        </form>
+    </div>
+    
+     <div class="plus" *ngIf="showPlusButton">
+        <i class="fa fa-plus-square-o" aria-hidden="true" style="float:right;" (click)="goTo()"></i>
+    </div>
+    <div>
+        <form class="former">
+            <table class="table table-striped table-hover table-bordere">
+                <thead>
+                    <tr>
+    
+                        <th scope="col" (click)="handleSort()">Audit Name  <i class="fa fa-arrow-down" *ngIf="!desc"></i> <i class="fa fa-arrow-up" *ngIf="desc"></i></th>
+                        <th scope="col">Audit Type</th>
+                        <th scope="col">Audit Date</th>
+                        <th scope="col">Next Audit Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let  audit of appAuditDTOs | paginate: { itemsPerPage: 10, currentPage: p }">
+                         <td>
+                            <a (click)="getAudit(audit.appAuditId)" style="cursor:pointer;color:blue;">{{ audit.auditTypeName }}</a>
+                        </td>
+                        <td>{{ audit.auditType }}</td>
+                        <td>{{ audit.auditDate | filterDate }}</td>
+                        <td>{{ audit.nextAuditDate | filterDate }}</td>
+                        <td>{{ audit.status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </form>
+    </div>
+    <router-outlet></router-outlet>

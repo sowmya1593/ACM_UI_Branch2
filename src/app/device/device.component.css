@@ -1,0 +1,26 @@
+.form{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+table{ 
+	background-color: #ffffff;
+	text-align: center;
+}
+
+table thead tr th{
+	font-weight: 500;
+}
+
+.btn{
+	background-color: #3A539B;
+	border-color: #3A539B;
+}
+
+.showList{
+	float: left;
+}

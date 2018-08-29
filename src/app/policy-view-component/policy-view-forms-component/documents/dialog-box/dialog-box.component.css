@@ -1,0 +1,14 @@
+.model-solution-row{
+	padding: 1%;
+}
+
+.asterisk{
+	display: inline;
+	color: red;
+	margin-left: 2px;
+}
+
+.btn{
+	background-color: #3A539B;
+	border-color: #3A539B;
+}

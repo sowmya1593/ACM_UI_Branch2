@@ -1,0 +1,63 @@
+<div class="form-div">
+  <form class="former">
+    <div class="panel-heading">
+      <label class="details">BUSINESS RISK</label>
+      <div class="plus">
+
+        <span class=" title elipsis pull-right">
+          <a *ngIf="!showForm" (click)="saveBusinessRisk()" title="Save Audit" class="ng-hide">
+            <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+        <!-- <span class=" title elipsis pull-right">
+          <a>
+            <fa class="edit-icon icons" [name]="'edit'"></fa>
+          </a>
+        </span> -->
+
+
+
+        <span class=" title elipsis pull-right">
+          <a title="Application audit history">
+            <i class="fa fa-history" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+
+        <span class=" title elipsis pull-right">
+
+          <a data-ng-click="close()" title="Change to view mode. This reverts the changes">
+            <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+          <a (click)="showAudit()" title="Go back to audit section.">
+            <i class="fa fa-arrow-circle-o-left" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+
+
+      </div>
+
+    </div>
+    <hr/>
+
+    <fieldset [disabled]="showForm">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+
+          <label for="inputState">Description</label>
+
+          <textarea name="description" id="" rows="10" class="form-control" [(ngModel)]="appAudit.businessRisks"></textarea>
+        </div>
+
+      </div>
+    </fieldset>
+
+
+
+
+
+
+
+
+
+  </form>
+</div>

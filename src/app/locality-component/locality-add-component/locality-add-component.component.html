@@ -1,0 +1,264 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-header">
+  <h4 class="modal-title">Info</h4>
+<!--   <button type="button" class="close" aria-label="Close" (click)="d()"> -->
+<!--     <span aria-hidden="true">&times;</span> -->
+<!--   </button> -->
+</div>
+<div class="modal-body">
+  <p>{{locality}} does not exist.Do you want to create it?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="c();redirect('yes')">Yes</button>
+  <button type="button" class="btn btn-outline-dark" (click)="c();redirect('no')">No</button>
+</div>
+</ng-template>
+
+<form class="former">
+   
+<img src="assets/img/VA-county-edited.png" usemap="#image-map">
+
+<map name="image-map">
+     <area target="" alt="Pittsylvania" title="Pittsylvania" coords="443,341,486,407" shape="rect" (click)="fetchLocality('Pittsylvania')">
+    <area target="" alt="Halifax" title="Halifax" (click)="fetchLocality('Halifax')" coords="492,342,533,407" shape="rect">
+    <area target="" alt="Macklenburg" title="Macklenburg" (click)="fetchLocality('Macklenburg')" coords="539,370,609,407" shape="rect">
+    <area target="" alt="Campbell" title="Campbell" (click)="fetchLocality('Campbell')" coords="495,317,23" shape="circle">
+    <area target="" alt="Brunswick" title="Brunswick" (click)="fetchLocality('Brunswick')"coords="612,352,647,397" shape="rect">
+    <area target="" alt="Lunenburg" title="Lunenburg" (click)="fetchLocality('Lunenburg')" coords="568,338,608,367" shape="rect">
+    <area target="" alt="Charlotte" title="Charlotte" (click)="fetchLocality('Charlotte')" coords="527,320,561,365" shape="rect">
+    <area target="_blank" alt="Appomattox" title="Appomattox" (click)="fetchLocality('Appomattox')"coords="525,294,18" shape="circle">
+    <area target="" alt="Prince Edward" title="Prince Edward" (click)="fetchLocality('Prince Edward')" coords="547,302,585,327" shape="rect">
+    <area target="" alt="Lee" title="Lee" (click)="fetchLocality('Lee')" coords="16,364,89,400" shape="rect">
+    <area target="" alt="Scott" title="Scott" (click)="fetchLocality('Scott')" coords="90,363,148,401" shape="rect">
+    <area target="" alt="Washington" title="Washington" (click)="fetchLocality('Washington')" coords="154,369,219,400" shape="rect">
+    <area target="" alt="Russell" title="Russell" (click)="fetchLocality('Russell')" coords="149,339,207,367" shape="rect">
+    <area target="" alt="Eise" title="Eise" (click)="fetchLocality('Wise')" coords="115,346,27" shape="circle">
+    <area target="" alt="Dickinson" title="Dickinson" (click)="fetchLocality('Dickinson')" coords="147,327,21" shape="circle">
+    <area target="" alt="Baughanan" title="Baughanan" (click)="fetchLocality('Bayughanan')" coords="183,302,27" shape="circle">
+    <area target="" alt="Smyth" title="Smyth" (click)="fetchLocality('Smyth')" coords="212,351,260,382" shape="rect">
+    <area target="" alt="Greyson" title="Greyson" (click)="fetchLocality('greyson')" coords="221,381,305,403" shape="rect">
+    <area target="" alt="Caroll" title="Caroll" (click)="fetchLocality('Caroll')" coords="299,370,338,403" shape="rect">
+    <area target="" alt="Wythe" title="Wythe" (click)="fetchLocality('Wythe')" coords="263,340,309,367" shape="rect">
+    <area target="" alt="Pulaski" title="Pulaski" (click)="fetchLocality('Pulaski')" coords="322,340,21" shape="circle">
+    <area target="" alt="Tazewell" title="Tazewell" (click)="fetchLocality('Tazewell')" coords="199,310,257,347" shape="rect">
+    <area target="" alt="Bland" title="Bland" (click)="fetchLocality('Bland')" coords="262,312,298,338" shape="rect">
+    <area target="" alt="Floyd" title="Floyd" (click)="fetchLocality('Floyd')" coords="334,370,380,345" shape="rect">
+    <area target="" alt="Franklin" title="Franklin" (click)="fetchLocality('Franklin')" coords="383,329,440,368" shape="rect">
+    <area target="" alt="Montogomery" title="Montogomery" (click)="fetchLocality('Montogomery')" coords="334,304,377,334" shape="rect">
+    <area target="" alt="Giles" title="Giles" (click)="fetchLocality('Giles')" coords="345,304,295,290" shape="rect">
+    <area target="" alt="bedford" title="bedford" (click)="fetchLocality('Bedford')" coords="449,306,27" shape="circle">
+    <area target="" alt="Craig" title="Craig" (click)="fetchLocality('Criag')" coords="339,261,392,290" shape="rect">
+    <area target="" alt="Alleghany" title="Alleghany" (click)="fetchLocality('Alleghany')" coords="351,217,409,252" shape="rect">
+    <area target="" alt="Bath" title="Bath" (click)="fetchLocality('Bath')" coords="397,175,447,217" shape="rect">
+    <area target="" alt="Highland" title="Highland" (click)="fetchLocality('Highland')" coords="416,130,461,173" shape="rect">
+    <area target="" alt="Augusta" title="Augusta" (click)="fetchLocality('Augusta')" coords="465,155,520,213" shape="rect">
+    <area target="" alt="Rockingham" title="Rockingham" (click)="fetchLocality('Rockingham')" coords="483,107,548,166" shape="rect">
+    <area target="" alt="Shenandoah" title="Shenandoah" (click)="fetchLocality('Shenandoah')" coords="515,54,573,103" shape="rect">
+    <area target="" alt="Fredrickburg" title="Fredrickburg" (click)="fetchLocality('Fredrickburg')" coords="558,15,606,54" shape="rect">
+    <area target="" alt="Page" title="Page" (click)="fetchLocality('Page')" coords="546,101,573,134" shape="rect">
+    <area target="" alt="Loundoun" title="Loundoun" (click)="fetchLocality('Loudoun')" coords="636,24,673,76" shape="rect">
+    <area target="" alt="Warren" title="Warren" (click)="fetchLocality('Warren')" coords="577,60,605,92" shape="rect">
+    <area target="" alt="Culpepper" title="Culpepper" (click)="fetchLocality('Culpepper')" coords="597,115,639,156" shape="rect">
+    <area target="" alt="Rappahannock" title="Rappahannock" (click)="fetchLocality('Rappahannock')" coords="581,96,612,125" shape="rect">
+    <area target="" alt="Staford" title="Staford" (click)="fetchLocality('Staford')" coords="657,127,686,167" shape="rect">
+    <area target="" alt="Fairfax" title="Fairfax" (click)="fetchLocality('Fairfax')" coords="678,92,721,121" shape="rect">
+    <area target="" alt="Arlington" title="Arlington" (click)="fetchLocality('Arlington')" coords="698,67,726,87" shape="rect">
+    <area target="" alt="Amherst" title="Amherst" (click)="fetchLocality('Amherst')" coords="455,243,515,278" shape="rect">
+    <area target="" alt="Rockbridge" title="Rockbridge" (click)="fetchLocality('Rockbridge')" coords="434,210,481,256" shape="rect">
+    <area target="" alt="Botetourt" title="Botetourt" (click)="fetchLocality('Botetourt')" coords="398,255,449,278" shape="rect">
+    <area target="" alt="Roanoke" title="Roanoke" (click)="fetchLocality('Roanoke')" coords="374,293,415,321" shape="rect">
+    <area target="" alt="Greensville" title="Greensville" (click)="fetchLocality('Greensville')" coords="650,366,676,407" shape="rect">
+    <area target="" alt="Southhampton" title="Southhampton" (click)="fetchLocality('SouthHampton')" coords="680,371,726,407" shape="rect">
+    <area target="" alt="Sussex" title="Sussex" (click)="fetchLocality('Sussex')" coords="667,341,723,366" shape="rect">
+    <area target="" alt="Nottoway" title="Nottoway" (click)="fetchLocality('Nottoway')" coords="595,308,627,347" shape="rect">
+    <area target="" alt="Isle of Wight" title="Isle of Wight" (click)="fetchLocality('IsleOfWight')" coords="736,343,779,380" shape="rect">
+    <area target="" alt="Nelson" title="Nelson" (click)="fetchLocality('Nelson')" coords="494,217,534,246" shape="rect">
+    <area target="" alt="Dinwiddle" title="Dinwiddle" (click)="fetchLocality('Dinwiddle')" coords="650,332,24" shape="circle">
+    <area target="" alt="Albemarle" title="Albemarle" (click)="fetchLocality('Albemarle')" coords="526,171,573,221" shape="rect">
+    <area target="" alt="Fredrick" title="Fredrick" (click)="fetchLocality('Fredrick')" coords="605,36,629,62" shape="rect">
+    <area target="" alt="Buckingham" title="Buckingham" (click)="fetchLocality('Buckingham')" coords="556,265,28" shape="circle">
+    <area target="" alt="Fluvanna" title="Fluvanna" (click)="fetchLocality('Fluvanna')" coords="571,213,600,241" shape="rect">
+    <area target="" alt="Madison" title="Madison" (click)="fetchLocality('Madison')" coords="574,133,600,166" shape="rect">
+    <area target="" alt="Greene" title="Greene" (click)="fetchLocality('Greene')" coords="551,151,578,175" shape="rect">
+    <area target="" alt="Chesterfield" title="Chesterfield" (click)="fetchLocality('Chesterfield')" coords="635,280,671,305" shape="rect">
+    <area target="" alt="Cumberland" title="Cumberland" (click)="fetchLocality('Cumberland')" coords="580,243,600,283" shape="rect">
+    <area target="" alt="Orange" title="Orange" (click)="fetchLocality('Orange')" coords="594,158,632,186" shape="rect">
+    <area target="" alt="Loiusa" title="Loiusa" (click)="fetchLocality('Loiusa')" coords="587,190,639,229" shape="rect">
+    <area target="" alt="Prince William" title="Prince William" (click)="fetchLocality('PrinceWilliam')" coords="641,82,677,125" shape="rect">
+    <area target="" alt="Caroline" title="Caroline" (click)="fetchLocality('Caroline')" coords="659,181,701,224" shape="rect">
+    <area target="" alt="Goochland" title="Goochland" (click)="fetchLocality('Goochland')" coords="604,228,649,261" shape="rect">
+    <area target="" alt="Powehattan" title="Powehattan" (click)="fetchLocality('Powhattan')" coords="602,266,640,279" shape="rect">
+    <area target="" alt="Hanover" title="Hanover" (click)="fetchLocality('Hanover')" coords="652,222,696,262" shape="rect">
+    <area target="" alt="Henrico" title="Henrico" (click)="fetchLocality('Henrico')" coords="673,270,699,290" shape="rect">
+    <area target="" alt="Richmond" title="Richmond" (click)="fetchLocality('Richmond')" coords="667,265,15" shape="circle">
+    <area target="" alt="Prince George" title="Prince George" (click)="fetchLocality('PrinceGeorge')" coords="678,302,713,328" shape="rect">
+    <area target="" alt="King William" title="King William" (click)="fetchLocality('KingWilliam')" coords="697,224,719,261" shape="rect">
+    <area target="" alt="King and Queen" title="King and Queen" (click)="fetchLocality('KingQueen')" coords="724,233,759,276" shape="rect">
+    <area target="" alt="Essex" title="Essex" (click)="fetchLocality('Essex')" coords="709,186,740,228" shape="rect">
+    <area target="" alt="Northhampton" title="Northhampton" (click)="fetchLocality('Northhampton')" coords="825,275,870,324" shape="rect">
+    <area target="" alt="Accomack" title="Accomack" (click)="fetchLocality('Accomack')" coords="848,203,901,273" shape="rect">
+    <area target="" alt="JamesCity" title="JamesCity" (click)="fetchLocality('JamesCity')" coords="729,288,756,314" shape="rect">
+    <area target="" alt="Surry" title="Surry" (click)="fetchLocality('Surry')" coords="719,317,750,339" shape="rect">
+    <area target="" alt="King George" title="King George" (click)="fetchLocality('KingGeorge')" coords="692,153,716,180" shape="rect">
+    <area target="" alt="Amelia" title="Amelia" (click)="fetchLocality('Amelia')" coords="587,280,635,310" shape="rect">
+    <area target="" alt="Westmoreland" title="Westmoreland" (click)="fetchLocality('Westmoreland')" coords="718,164,767,203" shape="rect">
+    <area target="" alt="Northumberland" title="Northumberland" (click)="fetchLocality('Northumberland')" coords="768,180,813,235" shape="rect">
+    <area target="" alt="York" title="York" (click)="fetchLocality('York')" coords="761,288,786,340" shape="rect">
+    <area target="" alt="Richmond County" title="Richmond County" (click)="fetchLocality('Richmond-County')" coords="735,190,771,233" shape="rect">
+    <area target="" alt="Lancaster" title="Lancaster" (click)="fetchLocality('Lancaster')" coords="766,235,795,255" shape="rect">
+    <area target="" alt="Matthews" title="Matthews" (click)="fetchLocality('Matthwes')" coords="778,268,802,294" shape="rect">
+    <area target="" alt="spotsilvania" title="spotsilvania" (click)="fetchLocality('spotsylvania')" coords="626,155,676,201" shape="rect">
+    <area target="" alt="Suffolk" title="Suffolk" (click)="fetchLocality('Suffolk')" coords="730,368,782,407" shape="rect">
+    <area target="" alt="Chesapeak" title="Chesapeak" (click)="fetchLocality('Chesapeak')" coords="782,376,814,407" shape="rect">
+    <area target="" alt="Virginia Beach" title="Virginia Beach" (click)="fetchLocality('VirginiaBeach')" coords="809,352,849,405" shape="rect">
+</map>
+
+</form>
+<form class="former">
+ <div class="page-description">
+       
+    </div>
+   
+    <div class="form-row">
+        <div class="form-group col-md-6">
+
+            <label class="label" for="modelSolution"><b>Please Select Your Locality </b></label>
+            <div class="asterisk">*</div>
+            <select class="form-control" id="modelSolution" (change)="selectLocal($event.target.value)">
+          <option selected>Choose...</option>
+          <option  *ngFor="let county of counties">
+          {{ county.county_name}}
+          </option> 
+        </select>
+        </div>
+
+    </div>
+
+</form>
+
+
+
+
+<!--<div class="form-div" *ngIf = "showForm == 'locality2'">
+    <form class="former">
+      locality2
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">Country Name</label><div class="asterisk">*</div>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">City</label>
+          <input type="text" class="form-control" id="lastName" value="Value">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email ID</label><div class="asterisk">*</div>
+          <input type="email" class="form-control" id="email" value="Value">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phone">Phone Number</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="phone" value="Value">
+        </div>
+      </div>
+
+      <p><b>Address</b></p>
+      <div class="form-group">
+        <label for="inputAddress">Street Name</label><div class="asterisk">*</div>
+        <input type="text" class="form-control" id="inputAddress" value="Value" >
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" value="Value">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">State</label><div class="asterisk">*</div>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputZip">Zip Code</label><div class="asterisk">*</div>
+          <input type="text" class="form-control" id="inputZip" valu="00000">
+
+
+          <div class="buttons">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="cancel" class="btn btn-primary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+  <div class="form-div" *ngIf = "showForm == 'locality3'">
+    <form class="former">
+      locality3
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">Country Name</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+
+
+
+
+
+        <div class="form-group col-md-6">
+          <label for="lastName">City</label>
+          <input type="text" class="form-control" id="lastName" value="Value">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email ID</label>
+          <input type="email" class="form-control" id="email" value="Value">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phone">Phone Number</label>
+          <input type="text" class="form-control" id="phone" value="Value">
+        </div>
+      </div>
+
+      <p><b>Address</b></p>
+      <div class="form-group">
+        <label for="inputAddress">Street Name</label>
+        <input type="text" class="form-control" id="inputAddress" value="Value" >
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" value="Value">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputState">State</label>
+          <select id="inputState" class="form-control">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputZip">Zip Code</label>
+          <input type="text" class="form-control" id="inputZip" valu="00000">
+
+
+          <div class="buttons">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="cancel" class="btn btn-primary">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>-->

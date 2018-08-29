@@ -1,0 +1,267 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Policy File</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="col-sm-5 col-md-5 col-lg-5">
+          <label class="input">
+            <input type="file" file-model="attachment" data-btn-text="Select a File" accept=".pdf,.doc,.docx">
+  
+          </label>
+        </div>
+  
+      </div>
+    </div>
+    <div class="modal-footer">
+  
+      <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+      <button type="savebtn" class="btn btn-outline-dark">Compare</button>
+    </div>
+  </ng-template>
+  
+  
+  
+  
+  <div>
+    
+  
+    <div class="form-div">
+      <form class="former">
+        <fieldset>
+        
+        
+        <div class="panel-heading">
+ <label class="details">DETAILS</label>
+      <div class="plus">
+      
+     
+        <span class=" title elipsis pull-right">
+           <a><fa class="edit-icon icons" [name]="'edit'"></fa></a>
+        </span>
+
+        <span class=" title elipsis pull-right">
+          <a>
+            <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+  
+        <span class=" title elipsis pull-right">
+          <a title="Application audit history">
+            <i class="fa fa-history" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+  
+        <span class=" title elipsis pull-right">
+  
+          <a data-ng-click="close()" title="Change to view mode. This reverts the changes">
+            <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+          <a title="Go back to audit section.">
+            <i class="fa fa-arrow-circle-o-left" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+  
+  
+      </div>
+     
+    </div>
+    <hr/>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          <div class="form-row">
+            <div class="form-group col-md-6">
+  
+              <label for="inputState">Definitive Source</label>
+              <div class="asterisk">*</div>
+              <input  type="text" class="form-control"  name = "auditName" >
+              <select   class="form-control" id="definitiveSource" required name="auditName">
+                <option selected>Choose...</option>
+                <option></option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lastName">Type/Policy</label>
+              <div class="asterisk">*</div>
+              <input type="text" class="form-control"  name = "policyId">
+              <select   class="form-control" id="typePolicy" name="policyId" required>
+                <option selected>Choose...</option>
+                <option></option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lastName">Audit type</label>
+              <div class="asterisk">*</div>
+              <input type="text" class="form-control" id="lastName" name="auditType" value="">
+            </div>
+  
+            <div class="form-group col-md-6">
+              <label for="lastName">Audit Date</label>
+  
+              <my-date-picker name="auditDate"></my-date-picker>
+              <p style="color: red;font-weight: bold;"></p>
+  
+            </div>
+  
+  
+  
+  
+            <div class="form-group col-md-6">
+              <label for="dueDate">Next Date</label>
+              <my-date-picker name="nextDate"></my-date-picker>
+              <p style="color: red;font-weight: bold;"></p>
+            </div>
+            <div class="form-group col-md-6">
+  
+              <label for="inputState">Overall Status</label>
+              <div class="asterisk">*</div>
+              <input  type="text" class="form-control"  name = "overallStatus">
+              <select   id="modelSolution" class="form-control" name="overallStatus">
+                <option selected>Choose...</option>
+                <option value="Open">Open</option>
+                <option value="Suspended">Suspended</option>
+                <option value="Close">Close</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+  
+      </form>
+    </div>
+  </div>
+  <!-- 
+    <h5>POLICIES</h5>
+    <table class="table table-bordered table-dark" *ngIf="showTable">
+      <thead>
+        <tr>
+          <th scope="col">Control Number</th>
+          <th scope="col">Policy Name</th>
+          <th scope="col">Priority</th>
+          <th scope="col">Policy Value</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+  
+  
+    </table> -->
+  
+<!--     <div class="show"> -->
+<!--         <form class="former"> -->
+<!--           <div class="form-row"> -->
+<!--               <label for="inputState">AUDIT</label> -->
+<!--             <hr/> -->
+<!--             <textarea name="" id="" rows="5" class="form-control"><button type="close" class="submit">Close</button></textarea>  -->
+<!--             </div> -->
+<!--             </form> -->
+<!--             </div> -->
+  
+  
+  
+  
+  <div class="show">
+    <form class="former">
+      <div class="form-row">
+        <p>
+          <b>POLICIES</b>
+        </p>
+      </div>
+      <div class="panel-heading">
+  
+        <span class="title elipsis pull-right">
+          <a title="Compare policies">
+            <i class="fa fa-exchange" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+          <a title="Send notifications">
+            <i class="fa  fa-envelope-o" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+          <a title="Download compared policies">
+            <i class="fa  fa-download" aria-hidden="true" style="font-size: 24px;"></i>
+          </a>
+        </span>
+      </div>
+      <!-- <hr class=htag/> -->
+      <table class="table table-striped table-hover table-bordere">
+        <thead>
+          <tr>
+  
+            <th scope="col">Control Number and Description</th>
+            <th scope="col">Policy Name</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Source Value</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+<!--         <tbody> -->
+<!--           <tr *ngFor="let policy of policies"> -->
+<!--             <td>{{ policy.controlNumber }}</td> -->
+<!--             <td> -->
+<!--               <a routerLink="/accessControl/{{ policy.policyId }}" style="cursor:pointer;color:blue;">{{ policy.controlNumber }}</a> -->
+<!--             </td> -->
+<!--             <td>{{ policy.policyName }}</td> -->
+<!--             <td>{{ policy.priority }}</td> -->
+<!--             <td>{{ policy.policyVal }}</td> -->
+<!--             <td>{{ policy.status }}</td> -->
+<!--           </tr> -->
+<!--         </tbody> -->
+      </table>
+  
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item disabled">
+            <a class="page-link" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link">1</a>
+          </li>
+          <li class="page-item active">
+            <a class="page-link">2
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link">3</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link">Next</a>
+          </li>
+        </ul>
+      </nav>
+  
+  
+  
+    </form>
+  
+  
+  </div>

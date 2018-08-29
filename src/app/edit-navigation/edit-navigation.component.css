@@ -1,0 +1,71 @@
+.navigate{
+    margin: 15px;
+    padding: 5px;
+}
+
+.sticky-top{
+	height: 30px;
+	border-radius: 5px;
+}
+
+.form-options{
+    margin-right: 15px;
+    margin-top: -15px;
+    padding: 5px;
+}
+
+.home-back{
+	float: left;
+}
+
+.save-edit{
+	float: right;
+}
+.save-times{
+	float: right;
+}
+a{
+	text-decoration: none;
+}
+
+.icons{
+    vertical-align: middle;
+    font-size: 20px;
+    margin-top: -20px;
+    padding: 2px;
+    margin-left: 5px;
+}
+
+/*.left-icons{
+	float: left;
+}
+
+.icons{
+	display: inline-block;
+}*/
+
+.home-icon{
+    color: #3A539B;
+}
+
+.home-icon:hover{
+	
+}
+
+.edit-icon{
+    /*margin-left: 10px;*/
+    color: #3A539B;
+}
+
+.left-icon{
+    /*margin-left: 10px;*/
+    color: #3A539B;
+}
+
+.save-icon{
+    color: #3A539B;
+}
+
+.times-icon{
+	color: #3A539B;
+}

@@ -1,0 +1,285 @@
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-header">
+	<h4 class="modal-title">Enter Device Information</h4>
+	<button type="button" class="close" aria-label="Close" (click)="d()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="save-edit" style="float: right">
+		<fa class="edit-icon icons" data-toggle="tooltip"
+			data-placement="right" title="Save" data-animation="true"
+			data-delay="0" [name]="'edit'" (click)="editClick()"></fa>
+	</div>
+	<form class=form [formGroup]="solutionForm">
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="email">Model Number</label>
+
+				<div class="asterisk">*</div>
+				<input type="email" class="form-control" id="name"
+					placeholder="Equipment Model Number" formControlName="model">
+
+			</div>
+			<div class="form-group col-md-6">
+				<label for="phone">Serial Number</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" id="city"
+					placeholder="Equipment Serial Number" formControlName="serial">
+			</div>
+		</div>
+		<p>
+			<b>Physical Address</b>
+		</p>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="email">Street Name</label>
+				<div class="asterisk">*</div>
+				<input type="email" class="form-control" id="email"
+					placeholder="Enter here">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="phone">City</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" id="phone"
+					placeholder="Enter here">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="inputState">State</label>
+				<div class="asterisk">*</div>
+				<select id="inputState" class="form-control">
+					<option selected>Choose...</option>
+					<option value="AL">AL</option>
+					<option value="AK">AK</option>
+					<option value="AR">AR</option>
+					<option value="AZ">AZ</option>
+					<option value="CA">CA</option>
+					<option value="CO">CO</option>
+					<option value="CT">CT</option>
+					<option value="DC">DC</option>
+					<option value="DE">DE</option>
+					<option value="FL">FL</option>
+					<option value="GA">GA</option>
+					<option value="HI">HI</option>
+					<option value="IA">IA</option>
+					<option value="ID">ID</option>
+					<option value="IL">IL</option>
+					<option value="IN">IN</option>
+					<option value="KS">KS</option>
+					<option value="KY">KY</option>
+					<option value="LA">LA</option>
+					<option value="MA">MA</option>
+					<option value="MD">MD</option>
+					<option value="ME">ME</option>
+					<option value="MI">MI</option>
+					<option value="MN">MN</option>
+					<option value="MO">MO</option>
+					<option value="MS">MS</option>
+					<option value="MT">MT</option>
+					<option value="NC">NC</option>
+					<option value="NE">NE</option>
+					<option value="NH">NH</option>
+					<option value="NJ">NJ</option>
+					<option value="NM">NM</option>
+					<option value="NV">NV</option>
+					<option value="NY">NY</option>
+					<option value="ND">ND</option>
+					<option value="OH">OH</option>
+					<option value="OK">OK</option>
+					<option value="OR">OR</option>
+					<option value="PA">PA</option>
+					<option value="RI">RI</option>
+					<option value="SC">SC</option>
+					<option value="SD">SD</option>
+					<option value="TN">TN</option>
+					<option value="TX">TX</option>
+					<option value="UT">UT</option>
+					<option value="VT">VT</option>
+					<option value="VA">VA</option>
+					<option value="WA">WA</option>
+					<option value="WI">WI</option>
+					<option value="WV">WV</option>
+					<option value="WY">WY</option>
+
+					<option>...</option>
+				</select>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="inputZip">Zip Code</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" pattern="[0-9]{5}"
+					title='Zip Code (Format: 00000)' id="inputZip">
+			</div>
+		</div>
+		<hr />
+		<p>
+			<b>Overall Scanning Status</b>
+		</p>
+		<div>
+			<select id="inputState" class="form-control">
+				<option selected>Choose...</option>
+				<option value="AL">Passed</option>
+				<option value="AL">Failed</option>
+				<option value="AL">Pending</option>
+				
+			</select>
+		</div>
+		<hr />
+		<div class="form-row">
+		<div class="form-group col-md-6">
+				<label for="inputZip">Next Scanning Date</label>
+				
+				<input type="text" class="form-control"  id="inputZip" placeholder="mm/dd/yyy">
+			</div>
+			</div>
+		<hr/>
+		<p>
+			<b>Notes</b>
+		</p>
+		<div>
+			<textarea name="" id="" rows="5" class="form-control"></textarea>
+		</div>
+		<hr />
+		<p>
+			<b>Attachments</b>
+		</p>
+		<div>
+			<div class="col-sm-5 col-md-5 col-lg-5">
+				<label class="input"> <input type="file"
+					file-model="attachment" data-btn-text="Select a File"
+					accept=".pdf,.doc,.docx">
+
+				</label>
+			</div>
+
+		</div>
+	</form>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+</div>
+</ng-template>
+
+<div class="plus">
+
+	<i class="fa fa-plus-square-o" aria-hidden="true"
+		style="font-size: 24px;" (click)="editClick()"></i>
+
+</div>
+
+<form class="forms  clear-right" [formGroup]="solutionForm">
+
+	<p>
+		<b>APPLICATION SOLUTIONS</b>
+	</p>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="modelSolution" >System Type</label> <select
+				id="modelSolution" class="form-control"  formControlName="system">
+				<option selected>Choose...</option>
+				<option>EVS</option>
+				<option>EPB</option>
+			</select>
+		</div>
+	</div>
+
+	<div>
+
+		<div class="form-row">
+
+			<label for="lastName">Model/Solution</label> <select id="inputState"
+				class="form-control"  formControlName="model">
+				<option selected>Choose...</option>
+				<option>...</option>
+			</select>
+
+
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Model/Solution</label> <input type="email"
+					class="form-control" id="name" placeholder="enter here"  formControlName="solution">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="lastName">Version</label> <input type="email"
+					class="form-control" id="name" placeholder="enter here"  formControlName="version">
+			</div>
+
+		</div>
+
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Equipment Type</label> <input type="text"
+					class="form-control" id="lastName" placeholder="enter here"  formControlName="equipment">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="lastName">Vendor</label> <input type="text"
+					class="form-control" id="lastName" placeholder="enter here"  formControlName="vendor">
+			</div>
+		</div>
+
+
+		<hr />
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="lastName">Hosting Type</label> <input type="text"
+					class="form-control" id="lastName" placeholder="enter here"  formControlName="name">
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="units">Add Unit</label>
+					<div class="plus">
+
+				<i class="fa fa-plus-square-o" aria-hidden="true"
+					style="font-size: 24px;" (click)="open(content)"  [ngClass]="{ 'disabled ': solutionForm.disabled }"></i>
+
+			</div>
+				<table class="table table-striped table-hover table-bordere">
+					<thead>
+						<tr>
+
+							<th scope="col">Model #</th>
+							<th scope="col">Serial #</th>
+							<th scope="col">Next due date</th>
+							<th scope="col">Overall status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
+
+						</tr>
+						<tr>
+
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
+						</tr>
+						<tr>
+							<th><a style="color: blue" (click)="open(content)">1</a></th>
+							<th>1</th>
+							<th>1</th>
+							<th>1</th>
+						</tr>
+					</tbody>
+				</table>
+
+			
+			</div>
+
+
+		</div>
+
+		<button type="submit" class="btn btn-primary">Submit</button>
+
+	</div>
+</form>
+

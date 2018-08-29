@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+.former {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+}
+
+.asterisk {
+    display: inline;
+    color: red;
+    margin-left: 2px;
+}
+
+.btn {
+    float: right;
+    margin-top: 25px;
+    background-color: #3A539B;
+    border-color: #3A539B;
+    color: white;
+    padding: 10px 10px;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 3px;
+}
+
+label{
+	font-weight:bolder;
+	
+}
+
+h5{
+	font-weight:bolder;
+}

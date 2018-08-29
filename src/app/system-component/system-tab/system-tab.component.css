@@ -1,0 +1,28 @@
+i.fa {
+    text-decoration: none !important;
+    padding: 5px 4px;
+}
+
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.nav-link{
+	color: black;
+	margin-left: 10px;
+}
+.help{
+	font-size: 15px;
+	color: #3A539B;
+}
+
+.disabled {
+           pointer-events: none !important;
+           cursor: default;
+    }

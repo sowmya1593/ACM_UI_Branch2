@@ -1,0 +1,13 @@
+.form{
+     padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
+.btn{
+	background-color: #3A539B;
+	border-color: #3A539B;
+}
