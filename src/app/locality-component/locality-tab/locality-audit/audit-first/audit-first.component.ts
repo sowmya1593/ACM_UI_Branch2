@@ -66,6 +66,7 @@ export class AuditFirstComponent implements OnInit {
  public showButton:boolean = false;
  public updatedTime:any;
  public desc:boolean=false;
+ public des:boolean=false;
  public appAuditDTOs:any;
  public editData:any;
  public showOriginal:boolean =true;
@@ -154,7 +155,7 @@ export class AuditFirstComponent implements OnInit {
  let month1 = d1.getMonth()+1;
  let year1 = d1.getFullYear();
  this.nextDate = {date:{year: year1, month: month1, day: day1}};
- this.show3 = true;
+ //this.show3 = true;
  this.show4 = true;
  //let ad = year + "-" + month + "-" +day;
  //let nad = year1 + "-" + month1 + "-" +day1;
@@ -516,5 +517,47 @@ export class AuditFirstComponent implements OnInit {
         }
         return 0;
       }
+      
+      
+      
+      
+      
+      handleSorting(){
+        if(!this.des) {
+          this.policies.sort(this.doAs);
+          this.des = true;
+        }
+        else {
+           this.policies.sort(this.doDs);
+           this.des = false;
+        }
+    
+      }
+      doAs(a, b) {
+        if (a.policyName > b.policyName) {
+          return -1;
+        } else if (a.policyName < b.policyName) {
+          return 1;
+        }
+        return 0;
+      }
+    
+      doDs(a, b) {
+        if (a.policyName < b.policyName) {
+          return -1;
+        } else if (a.policyName > b.policyName) {
+          return 1;
+        }
+        return 0;
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
   }

@@ -36,6 +36,7 @@ export class PolicyAddComponent implements OnInit {
   public accountnum: any[] =[];
   public list: any;
   public other = [];
+  public endDate: any;
 
   constructor(
   private  http: Http, private modalService: NgbModal, private _apiservice: ApiserviceService) {
@@ -68,10 +69,18 @@ export class PolicyAddComponent implements OnInit {
     console.log(this.policyPost.policyDocumentsDTOs);
   }
   
+  dateSubmit(){
+    let date = this.endDate.formatted;
+    this.policyPost.endDate = Date.parse(date);
+  }
+  
   addPolicy(){
   	let url = APP_CONFIG.savePolicy;
     this.policyPost.policyGrpId = 1;
   	var formData = new FormData();
+    if(this.endDate!=null){
+      this.dateSubmit();
+    }
   	console.log(this.policyPost);
   	formData.append('policy', JSON.stringify(this.policyPost));
   	for (let i = 0; i < this.files.length; i++) {

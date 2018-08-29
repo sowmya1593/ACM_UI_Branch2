@@ -8,6 +8,7 @@ import {ApiserviceService} from '../apiservice.service';
 import { Policy, PolicyDocumentsDTO, PolicyGrp } from '../data_modelPolicy';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {APP_CONFIG} from '../app.config';
+import { IMyDate } from 'mydatepicker';
 
 @Component({
   selector: 'app-control-name',
@@ -41,6 +42,9 @@ export class ControlNameComponent implements OnInit {
   public list: any;
   public other = [];
   public loading:boolean = false;
+  public displayPolicyDocuments: any;
+  public endDate: any;
+  public displayEndDate: IMyDate = null;
   
 
   constructor(private _location: Location, private activatedRoute: ActivatedRoute,  private _apiservice: ApiserviceService, 
@@ -72,6 +76,10 @@ export class ControlNameComponent implements OnInit {
       .subscribe((data: any) => {
         this.loading = false;
       	this.policyAccess = data;
+        this.displayPolicyDocuments = data.policyDocumentsDTOs;
+        if(this.policyAccess.endDate!=null){
+          this.dateRetreive();
+        }
       	console.log(data);
       	console.log(this.policyAccess);
       });
@@ -100,10 +108,27 @@ export class ControlNameComponent implements OnInit {
     console.log(this.policyAccess.policyDocumentsDTOs);
   }
   
+  dateSubmit(){
+    let date = this.endDate.formatted;
+    this.policyAccess.endDate = Date.parse(date);
+  }
+  
+  dateRetreive(){
+    let d = new Date(this.policyAccess.endDate);
+        this.displayEndDate = {
+           year: d.getFullYear(),
+          month: d.getMonth() + 1,
+          day: d.getDate()
+        }
+  }
+  
   addPolicy(){
   	let url = APP_CONFIG.updatePolicy;
   	var formData = new FormData();
   	console.log(this.policyAccess);
+    if(this.endDate!=null){
+      this.dateSubmit();
+    }
   	formData.append('policy', JSON.stringify(this.policyAccess));
   	for (let i = 0; i < this.files.length; i++) {
      formData.append('files', this.files[i]);

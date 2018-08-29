@@ -30,6 +30,7 @@ export class AuditDetailsComponent implements OnInit {
   public appAuditDTOs:any;
   public showEdit:boolean=true;
   public desc:boolean=false;
+    public des:boolean=false;
   public sortType:any;
   constructor(private modalService: NgbModal, private  http: Http, 
     private _apiservice: ApiserviceService, private utilService: UtilService,
@@ -115,6 +116,39 @@ this.updatedTime = month+"/"+day+"/"+year;
     }
     return 0;
   }
+  
+  
+  handleSorter(){
+    if(!this.des) {
+      this.appAuditDTOs.sort(this.doAs);
+      this.des = true;
+    }
+    else {
+       this.appAuditDTOs.sort(this.doDs);
+       this.des = false;
+    }
+
+  }
+  doAs(a, b) {
+    if (a.auditType > b.auditType) {
+      return -1;
+    } else if (a.auditType < b.auditType) {
+      return 1;
+    }
+    return 0;
+  }
+
+  doDs(a, b) {
+  
+    if (a.auditType < b.auditType) {
+      return -1;
+    } else if (a.auditType > b.auditType) {
+      return 1;
+    }
+    return 0;
+  }
+
+  
 
 }
 

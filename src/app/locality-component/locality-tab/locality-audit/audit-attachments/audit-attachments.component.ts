@@ -41,7 +41,8 @@ export class AuditAttachmentsComponent implements OnInit {
   public info:string="";
   public loading:boolean = false;
   constructor(private _apiservice: ApiserviceService,
-    private utilService: UtilService, private http: Http, private modalService: NgbModal,private router:Router) {
+    private utilService: UtilService, private http: Http, private modalService: NgbModal,
+    private router:Router) {
     this.utilService.getEdit().subscribe(val => {
       if (val) {
         this.showForm = false;

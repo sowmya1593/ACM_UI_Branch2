@@ -236,14 +236,16 @@
       </span>
     </div>
     <!-- <hr class=htag/> -->
-    <table class="table table-striped table-hover table-bordere">
+    <table class="table table-bordered">
       <thead>
         <tr>
 
           <th scope="col" (click)="handleSort()">Control Number and Description
             <i class="fa fa-arrow-down" *ngIf="!desc"></i> <i class="fa fa-arrow-up" *ngIf="desc"></i>
           </th>
-          <th scope="col">Policy Name</th>
+          <th scope="col" (click)="handleSorter()">Policy Name
+            <i class="fa fa-arrow-down" *ngIf="!des"></i> <i class="fa fa-arrow-up" *ngIf="des"></i>
+          </th>
           <th scope="col">Priority</th>
           <th scope="col">Source Value</th>
           <!-- <th scope="col">Implemented Value</th>

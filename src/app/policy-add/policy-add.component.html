@@ -119,8 +119,8 @@
 	<h4>Non-COV</h4>
 	<textarea *ngIf="!showForm" cols="156" rows="7" id="patches"></textarea>
 	<hr />
-	<h4>Policy Links</h4>
-	<!-- <a routerLink="/linkedPolicies/{{ policyAccess.policyId }}"><button class="policy-links btn btn-primary">Add Policy Links</button></a> -->
+<!-- 	<h4>Policy Links</h4>
+	<a routerLink="/linkedPolicies/{{ policyAccess.policyId }}"><button class="policy-links btn btn-primary">Add Policy Links</button></a>
 	<button class="policy-links btn btn-primary" (click) = "changeDiv()">Add Policy Links</button>
 	<div class="form-row">
 		<div class="form-group col-md-6">
@@ -135,18 +135,18 @@
             			</tr>
             		</tbody>
             	</table>
-<!--             	<ul -->
-<!-- 								*ngFor=" let certDocDTO of solution.certDocDTOs "> -->
-<!-- 								<li -->
-<!-- 									*ngIf="certDocDTO.section == 'patches'"> -->
-<!-- 									<a href="#">{{certDocDTO.fileName}}</a><fa *ngIf="!editSolution.disabled" class="download-icon icons" [name]="'trash'"></fa></li> -->
-<!-- 							</ul> -->
+            	<ul
+								*ngFor=" let certDocDTO of solution.certDocDTOs ">
+								<li
+									*ngIf="certDocDTO.section == 'patches'">
+									<a href="#">{{certDocDTO.fileName}}</a><fa *ngIf="!editSolution.disabled" class="download-icon icons" [name]="'trash'"></fa></li>
+							</ul>
             </div> 
             	</div>
         <div class="form-group col-md-6">
             <label for="externalPolicyLinks">External Policy Links</label>
             	</div>
-	</div>
+	</div> -->
 	<!-- <div class="form-row">
 		<div class="form-group col-md-6">
             <label for="externalPolicyLinks">External Policy Links</label>
@@ -156,11 +156,11 @@
 	<div class="form-row">
 		<div class="form-group col-md-6">
             <label for="assignTo">Assign To</label>
-              <input type="text" class="form-control" id="assignTo">
+              <input type="text" class="form-control" id="assignTo" [(ngModel)] = "policyPost.assignedTo" [name] = "'assi_to'">
             	</div>
          <div class="form-group col-md-6">
             <label for="endDate">End Date</label>
-              <my-date-picker name="myname"></my-date-picker>
+              <my-date-picker name="myname" [(ngModel)] = "endDate"></my-date-picker>
             	</div>
          <div class="form-group col-md-6">
          	<label for="status">Status</label>

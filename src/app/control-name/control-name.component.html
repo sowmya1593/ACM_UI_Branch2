@@ -181,11 +181,11 @@
 	<div class="form-row">
 		<div class="form-group col-md-6">
             <label for="assignTo">Assign To</label>
-              <input type="text" class="form-control" id="assignTo">
+              <input type="text" class="form-control" id="assignTo" [(ngModel)] = "policyAccess.assignedTo" [name] = "'assi_to'">
             	</div>
          <div class="form-group col-md-6">
             <label for="endDate">End Date</label>
-              <my-date-picker name="myname"></my-date-picker>
+              <my-date-picker name="myname" [(ngModel)] = "endDate" [selDate] = "displayEndDate"></my-date-picker>
             	</div>
          <div class="form-group col-md-6">
          	<label for="status">Status</label>
@@ -203,6 +203,13 @@
 		<div class="col-md-6">
 			<h4>Documents</h4>
 	<input type = "file" #fileInput (change)="createPolicyDocumentDTO($event)">
+	<div class="display-file">
+            	<ul
+								*ngFor=" let policyDocument of displayPolicyDocuments">
+								<li>
+									<a href="#" style="cursor:pointer;color:blue;">{{policyDocument.documentName}}</a></li>
+							</ul>
+            </div>
 	<!-- <input type = "file" #fileInput> -->
 	<!-- <button class="documents btn btn-primary">Add Documents</button> -->
 		</div>

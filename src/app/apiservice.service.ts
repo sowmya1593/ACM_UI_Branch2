@@ -50,7 +50,9 @@ export class ApiserviceService {
   postVendorData(body) {
   console.log("body",body);
   let url =APP_CONFIG.postVendor;
-return this._httpService.post(url,body).map((res:Response) => res.json()) 
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+return this._httpService.post(url,body, options).map((res:Response) => res.json()) 
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
                          }
   
@@ -284,5 +286,12 @@ return this._httpService.post(url,body).map((res:Response) => res.json())
     return this._httpService.get(url + '?' + 'auditTypeId' + '=' + id)
     .map(res =><Response>res.json());
   }
+  
+  getAssessData(id)
+{
+let url = APP_CONFIG.getAssessData;
+return this._httpService.get(url + '?'+ 'assessmentID' + '=' + id)
+.map(res =><Response>res.json())
+}
  
 }

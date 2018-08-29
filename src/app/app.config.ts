@@ -61,7 +61,9 @@ assignReviewers:apiBaseUrl+'assignReviewers',
 getPolicyReviewDetails: apiBaseUrl+'getPolicyReviewDetails',
 updatePolicyGrp: apiBaseUrl + 'updatePolicyGrp',
 addPolicyGrp: apiBaseUrl + 'addPolicyGrp',
-fetchPolicyGroup: apiBaseUrl + 'fetchPolicyGroup'
+fetchPolicyGroup: apiBaseUrl + 'fetchPolicyGroup',
+getAssessData:apiBaseUrl + 'getAppAssessData',
+getAssessmentFile:apiBaseUrl +'getAssessmentFile'
 }
 
 

@@ -19,8 +19,7 @@ import {FilterPipeDate} from '../../locality-date-filter';
   providers: [ApiserviceService]
 })
 export class LocalityDetailsComponent implements OnInit {
-  daysArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-
+  daysArray = ["Sunday", "Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   @ViewChild('fileInput') inputEl: ElementRef;
   @ViewChild('editForm') solutionsForm: NgForm;
   @ViewChild('content') content: TemplateRef<any>;
@@ -35,10 +34,10 @@ export class LocalityDetailsComponent implements OnInit {
   viewType: any;
   contentData: string = "";
   showEditButton: boolean = false;
- 
+  time: any;
   workHours: WorkHours;
   public loading:boolean= false;
-  private time = "04:00";
+
 
   constructor(private route: ActivatedRoute, private _apiservice: ApiserviceService, private fb: FormBuilder
     , private http: Http, private _location: Location, private modalService: NgbModal, private router: Router, private utilservice: UtilService) {
@@ -47,20 +46,20 @@ export class LocalityDetailsComponent implements OnInit {
     this.locality = new Locality();
 
     this.workHours = new WorkHours();
-    this.route.params.subscribe(params => {
-      this.loc = params['Locality'];
-      UtilService.localityName = this.loc;
+    // this.route.params.subscribe(params => {
+    //   this.loc = params['Locality'];
+    //   UtilService.localityName = this.loc;
 
 
 
-    });
+    // });
 
 
     //this.locality = new Locality(); 
   }
 
   ngOnInit() {
-    this.viewApplication(this.loc);
+    this.viewApplication(localStorage.getItem('localityName'));
 
   }
 
@@ -91,7 +90,6 @@ export class LocalityDetailsComponent implements OnInit {
       this.http.post(url_update, formData).subscribe((data: any) => {
         this.loading = false;
         this.contentData = "locality has been created.";
-        UtilService.active = true;
         localStorage.setItem('active','true');
 
         this.modalService.open(this.content, ngbModalOptions);
@@ -124,13 +122,7 @@ export class LocalityDetailsComponent implements OnInit {
         if (data.applicationViewDTO === null) {
           this.editableForm = false;
           this.locality.acronym = local;
-          this.locality.workHoursDTOs = []
-			for (let day in this.daysArray) {
-			  this.workHours = new WorkHours();
-			   
-			  this.workHours.day = this.daysArray[day];
-			  this.locality.workHoursDTOs.push(this.workHours);
-			}  
+
         }
         else {
           this.showEditButton = true;
@@ -138,13 +130,14 @@ export class LocalityDetailsComponent implements OnInit {
           localStorage.setItem('active','true');
           this.appId = data.applicationViewDTO.applicationId;
           this.locality = data.applicationViewDTO;
+          this.locality.workHoursDTOs=data.applicationViewDTO.workHoursDTOs;
           let d = new Date(this.locality.updatedTime);
           let day = d.getDate();
           let month = d.getMonth() + 1;
           let year = d.getFullYear();
           this.updatedTime = day + "/" + month + "/" + year;
-          
-          this.locality.workHoursDTOs = data.applicationViewDTO.workHoursDTOs;
+       
+        this.locality.workHoursDTOs = data.applicationViewDTO.workHoursDTOs;
           let dummy_array = [];
           
             for (let day in this.daysArray) {
@@ -199,6 +192,19 @@ export class LocalityDetailsComponent implements OnInit {
 
   getOpacity() {
     return this.color === 'online' ? 0.8 : 1;
+  }
+
+  getTime(value,day)
+  {
+    
+    this.workHours.day = day;
+    this.workHours.openTm = value;
+  }
+  getCloseTime(value,day)
+  {
+    this.workHours.closeTm = value;
+    this.locality.workHoursDTOs.push(this.workHours);
+    console.log(this.locality.workHoursDTOs);
   }
 
 

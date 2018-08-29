@@ -1,16 +1,30 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Info</h4>
+    </div>
+    <div class="modal-body">
+      <p>{{info}}</p>
+    </div>
+    <div class="modal-footer">
+      <button  type="button" class="btn btn-outline-dark confbtn" (click)="c()">Ok</button>
+    </div>
+    </ng-template>
 <div class="form-div">  
   <form class="former">
     <div class="panel-heading">
  <label class="details">ATTACHMENTS</label>
       <div class="plus">
       
-      <span class=" title elipsis pull-right">
-                <a   title="Save Audit" class="ng-hide">
+      <span *ngIf="showSave" class=" title elipsis pull-right">
+                <a   title="Save Audit" (click)="saveAttachments()" class="ng-hide">
                     <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
                 </a>
             </span>
-        <span class=" title elipsis pull-right">
-           <a><fa class="edit-icon icons" [name]="'edit'"></fa></a>
+        <span *ngIf="showEdit" class=" title elipsis pull-right">
+           <a><fa class="edit-icon icons" [name]="'edit'" (click)="valueChanged()"></fa></a>
         </span>
 
        
@@ -36,21 +50,33 @@
      
     </div>
     <hr/>     
-       
+       <fieldset [disabled]="showForm">
              <div class="form-row">
             <div class="form-group col-md-6">
 
-                <label for="inputState">Audit Attachments</label>
+                <label for="inputState">Assessment Attachments</label>
                
                 
             </div>
             
             </div>
              <div class="col-sm-5 col-md-5 col-lg-5">
-							<input type="file" #fileInput (change)="createMOUDTO($event)">
+                <input type="file" #fileInput (change)="createMOUDTO($event)" accept=".pdf,.doc,.docx">
 
 							
-						</div>
+            </div>
+            </fieldset>
+            
+            <table>
+                <tr *ngFor="let file of appAssess.assessmentFileDTOs let i = index">
+                  <td *ngIf="file.status" (click)="getFile(file.assessmentFileId)" style="cursor: pointer;color:blue;">
+                    {{file.fileName}}
+                  </td>
+                  <td *ngIf="file.status" (click)="deleteFile(file.assessmentFileId,i)" style="cursor:pointer;">
+                    <i class="fa fa-trash" aria-hidden="true" style="font-size: 24px;"></i>
+                  </td>
+                </tr>
+              </table>
 						
             </form>
             </div>

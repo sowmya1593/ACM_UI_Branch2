@@ -1,17 +1,30 @@
-
+<div class="my-container">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    </div>
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title">Info</h4>
+        </div>
+        <div class="modal-body">
+            <p>{{info}}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark confbtn" (click)="c()">Ok</button>
+        </div>
+    </ng-template>
 <div class="form-div">    
 <form class="former">
  <div class="panel-heading">
  <label class="details">ACTION PLAN</label>
       <div class="plus">
       
-      <span class=" title elipsis pull-right">
-                <a title="Save Audit" class="ng-hide">
+      <span *ngIf="showSave" class=" title elipsis pull-right">
+                <a title="Save Audit" class="ng-hide" (click)="saveActionPlan()">
                     <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
                 </a>
             </span>
-        <span class=" title elipsis pull-right">
-           <a><fa class="edit-icon icons" [name]="'edit'"></fa></a>
+        <span *ngIf="showEdit" class=" title elipsis pull-right">
+           <a><fa class="edit-icon icons" [name]="'edit'" (click)="valueChanged()"></fa></a>
         </span>
 
       
@@ -37,17 +50,17 @@
      
     </div>
     <hr/>    
-        
-      <div class="form-row">
+        <fieldset [disabled]="showForm">
+                  <div class="form-row">
             <div class="form-group col-md-6">
 
                 <label for="inputState">Start date</label>
 
-                <my-date-picker name="startDate"></my-date-picker>
+                <my-date-picker name="startDate" (dateChanged)="getStartDate($event)" [(ngModel)]="startDate"></my-date-picker>
             </div>
             <div class="form-group col-md-6">
                 <label for="lastName">End date</label>
-                <my-date-picker name="endDate"></my-date-picker>
+                <my-date-picker name="endDate" (dateChanged)="getEndDate($event)" [(ngModel)]="endDate"></my-date-picker>
             </div>
         </div>
         <div class="form-row">
@@ -55,7 +68,7 @@
 
                 <label for="inputState">Assigned to</label>
 
-                <input type="text" name="assignedTo" class="form-control" id="assignedTo">
+                <input type="text" name="assignedTo" class="form-control" id="assignedTo" [(ngModel)]="appAssess.actionPlanAssignedTo">
             </div>
 
         </div>
@@ -63,7 +76,7 @@
             <div class="form-group col-md-6">
 
                 <label for="inputState">Summary</label>
-                <textarea name="summary" id="" rows="10" class="form-control"></textarea>
+                <textarea name="summary" id="" rows="10" class="form-control"  [(ngModel)]="appAssess.actionPlanSummary"></textarea>
 
             </div>
 
@@ -72,7 +85,7 @@
             <div class="form-group col-md-6">
 
                 <label for="inputState">Tasks</label>
-                <textarea name="tasks" id="" rows="10" class="form-control"></textarea>
+                <textarea name="tasks" id="" rows="10" class="form-control" [(ngModel)]="appAssess.actionPlanTasks"></textarea>
 
             </div>
 
@@ -81,14 +94,14 @@
             <div class="form-group col-md-6">
 
                 <label for="inputState">Closeout Comments</label>
-                <textarea name="Comments" id="" rows="10" class="form-control"></textarea>
+                <textarea name="Comments" id="" rows="10" class="form-control" [(ngModel)]="appAssess.actionPlanCloseoutComments"></textarea>
 
             </div>
 
         </div>  
         
         
-        
+        </fieldset>
         
         
         

@@ -88,6 +88,7 @@ table{
 
 table thead tr th{
 	font-weight: 500;
+	color: black;
 }
 
 .modal-header{
@@ -98,4 +99,9 @@ table thead tr th{
 .btn{
 	background-color: #3A539B;
 	border-color: #3A539B;
+}
+
+.confbtn{
+    margin-left: auto;
+    margin-right: auto;
 }

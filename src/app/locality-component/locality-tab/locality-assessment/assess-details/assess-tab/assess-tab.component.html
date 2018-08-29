@@ -1,3 +1,6 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
 <div class="plus">
 
         <fa *ngIf="showEdit" class="edit-icon icons" [name]="'edit'" style="float:right" (click)="showPlus()"></fa>
@@ -45,9 +48,10 @@
                 <thead>
                     <tr>
     
-                        <th scope="col">Audit Type</th>
-                        <th scope="col">Assessment Name</th>
+                        <th scope="col" >Audit Type </th>
+                        <th scope="col"  >Assessment Name</th>
                         <th scope="col">Assessment Date</th>
+                        <th scope="col">Next Assessment Date</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
@@ -58,6 +62,7 @@
                         </td>
                         <td>{{ assess.name }}</td>
                         <td>{{ assess.assessmentDt | filterDate}}</td>
+                        <td>{{assess.nextAssessmentDt | filterDate }}</td>
                         <td>{{ assess.status }}</td>
                     </tr>
                 </tbody>
