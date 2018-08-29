@@ -62,7 +62,7 @@ getPolicyReviewDetails: apiBaseUrl+'getPolicyReviewDetails',
 updatePolicyGrp: apiBaseUrl + 'updatePolicyGrp',
 addPolicyGrp: apiBaseUrl + 'addPolicyGrp',
 fetchPolicyGroup: apiBaseUrl + 'fetchPolicyGroup',
-getAssessData:apiBaseUrl + 'getAppAssessData',
+getAssessData:apiBaseUrl + 'getAppAssessment',
 getAssessmentFile:apiBaseUrl +'getAssessmentFile'
 }
 
