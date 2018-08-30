@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators,FormsModule,ReactiveFormsModule} fro
 import { IMyDpOptions } from 'mydatepicker';
 import { UtilService } from '../../../util.service';
 import { FilterPipe } from '../../../convertDate.pipe';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-review',
@@ -32,11 +33,12 @@ export class ReviewComponent implements OnInit {
   public policyData :any;
   private desc = false;
   public loading:boolean = false;
+  public hideParent: boolean;
 
   public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'yyyy-mm-dd'
   };
- constructor(private modalService: NgbModal, private _apiservice: ApiserviceService, private  http: Http, private fb: FormBuilder, private utilservice:UtilService) { 
+ constructor(private modalService: NgbModal, private _apiservice: ApiserviceService, private  http: Http, private fb: FormBuilder, private utilservice:UtilService, private router: Router, private route: ActivatedRoute) { 
     //this.review = new Review();
     this.review = [];
     console.log("test...........");
@@ -89,6 +91,11 @@ export class ReviewComponent implements OnInit {
       return 1;
     }
     return 0;
+  }
+  
+  navigatePage(){
+    this.router.navigate(['reviewDetails'], {relativeTo:this.route});
+    this.hideParent = true;
   }
  
  changeButton(){

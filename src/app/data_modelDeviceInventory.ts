@@ -27,4 +27,9 @@ export class Device{
   systemTag: string;
   newEntry: boolean;
   active: boolean;
+  licenseStartDt: any;
+  licenseEndDt: any;
+  licenseRenewDt: any;
+  vendorName: string;
+  productName: string;
 }

@@ -1,6 +1,7 @@
 <div class="my-container">
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 </div>
+<!-- <div *ngIf = "!hideParent"> -->
 <div class="review">
 	<span><b>POLICY REVIEWER(S)</b></span>
 	<div class="policy-edit">
@@ -109,7 +110,7 @@
 	</thead>
 	<tbody>
    <tr *ngFor="let tableData of policyData | paginate: { itemsPerPage: 10, currentPage: p }">
-                         <td>{{ tableData.policyGrpName }}</td>
+                         <td><a routerLink="reviewDetails">{{ tableData.policyGrpName }}</a></td>
                          <td>{{ tableData.assignedTo }}</td>
                          <td>{{ tableData.createdTs | filter }}</td> 
                          <td>{{ tableData.dueDate | filter }}</td>
@@ -120,3 +121,5 @@
 </table>
 <br>
 <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+<!-- </div> -->
+<router-outlet></router-outlet>

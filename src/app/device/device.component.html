@@ -16,7 +16,7 @@
 </ng-template>
 <div *ngIf = "!showForm">
 	<form class="form">
-	<table class="table table-bordered table-dark">
+	<table class="table table-bordered">
 		  <thead>
 		    <tr>
 		      <th scope="col">Host Name</th>
@@ -28,14 +28,14 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
+		    <!-- <tr>
 		      <td><a routerLink="/updateDevice/{{ getDevice.databaseId }}">{{ getDevice.hostName }}</a></td>
 		      <td></td>
 		      <td></td>
-		      <!-- <td>7/21/2018</td>
+		      <td>7/21/2018</td>
 		      <td>9/20/2018</td>
-		      <td>8/2/2018</td> -->
-		    </tr>
+		      <td>8/2/2018</td>
+		    </tr> -->
 		  </tbody>
 			</table>
  <button type="button" class="btn btn-outline-dark" (click) = "changeForm()">Add Server</button>
@@ -135,12 +135,12 @@
                 <div class="form-group col-md-6">
                     <label for="vendorName">Vendor Name</label>
                     <div class="asterisk">*</div>
-                    <input type="text" class="form-control" id="vendorName">
+                    <input type="text" class="form-control" id="vendorName" [(ngModel)] = "device.vendorName" [name]="'vendor_name'">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="productName">Product Name</label>
                     <div class="asterisk">*</div>
-                    <input type="text" class="form-control" id="productName">
+                    <input type="text" class="form-control" id="productName" [(ngModel)] = "product_name" [name]="'product_name'">
                 </div>
             </div>
 	<h4>Configuration</h4>
