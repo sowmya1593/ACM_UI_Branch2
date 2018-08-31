@@ -24,7 +24,7 @@ export class DeviceComponent implements OnInit {
 
   ngOnInit() {
     //for(let i = 1;i <= UtilService.noIds;i++){
-      //this.getDBServer(1);
+      this.getDBServer(1);
     //}
   }
   
@@ -41,13 +41,13 @@ export class DeviceComponent implements OnInit {
      this.modalService.open(content);
   }
   
-  /*getDBServer(id){
+  getDBServer(id){
     this._apiservice.getDBServer(id)
     .subscribe((data:any) => {
       this.getDevice = data
       console.log(this.getDevice);
     },error => console.log(error));
-  }*/
+  }
   
   submitDevice(){
     console.log("inside submit");

@@ -205,7 +205,9 @@ return this._httpService.post(url,body, options).map((res:Response) => res.json(
   saveDBServerInfo(data){
      console.log(data);
     let url = APP_CONFIG.saveDBServerInfo;
- return this._httpService.post(url, data).map((res: Response) => res.json())
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+ return this._httpService.post(url, data, options).map((res: Response) => res.json())
                             .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
     
     

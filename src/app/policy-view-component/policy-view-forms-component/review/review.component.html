@@ -1,7 +1,7 @@
 <div class="my-container">
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 </div>
-<!-- <div *ngIf = "!hideParent"> -->
+<div *ngIf = "!showDetails">
 <div class="review">
 	<span><b>POLICY REVIEWER(S)</b></span>
 	<div class="policy-edit">
@@ -110,7 +110,7 @@
 	</thead>
 	<tbody>
    <tr *ngFor="let tableData of policyData | paginate: { itemsPerPage: 10, currentPage: p }">
-                         <td><a routerLink="reviewDetails">{{ tableData.policyGrpName }}</a></td>
+                         <td (click) = "displayReviewDetails()" style="cursor:pointer;color:blue;">{{ tableData.policyGrpName }}</td>
                          <td>{{ tableData.assignedTo }}</td>
                          <td>{{ tableData.createdTs | filter }}</td> 
                          <td>{{ tableData.dueDate | filter }}</td>
@@ -121,5 +121,270 @@
 </table>
 <br>
 <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
-<!-- </div> -->
-<router-outlet></router-outlet>
+</div>
+<div *ngIf = "showDetails && !showPolicy">
+	<form class="form">
+	<h4>POLICY DETAILS</h4>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="definitiveSource">Definitive Source</label>
+			<input type="text" id="definitiveSource" class="form-control" [ngModel] = "reviewDTO.definitiveSourceName" [name]="'definitive_source'">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="typePolicy">Type/Policy</label>
+			<input type="text" id="typePolicy" class="form-control" [ngModel] = "reviewDTO.policyGrpName" [name]="'policy_grpName'">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="status">Status</label>
+			<!-- <select type="text" id="status" class="form-control">
+				<option [(ngModel)] = "reviewDTO.status" [name]="'review_status'"></option>
+				<option value="Close">Close</option>
+			</select> -->
+			<input type="text" id="status" class="form-control" [ngModel] = "reviewDTO.status" [name]="'review_status'">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="dueDate">Due Date</label>
+			<my-date-picker name="myname" [selDate] = "displayDueDate"></my-date-picker>
+		</div>
+	</div>
+	<hr />
+	<div>
+		<h4>Comments</h4>
+		<p [(ngModel)] = "reviewDTO.comments" [name]="'review_comments'"></p>
+	</div> 
+	<h5>POLICY REVIEWERS</h5>
+<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th (click)="handleSort()" scope="col">Control Number and Description<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+		      <th (click)="handleSort()" scope="col">Policy Name<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+		      <th (click)="handleSort()" scope="col">Priority<i
+					class="second fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="second fa fa-arrow-up" *ngIf="desc"></i></th>
+		      <th (click)="handleSort()" scope="col">Policy Value<i
+					class="second fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="second fa fa-arrow-up" *ngIf="desc"></i></th>
+		     <!--  <th scope="col">Assigned To</th>
+		      <th scope="col">Assigned By</th>
+		      <th scope="col">Assigned On</th>
+		      <th scope="col">Target Date</th> -->
+		      <th scope="col">Status</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr *ngFor = "let policy of policies | paginate: { itemsPerPage: 10, currentPage: p }">
+		      <!-- <td>{{ policy.controlNumber }}</td> -->
+		      <td (click) = "displayPolicy(policy.policyId)" style="cursor:pointer;color:blue;">{{ policy.controlNumber }}</td>
+		      <td>{{ policy.policyName }}</td>
+		      <td>{{ policy.priority }}</td>
+		      <td>{{ policy.policyVal }}</td>
+		      <!-- <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td> -->
+		      <td>{{ policy.status }}</td>
+		    </tr>
+		  </tbody>
+			</table>
+			<br>
+			<pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+			<button type="button" class="review-btn btn btn-primary" (click) = "showDetails=false">Go to Review Section</button>
+</form>
+</div>
+<div *ngIf = showPolicy>
+	<form class="form">
+<fieldset [disabled]='showForm'>
+	<h4>POLICY DETAILS</h4>
+	<div class=" form-row">
+		<div class="form-group col-md-6">
+            <label for="familyName">Family Name</label>
+              <input type="text" class="form-control" id="familyName" ngModel name="familyName" [(ngModel)] = "policyAccess.familyName" [name] = "'family_name'">
+            	</div>
+	</div>
+	<hr />
+	<h4>Policy Information</h4>
+		<div class=" form-row">
+		<div class="form-group col-md-6">
+            <label for="controlNumber">Control Number</label><div class="asterisk">*</div>
+              <input type="text" class="form-control" id="controlNumber" ngModel name="controlNumber" [(ngModel)] = "policyAccess.controlNumber" [name] = "'control_number'" required>
+            	</div>
+         <div class="form-group col-md-6">
+            <label for="controlName">Control Name</label><div class="asterisk">*</div>
+              <input type="text" class="form-control" id="controlName" ngModel name="controlName" [(ngModel)] = "policyAccess.classType" [name] = "'class_type'" required>
+            	</div>
+	</div>
+	<label for="description">Description</label>
+	<p *ngIf="showForm">{{ policyAccess.description }}</p>
+	<textarea *ngIf="!showForm" cols="156" rows="7" id="patches" [(ngModel)] = "policyAccess.description" [name] = "'policy_description'"></textarea>
+	<div class=" form-row">
+		<div class="form-group col-md-6">
+            <label for="policyValue">Policy Value</label><div class="asterisk">*</div>
+              <input type="text" class="form-control" id="policyValue" ngModel name="policyValue" [(ngModel)] = "policyAccess.policyVal" [name] = "'policy_val'" required>
+            	</div>
+	</div>
+	<div class="form-row">
+         	<div class="form-group col-md-6">
+            <label for="procedures">Procedures</label><div class="asterisk">*</div>
+            <p *ngIf="showForm">{{ policyAccess.procedures }}</p>
+            <textarea *ngIf="!showForm" cols="156" rows="7" id="patches" [(ngModel)] = "policyAccess.procedures" [name] = "'policy_procedures'"></textarea>
+            	</div>
+         </div>
+     <div class="form-row">
+     	<div class="form-group col-md-6">
+            <label for="guidelines">Guidelines</label>
+            <p *ngIf="showForm">{{ policyAccess.guidelines }}</p>
+            <textarea *ngIf="!showForm" cols="156" rows="7" id="patches" [(ngModel)] = "policyAccess.guidelines" [name] = "'policy_guidelines'"></textarea>
+            	</div>
+     </div>
+    <div class="form-row">
+    	<div class="form-group col-md-6">
+            <label for="priority">Priority</label><div class="asterisk">*</div>
+            <select class="form-control" id="priority" *ngIf="showForm">
+		                <option>{{ policyAccess.priority }}</option>
+		              </select>
+		    <select class="form-control" id="priority" (change) = "policyAccess.priority = $event.target.value" *ngIf="!showForm">
+		                <option value = "High">High</option>
+		                <option value = "Medium">Medium</option>
+		                <option value = "Low">Low</option>
+		              </select>
+            	</div>
+        <div class="form-group col-md-6">
+            <label for="policyAndProcedure">Control Number (Policy and Procedure)</label>
+              <input type="text" class="form-control" id="policyAndProcedure">
+            	</div>
+    </div> 
+    <!-- <div class="form-row">
+    	<div class="form-group col-md-6">
+            <label for="policyAndProcedure">Control Number (Policy and Procedure)</label>
+              <input type="text" class="form-control" id="policyAndProcedure">
+            	</div>
+    </div> -->
+    <div class="form-row">
+    	<div class="form-group col-md-6">
+            <label for="informationSystemDesignDocument">Information System Design Document</label>
+              <input type="text" class="form-control" id="informationSystemDesignDocument">
+            	</div>
+        <div class="form-group col-md-6">
+            <label for="securityPlan">Security Plan</label>
+              <input type="text" class="form-control" id="securityPlan">
+            	</div>
+    </div>
+   <!--  <div class="form-row">
+    	<div class="form-group col-md-6">
+            <label for="securityPlan">Security Plan</label>
+              <input type="text" class="form-control" id="securityPlan">
+            	</div>
+    </div> -->
+    <div class="form-row">
+    	<div class="form-group col-md-6">
+            <label for="informationSystemConfigurationSettings">Information System Configuration Settings</label>
+              <input type="text" class="form-control" id="informationSystemConfigurationSettings">
+            	</div>
+        <div class="form-group col-md-6">
+            <label for="configurationBaseline">Configuration Baseline</label>
+              <input type="text" class="form-control" id="configurationBaseline">
+            	</div>
+    </div>
+    <!-- <div class="form-row">
+    	<div class="form-group col-md-6">
+            <label for="configurationBaseline">Configuration Baseline</label>
+              <input type="text" class="form-control" id="configurationBaseline">
+            	</div>
+    </div> -->
+    <div class="form-row">
+    	<div class="form-group col-md-6">
+            <label for="auditRecords">Audit Records</label>
+              <input type="text" class="form-control" id="auditRecords">
+            	</div>
+    </div>
+	<h4>Artifacts</h4>
+	<textarea *ngIf="!showForm" cols="156" rows="7" id="patches"></textarea>
+	<hr />
+	<h4>Non-COV</h4>
+	<textarea *ngIf="!showForm" cols="156" rows="7" id="patches"></textarea>
+	<hr />
+	<h4>Policy Links</h4>
+	<!-- <a routerLink="/linkedPolicies/{{ policyAccess.policyId }}"><button class="policy-links btn btn-primary">Add Policy Links</button></a> -->
+	<div class="form-row">
+		<div class="form-group col-md-6">
+            <label for="internalPolicyLinks">Internal Policy Links</label>
+             <div class="display-file">
+            	<table>
+            		<tbody>
+            			<tr *ngFor="let link of links">
+            			
+            				<td style="cursor:pointer;color:blue;">{{ link.controlNumber }}</td>
+            				
+            			</tr>
+            		</tbody>
+            	</table>
+<!--             	<ul -->
+<!-- 								*ngFor=" let certDocDTO of solution.certDocDTOs "> -->
+<!-- 								<li -->
+<!-- 									*ngIf="certDocDTO.section == 'patches'"> -->
+<!-- 									<a href="#">{{certDocDTO.fileName}}</a><fa *ngIf="!editSolution.disabled" class="download-icon icons" [name]="'trash'"></fa></li> -->
+<!-- 							</ul> -->
+            </div> 
+            	</div>
+        <div class="form-group col-md-6">
+            <label for="externalPolicyLinks">External Policy Links</label>
+            	</div>
+	</div>
+	<!-- <div class="form-row">
+		<div class="form-group col-md-6">
+            <label for="externalPolicyLinks">External Policy Links</label>
+              <input type="text" class="form-control" id="externalPolicyLinks">
+            	</div>
+	</div> -->
+	<div class="form-row">
+		<div class="form-group col-md-6">
+            <label for="assignTo">Assign To</label>
+              <input type="text" class="form-control" id="assignTo" [(ngModel)] = "policyAccess.assignedTo" [name] = "'assi_to'">
+            	</div>
+         <div class="form-group col-md-6">
+            <label for="endDate">End Date</label>
+              <my-date-picker name="myname" [(ngModel)] = "endDate" [selDate] = "displayEndDate"></my-date-picker>
+            	</div>
+         <div class="form-group col-md-6">
+         	<label for="status">Status</label>
+            <select class="form-control" id="status" *ngIf="showForm">
+		                <option>{{ policyAccess.status }}</option>
+		              </select>
+		    <select class="form-control" id="status" (change)="policyAccess.status = $event.target.value" *ngIf="!showForm">
+		                <option value = "false">Open</option>
+		                <option value = "true">Close</option>
+		              </select>
+         </div>
+	</div>
+	<hr />
+	<div class="form-row">
+		<div class="col-md-6">
+			<h4>Documents</h4>
+	<input type = "file" #fileInput (change)="createPolicyDocumentDTO($event)">
+	<div class="display-file">
+            	<ul
+								*ngFor=" let policyDocument of displayPolicyDocuments">
+								<li>
+									<a href="#" style="cursor:pointer;color:blue;">{{policyDocument.documentName}}</a></li>
+							</ul>
+            </div>
+	<!-- <input type = "file" #fileInput> -->
+	<!-- <button class="documents btn btn-primary">Add Documents</button> -->
+		</div>
+		<div>
+			<h4>Comments</h4>
+			<p></p>
+		</div>
+	</div>
+	</fieldset>
+	<hr />
+	<!-- <button type="submit" (click)="open(content)" *ngIf="!showForm" class="submit btn btn-primary">Submit</button> -->
+	<button type="submit" (click)="open(content)" *ngIf="!showForm" class="submit btn btn-primary">Submit</button>
+	<button type="cancel" class="cancel btn btn-primary" (click) = "showPolicy=false">Cancel</button>
+	<!-- <button type="submit" (click)="open(content)" *ngIf="!showForm" class="submit btn btn-primary">Submit</button> -->
+</form>
+</div>

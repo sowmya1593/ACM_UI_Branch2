@@ -1,0 +1,69 @@
+<form class="form">
+	<h4>POLICY DETAILS</h4>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="definitiveSource">Definitive Source</label>
+			<input type="text" id="definitiveSource" class="form-control">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="typePolicy">Type/Policy</label>
+			<input type="text" id="typePolicy" class="form-control">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="status">Status</label>
+			<select type="text" id="status" class="form-control">
+				<option value="Open">Open</option>
+				<option value="Close">Close</option>
+			</select>
+		</div>
+		<div class="form-group col-md-6">
+			<label for="dueDate">Due Date</label>
+			<my-date-picker name="myname"></my-date-picker>
+		</div>
+	</div>
+	<hr />
+	<div>
+		<h5>Comments</h5>
+		<p></p>
+	</div> 
+	<h5>POLICY REVIEWERS</h5>
+	<table class="table table-bordered">
+		  <thead>
+		    <tr>
+		      <th (click)="handleSort()" scope="col">Control Number and Description<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+		      <th (click)="handleSort()" scope="col">Policy Name<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+		      <th (click)="handleSort()" scope="col">Priority<i
+					class="second fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="second fa fa-arrow-up" *ngIf="desc"></i></th>
+		      <th (click)="handleSort()" scope="col">Policy Value<i
+					class="second fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="second fa fa-arrow-up" *ngIf="desc"></i></th>
+		     <!--  <th scope="col">Assigned To</th>
+		      <th scope="col">Assigned By</th>
+		      <th scope="col">Assigned On</th>
+		      <th scope="col">Target Date</th> -->
+		      <th scope="col">Comments</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <!-- <tr *ngFor = "let policy of policies | paginate: { itemsPerPage: 10, currentPage: p }">
+		      <td>{{ policy.controlNumber }}</td>
+		      <td><a routerLink="/accessControl/{{ policy.policyId }}" style="cursor:pointer;color:blue;">{{ policy.controlNumber }}</a></td>
+		      <td>{{ policy.policyName }}</td>
+		      <td>{{ policy.priority }}</td>
+		      <td>{{ policy.policyVal }}</td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		      <td>{{ policy.status }}</td> 
+		    </tr> -->
+		  </tbody>
+			</table>
+			<br>
+			<!-- <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls> -->
+</form>

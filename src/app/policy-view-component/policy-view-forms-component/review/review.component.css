@@ -1,3 +1,12 @@
+.form{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin: 20px;
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+
 .asterisk{
 	display: inline;
 	color: red;
@@ -58,4 +67,8 @@ table thead tr td{
 .btn{
 	background-color: #3A539B;
 	border-color: #3A539B;
+}
+
+.review-btn{
+	float: right;
 }

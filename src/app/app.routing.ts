@@ -110,7 +110,6 @@ import { AssessAttachmentsComponent } from './locality-component/locality-tab/lo
 import { AssessLessonsComponent } from './locality-component/locality-tab/locality-assessment/assess-lessons/assess-lessons.component';
 import {DummyComponent} from './policy-view-component/policy-view-forms-component/dummy/dummy.component';
 import { LocalitysolutionsformComponent } from './locality-component/locality-tab/locality-solutions/localitysolutionsform/localitysolutionsform.component';
-import { ReviewDetailsComponent } from './policy-view-component/policy-view-forms-component/review/review-details/review-details.component';
 const appRoutes: Routes = [
 
 
@@ -465,8 +464,7 @@ const appRoutes: Routes = [
   {
     path: 'policyView', component: PolicyViewComponentComponent, children: [
       {path: 'policyDetails', component: PolicyDetailsComponent},
-      {path: 'review', component: ReviewComponent, children: [
-        {path: 'reviewDetails', component: ReviewDetailsComponent}]},
+      {path: 'review', component: ReviewComponent},
       {path: 'documents', component: DocumentsComponent},
       {path: 'applications', component: ApplicationsComponent},
     {path: 'dummy', component: DummyComponent}]

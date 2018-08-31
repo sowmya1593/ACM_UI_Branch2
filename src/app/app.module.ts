@@ -57,7 +57,6 @@ import { AuthenticationService } from './authentication.service';
 import { CanDeactivateGuard } from './deactive-guard-service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DummyComponent } from './policy-view-component/policy-view-forms-component/dummy/dummy.component';
-import { ReviewDetailsComponent } from './policy-view-component/policy-view-forms-component/review/review-details/review-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,8 +93,7 @@ import { ReviewDetailsComponent } from './policy-view-component/policy-view-form
     UpdateDeviceComponent,
     LoginPageComponent,
     AlertComponent,
-    DummyComponent,
-    ReviewDetailsComponent
+    DummyComponent
 
 
 

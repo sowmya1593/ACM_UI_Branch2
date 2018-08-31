@@ -6,10 +6,11 @@ import {ApiserviceService} from '../../../apiservice.service';
 import {APP_CONFIG} from '../../../app.config';
 import {Http, HttpModule, Headers, RequestOptions} from '@angular/http';
 import { FormBuilder, FormGroup, Validators,FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { IMyDpOptions } from 'mydatepicker';
+import { IMyDpOptions, IMyDate } from 'mydatepicker';
 import { UtilService } from '../../../util.service';
 import { FilterPipe } from '../../../convertDate.pipe';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PolicyGrp, Policy, PolicyDocumentsDTO } from '../../../data_modelPolicy';
 
 @Component({
   selector: 'app-review',
@@ -29,19 +30,26 @@ export class ReviewComponent implements OnInit {
   firstName: string;
   dueDate: any;
   public users: any;
-  public reviewTableData :any;
+  public reviewDTO :any;
   public policyData :any;
   private desc = false;
   public loading:boolean = false;
-  public hideParent: boolean;
-
+  public showDetails: boolean;
+  public policies: Policy[];
+  public showPolicy: boolean;
+  public displayDueDate:IMyDate = null;
+  public pId: number;
+  policyAccess: Policy;
+  public displayPolicyDocuments: any;
+  public displayEndDate:IMyDate = null;
   public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'yyyy-mm-dd'
   };
  constructor(private modalService: NgbModal, private _apiservice: ApiserviceService, private  http: Http, private fb: FormBuilder, private utilservice:UtilService, private router: Router, private route: ActivatedRoute) { 
     //this.review = new Review();
     this.review = [];
-    console.log("test...........");
+    this.policies = [];
+    this.policyAccess = new Policy();
  }
 
  ngOnInit() {
@@ -50,6 +58,7 @@ export class ReviewComponent implements OnInit {
   this.getUsers();
   this.fetchPolicies(UtilService.policyGrpId);
   this.loading = true;
+  this.getPolicyReviewDetails(UtilService.policyGrpId);
  }
  
  open(content) {
@@ -93,11 +102,6 @@ export class ReviewComponent implements OnInit {
     return 0;
   }
   
-  navigatePage(){
-    this.router.navigate(['reviewDetails'], {relativeTo:this.route});
-    this.hideParent = true;
-  }
- 
  changeButton(){
    this.plus=false;
  }
@@ -140,6 +144,17 @@ export class ReviewComponent implements OnInit {
       dueDate: ['', Validators.required]
     });
   }
+  
+  displayReviewDetails(){
+    this.showDetails = true;
+  }
+  
+  displayPolicy(policy: number){
+    this.showPolicy = true;
+    this.pId = policy;
+    console.log(policy);
+    this.getPolicy(this.pId);
+  }
  
  onSubmit(){
    console.log(this.popUpForm);
@@ -173,10 +188,34 @@ this._apiservice.getUseronName(name)
         console.log(data);
         this.loading = false;
         this.policyData=data.policyReviewDTOs;
+        this.policies = data.policyDTOs;
         console.log(this.policyData);
 
   });
   console.log("Testing.........");
+  }
+  
+  dateRetreive(){
+    let d = new Date(this.policyAccess.endDate);
+        this.displayEndDate = {
+           year: d.getFullYear(),
+          month: d.getMonth() + 1,
+          day: d.getDate()
+        }
+  }
+  
+  getPolicy(id){
+    this._apiservice.getPolicy(id)
+      .subscribe((data: any) => {
+        this.loading = false;
+        this.policyAccess = data;
+        this.displayPolicyDocuments = data.policyDocumentsDTOs;
+        if(this.policyAccess.endDate!=null){
+          this.dateRetreive();
+        }
+        console.log(data);
+        console.log(this.policyAccess);
+      });
   }
   
   postReview(){
@@ -198,8 +237,14 @@ this._apiservice.assignReviewers(this.review)
   this._apiservice.getPolicyReviewDetails(id)
       .subscribe((data: any) => {
         console.log(data);
-        this.reviewTableData=data.policyReviewDTO;
-               console.log(this.reviewTableData);
+        this.reviewDTO=data.policyReviewDTO;
+        let d = new Date(this.reviewDTO.dueDate);
+        this.displayDueDate = {
+           year: d.getFullYear(),
+          month: d.getMonth() + 1,
+          day: d.getDate()
+        }
+               console.log(this.reviewDTO);
 
   });
   console.log("Testing.........");

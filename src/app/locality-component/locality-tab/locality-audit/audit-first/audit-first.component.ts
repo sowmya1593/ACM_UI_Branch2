@@ -482,9 +482,9 @@ export class AuditFirstComponent implements OnInit {
       }
 
 
-      downloadFile()
+      downloadFile(id)
       {
-        window.open(APP_CONFIG.generatePolicyFile + '?' + 'policyGrpId' + '=' + this.appAudit.policyGrpId);
+        window.open(APP_CONFIG.generatePolicyFile + '?' + 'policyGrpId' + '=' + id);
         
       }
 
