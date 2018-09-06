@@ -325,6 +325,7 @@
 		<!-- 				[(ngModel)]="applicationSolution.solutionsDTO.name"> -->
 		<div>
 			<div class="form-row">
+		<div class="form-group col-md-6">
 				<label for="lastName">Model/Solution</label>
 				<div class="asterisk">*</div>
 				 <input type="text"
@@ -340,7 +341,7 @@
 					<option *ngFor="let name of names" value="{{name.solutionId}}">{{name.name}}</option>
 
 				</select>
-
+</div>
 			</div>
 
 			<div *ngIf="showInnerForm">
