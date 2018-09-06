@@ -12,6 +12,25 @@
   <button type="button" class="btn btn-outline-dark" (click)="c();redirect()">Ok</button>
 </div>
 </ng-template>
+<ng-template #policyEntity let-c="close" let-d="dismiss">
+<div class="modal-header">
+  <h4 class="modal-title">Policy Entity</h4>
+</div>
+<div class="modal-body">
+  <form class="forms">
+  	<div class="form-row">
+  		<div class="col-12">
+  			<input class="form-control" type="text" [(ngModel)] = "audit.auditTypeName" [name]="'audit_type'">
+  		</div>
+  	</div>
+  	<hr />
+  	<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+			    <button type="submit" class="btn btn-outline-dark" (click)="c('Save click');addAuditType()">Save</button>
+</div>
+  	  </form>
+</div>
+</ng-template>
 
 
 
@@ -19,7 +38,7 @@
 <form class="forms">
 	<div class="form-row">
 		<div class="form-group col-md-6">
-			<label class="label-form" for="policyEntity"><b>Policy Entity</b></label><div class="asterisk">*</div>
+			<label class="label-form" for="policyEntity"><b>Policy Entity</b></label><div class="asterisk"><fa class="plus-icon" (click)="display(policyEntity)" [name]="'plus'"></fa></div>
               <select class="form-control" id="policyEntity" required (change)="policy($event.target.value)">
                 <option selected>Choose...</option>
                 <option *ngFor="let auditType of auditTypes" value="{{ auditType.auditTypeId }}">{{ auditType.auditTypeName  }}</option>

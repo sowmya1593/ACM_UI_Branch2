@@ -63,7 +63,10 @@ updatePolicyGrp: apiBaseUrl + 'updatePolicyGrp',
 addPolicyGrp: apiBaseUrl + 'addPolicyGrp',
 fetchPolicyGroup: apiBaseUrl + 'fetchPolicyGroup',
 getAssessData:apiBaseUrl + 'getAppAssessment',
-getAssessmentFile:apiBaseUrl +'getAssessmentFile'
+getAssessmentFile:apiBaseUrl +'getAssessmentFile',
+addAuditType:apiBaseUrl + 'addAuditType',
+saveAppSolutionDevices:apiBaseUrl + 'saveAppSolutionDevices' ,
+getDevices:apiBaseUrl + 'getAppSolution'
 }
 
 

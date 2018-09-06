@@ -65,7 +65,7 @@ appAudit: AppAudit;
 
     showOnPageLoad()
     {
-      if(localStorage.getItem('appauditId') === null)
+      if(localStorage.getItem('appAuditId') === null)
       {
         console.log('Not edit mode');
       }
@@ -79,23 +79,13 @@ appAudit: AppAudit;
         this.appAudit = this.editData[i];
       }
 
-      if(this.appAudit.actionPlanStartDt === null)
-      {
-        this.startDate = {date:null};
-      }
-      else{
-      let d = new Date(this.appAudit.actionPlanStartDt);
-      let day = d.getDate();
-      let month = d.getMonth()+1;
-      let year = d.getFullYear();
-      this.startDate = {date:{year: year, month: month, day: day}};
-      }
+     
 
-      if(this.appAudit.actionPlanEndDt === null)
+      if(this.appAudit.lessonsEnteredDate === null)
       {
         this.endDate = {date:null};
       }else{
-      let dt = new Date(this.appAudit.actionPlanEndDt);
+      let dt = new Date(this.appAudit.lessonsEnteredDate);
       let day1 = dt.getDate();
       let month1 = dt.getMonth()+1;
       let year1 = dt.getFullYear();
@@ -157,7 +147,7 @@ appAudit: AppAudit;
       let d = value.formatted;
       let latest_date =this.datepipe.transform(d, 'yyyy-MM-dd');
       //this.audate = Date.parse(d);
-      //this.appAudit.actionPlanEndDt = moment(d).format();
+      this.appAudit.lessonsEnteredDate = moment(latest_date).format();
     }
     
   }

@@ -14,21 +14,25 @@
         <thead>
             <tr>
 
-                <th scope="col">Solution Name</th>
+                <th scope="col" (click)="handleSort()">Solution Name <i
+					class="fa fa-arrow-down" *ngIf="!desc"></i> <i
+					class="fa fa-arrow-up" *ngIf="desc"></i></th>
                 <th scope="col">Vendor Name</th>
                 <th scope="col">Equipment Type</th>
-                <th scope="col">Precient Type</th>
+                <th scope="col">Precinct Type</th>
             </tr>
         </thead>
         <tbody>
 
             <!-- 				(ngSubmit) = "addPolicy()"//<th><a routerLink="/locality/tab/link">DS200</a></th> -->
-            <tr *ngFor="let appsolution of appSolutions">
+            <tr *ngFor="let appsolution of appSolutions |paginate: { itemsPerPage: 10, currentPage: p }">
                 <td (click)="showSolutionsPage(appsolution.appSolutionId)"><a class="box">{{ appsolution.solutionsDTO.name}}</a></td>
                 <td> {{ appsolution.solutionsDTO.vendor.name}}</td>
                 <td>{{ appsolution.solutionsDTO.solutionTypeName}}</td>
                 <td>{{ appsolution.solutionsDTO.precinctTypeId}}</td>
             </tr>
         </tbody>
+       
     </table>
+     <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

@@ -272,4 +272,8 @@ export class AssessAttachmentsComponent implements OnInit {
     this.showEdit = false;
   }
 
+  showLeft(){
+    this.router.navigate(['locality/tab/assessment']);
+    }
+
 }

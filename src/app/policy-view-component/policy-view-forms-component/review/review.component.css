@@ -17,10 +17,6 @@
 	margin-top: 15px;
 }
 
-table{
-	background-color: #ffffff;
-}
-
 .policy-edit{
 	float: right;
 }
@@ -46,13 +42,34 @@ table{
 	color: #3A539B;
 }
 
+table{
+	background-color: #ffffff;
+	text-align: center;
+	border: 1px solid black;
+}
+
+.table-bordered tbody tr:nth-of-type(odd){
+	background-color: #EEEEEE !important;
+	border: 1px solid black;
+}
+
+tbody tr:nth-of-type(odd){
+	background-color: #EEEEEE !important;
+}
+
 table thead tr th{
 	font-weight: 500;
 	color: black;
+	border: 1px solid black;
+	background-color: #cecfd5;
 }
 
 table thead tr td{
 	color: black;
+}
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid black;
 }
 
 .add{

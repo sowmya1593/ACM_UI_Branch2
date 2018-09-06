@@ -230,7 +230,7 @@
         <a title="Send notifications">
           <i class="fa  fa-envelope-o" aria-hidden="true" style="font-size: 24px;"></i>
         </a>
-        <a title="Download compared policies" (click)="downloadFile(appAudit.policyGrpId)">
+        <a title="Download compared policies" (click)="downloadFile()">
           <i class="fa  fa-download" aria-hidden="true" style="font-size: 24px;"></i>
         </a>
       </span>
@@ -243,9 +243,7 @@
           <th scope="col" (click)="handleSort()">Control Number and Description
             <i class="fa fa-arrow-down" *ngIf="!desc"></i> <i class="fa fa-arrow-up" *ngIf="desc"></i>
           </th>
-          <th scope="col" (click)="handleSorter()">Policy Name
-            <i class="fa fa-arrow-down" *ngIf="!des"></i> <i class="fa fa-arrow-up" *ngIf="des"></i>
-          </th>
+          <th scope="col">Policy Name</th>
           <th scope="col">Priority</th>
           <th scope="col">Source Value</th>
           <!-- <th scope="col">Implemented Value</th>

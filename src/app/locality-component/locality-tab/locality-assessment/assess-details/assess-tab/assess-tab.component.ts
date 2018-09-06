@@ -16,7 +16,7 @@ export class AssessTabComponent implements OnInit {
   public loading: boolean = false;
   public showEdit: boolean = true;
   public updatedTime: any;
-
+  public p: number = 1;
 
   public showPlusButton: boolean = false;
   constructor(private _apiservice: ApiserviceService,
@@ -24,6 +24,7 @@ export class AssessTabComponent implements OnInit {
     this.getAppId();
     localStorage.removeItem('assesId');
     localStorage.removeItem('assessActive');
+    UtilService.disabled=true;
   }
   ngOnInit() {
 
@@ -59,26 +60,9 @@ export class AssessTabComponent implements OnInit {
 
   getAudit(id) {
     localStorage.setItem('assesId', id);
+    UtilService.disabled=false;
     this.router.navigate(['/locality/tab/assessment/Tabs/first1']);
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-   
-  
-  
-  
-  
-  
-  
 
 
 

@@ -11,14 +11,15 @@ import { ApiserviceService } from "../../../../apiservice.service";
 })
 export class AssessDowntabsComponent implements OnInit {
 
-public mainData:any;
+    public mainData:any;
     public showPlusButton: boolean = false;
     public updatedTime:any;
+    public disabled:boolean;
 
 
      constructor(private _apiservice: ApiserviceService, 
       private utilService: UtilService, private route: ActivatedRoute,private router: Router) {
-      
+      this.disabled=UtilService.disabled;
       this.getAppId();
       }
 

@@ -1,271 +1,441 @@
+<ng-template #insta let-c="close" let-d="dismiss">
+<div class="modal-header">
+	<h4 class="modal-title">Solution</h4>
+	<button type="button" class="close" aria-label="Close" (click)="d()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<p>{{contentData}}!</p>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+</div>
+</ng-template>
+
+<ng-template #box let-c="close" let-d="dismiss">
+<div class="modal-header">
+	<h4 class="modal-title">Solution</h4>
+	<button type="button" class="close" aria-label="Close" (click)="d()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<p>{{contentData}}!</p>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+</div>
+</ng-template>
+
+
+
+
 <ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Enter Device Information</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="save-edit" style="float: right">
-      <fa class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0"
-        [name]="'edit'" (click)="editClick()"></fa>
-    </div>
-    <form class=form [formGroup]="modalForm" (ngSubmit)="addDevice(modalForm.value);c()">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="model">Model Number</label>
+<div class="modal-header">
+	<h4 class="modal-title">Enter Device Information</h4>
+	<button type="button" class="close" aria-label="Close" (click)="d()">
+		<span aria-hidden="true" style="color: white">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="save-edit" style="float: right">
+		<fa *ngIf="boxVisible" class="edit-icon icons" data-toggle="tooltip"
+			data-pla cement="right" title="Save" data-animation="true"
+			data-delay="0" [name]="'edit'"></fa>
+		<!-- 			(click)="editClick()" -->
+	</div>
+	<form class=form [formGroup]="modalForm"
+		(ngSubmit)="addDevice(modalForm.value);c()">
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="model">Model Number</label>
 
-          <div class="asterisk">*</div>
-          <input type="email" class="form-control" id="modelNumber" placeholder="Equipment Model Number" formControlName="modelNumber">
+				<div class="asterisk">*</div>
+				<input type="email" class="form-control" id="modelNumber"
+					placeholder="Equipment Model Number" formControlName="modelNumber">
 
-        </div>
-        <div class="form-group col-md-6">
-          <label for="serial">Serial Number</label>
-          <div class="asterisk">*</div>
-          <input type="text" class="form-control" id="serialNumber" placeholder="Equipment Serial Number" formControlName="serialNumber">
-        </div>
-      </div>
-      <p>
-        <b>Physical Address</b>
-      </p>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="street">Street Name</label>
-          <div class="asterisk">*</div>
-          <input type="text" class="form-control" id="street1" placeholder="Equipment Serial Number" formControlName="street1">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="city">City</label>
-          <div class="asterisk">*</div>
-          <input type="text" class="form-control" id="city" placeholder="Equipment Serial Number" formControlName="city">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="state">State</label>
-          <div class="asterisk">*</div>
-          <select id="inputState" class="form-control" id="state" formControlName=state>
-            <option selected>Choose...</option>
-            <option value="AL">AL</option>
-            <option value="AK">AK</option>
-            <option value="AR">AR</option>
-            <option value="AZ">AZ</option>
-            <option value="CA">CA</option>
-            <option value="CO">CO</option>
-            <option value="CT">CT</option>
-            <option value="DC">DC</option>
-            <option value="DE">DE</option>
-            <option value="FL">FL</option>
-            <option value="GA">GA</option>
-            <option value="HI">HI</option>
-            <option value="IA">IA</option>
-            <option value="ID">ID</option>
-            <option value="IL">IL</option>
-            <option value="IN">IN</option>
-            <option value="KS">KS</option>
-            <option value="KY">KY</option>
-            <option value="LA">LA</option>
-            <option value="MA">MA</option>
-            <option value="MD">MD</option>
-            <option value="ME">ME</option>
-            <option value="MI">MI</option>
-            <option value="MN">MN</option>
-            <option value="MO">MO</option>
-            <option value="MS">MS</option>
-            <option value="MT">MT</option>
-            <option value="NC">NC</option>
-            <option value="NE">NE</option>
-            <option value="NH">NH</option>
-            <option value="NJ">NJ</option>
-            <option value="NM">NM</option>
-            <option value="NV">NV</option>
-            <option value="NY">NY</option>
-            <option value="ND">ND</option>
-            <option value="OH">OH</option>
-            <option value="OK">OK</option>
-            <option value="OR">OR</option>
-            <option value="PA">PA</option>
-            <option value="RI">RI</option>
-            <option value="SC">SC</option>
-            <option value="SD">SD</option>
-            <option value="TN">TN</option>
-            <option value="TX">TX</option>
-            <option value="UT">UT</option>
-            <option value="VT">VT</option>
-            <option value="VA">VA</option>
-            <option value="WA">WA</option>
-            <option value="WI">WI</option>
-            <option value="WV">WV</option>
-            <option value="WY">WY</option>
-
-            <option>...</option>
-          </select>
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputZip">Zip Code</label>
-          <div class="asterisk">*</div>
-          <input type="text" class="form-control" pattern="[0-9]{5}" title='Zip Code (Format: 00000)' id="zipCode" formControlName=zipCode>
-        </div>
-
-      </div>
-      <hr />
-      <p>
-        <b>Overall Scanning Status</b>
-      </p>
-      <div>
-        <select id="inputState" class="form-control">
-          <option selected>Choose...</option>
-          <option value="AL">Passed</option>
-          <option value="AL">Failed</option>
-          <option value="AL">Pending</option>
-
-        </select>
-      </div>
-      <hr />
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="dueDate">Next Scanning Date</label>
-          <my-date-picker name="myname"></my-date-picker>
-        </div>
-      </div>
-      <hr/>
-      <p>
-        <b>Notes</b>
-      </p>
-      <div>
-        <textarea name="" id="" rows="5" class="form-control"></textarea>
-      </div>
-      <hr />
-      <p>
-        <b>Attachments</b>
-      </p>
-      <div>
-        <div class="col-sm-5 col-md-5 col-lg-5">
-          <label class="input"> <input type="file" file-model="attachment" data-btn-text="Select a File" accept=".pdf,.doc,.docx">
-
-          </label>
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
-        <button type="submit" class="submit btn btn-primary">Submit</button>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="serial">Serial Number</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" id="serialNumber"
+					placeholder="Equipment Serial Number"
+					formControlName="serialNumber">
+			</div>
+		</div>
+		<p>
+			<b>Physical Address</b>
+		</p>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="street">Street 1</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" id="street1"
+					placeholder="enter here" formControlName="street1">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="street">Street 2</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" id="street2"
+					placeholder="enter here" formControlName="street2">
+			</div>
 
 
-      </div>
-    </form>
 
-  </div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="state">State</label>
+				<div class="asterisk">*</div>
+				<select id="inputState" class="form-control" id="state"
+					formControlName=state>
+					<option selected>Choose...</option>
+					<option value="AL">AL</option>
+					<option value="AK">AK</option>
+					<option value="AR">AR</option>
+					<option value="AZ">AZ</option>
+					<option value="CA">CA</option>
+					<option value="CO">CO</option>
+					<option value="CT">CT</option>
+					<option value="DC">DC</option>
+					<option value="DE">DE</option>
+					<option value="FL">FL</option>
+					<option value="GA">GA</option>
+					<option value="HI">HI</option>
+					<option value="IA">IA</option>
+					<option value="ID">ID</option>
+					<option value="IL">IL</option>
+					<option value="IN">IN</option>
+					<option value="KS">KS</option>
+					<option value="KY">KY</option>
+					<option value="LA">LA</option>
+					<option value="MA">MA</option>
+					<option value="MD">MD</option>
+					<option value="ME">ME</option>
+					<option value="MI">MI</option>
+					<option value="MN">MN</option>
+					<option value="MO">MO</option>
+					<option value="MS">MS</option>
+					<option value="MT">MT</option>
+					<option value="NC">NC</option>
+					<option value="NE">NE</option>
+					<option value="NH">NH</option>
+					<option value="NJ">NJ</option>
+					<option value="NM">NM</option>
+					<option value="NV">NV</option>
+					<option value="NY">NY</option>
+					<option value="ND">ND</option>
+					<option value="OH">OH</option>
+					<option value="OK">OK</option>
+					<option value="OR">OR</option>
+					<option value="PA">PA</option>
+					<option value="RI">RI</option>
+					<option value="SC">SC</option>
+					<option value="SD">SD</option>
+					<option value="TN">TN</option>
+					<option value="TX">TX</option>
+					<option value="UT">UT</option>
+					<option value="VT">VT</option>
+					<option value="VA">VA</option>
+					<option value="WA">WA</option>
+					<option value="WI">WI</option>
+					<option value="WV">WV</option>
+					<option value="WY">WY</option>
+
+					<option>...</option>
+				</select>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="city">City</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" id="city"
+					placeholder="enter here" formControlName="city">
+			</div>
+
+
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="inputZip">Zip Code</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" pattern="[0-9]{5}"
+					title='Zip Code (Format: 00000)' id="zipCode"
+					formControlName=zipCode>
+			</div>
+		</div>
+		<hr />
+		
+			<label>Overall Scanning Status</label>
+			<div class="asterisk">*</div>
+		
+		<div>
+			<select id="inputState" class="form-control"
+				formControlName=overallStatus>
+				<option selected>Choose...</option>
+				<option value="Passed">Passed</option>
+				<option value="Failed">Failed</option>
+				<option value="Pending">Pending</option>
+
+			</select>
+		</div>
+		<hr />
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="dueDate">Next Scanning Date</label>
+				<div class="asterisk">*</div>
+						 
+				<my-date-picker name="myname" [selDate]="selectDate"
+					formControlName=nextScanningDt></my-date-picker>
+			</div>
+		</div>
+		<hr />
+		<p>
+			<b>Notes</b>
+			
+		</p>
+		<div>
+			<textarea name="" id="" rows="5" class="form-control"
+				formControlName=notes></textarea>
+		</div>
+		<hr />
+		<p>
+			<b>Attachments</b>
+		</p>
+		<div>
+			<div class="col-sm-5 col-md-5 col-lg-5">
+				<label class="input"> <input type="file"
+					file-model="attachment" data-btn-text="Select a File"
+					accept=".pdf,.doc,.docx">
+
+				</label>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+			<button type="submit" class="submit btn btn-primary"
+				[disabled]="modalForm.invalid">Submit</button>
+
+
+		</div>
+	</form>
+
+</div>
 
 
 </ng-template>
-<form #formName="ngForm" class="forms  clear-right"  (ngSubmit)="saveAppSolution()">
-  <fieldset [disabled]="editableForm">
-    <p>
-      <b>APPLICATION SOLUTIONS</b>
-    </p>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="modelSolution">Precinct Type</label> <select id="modelSolution" class="form-control" (change)="selectPrecinct($event.target.value)">
-          <option selected>Choose...</option>
-          <option *ngFor="let precinct of precinctTypes" value="{{ precinct.precinctTypeId }}">{{ precinct.typeName }}</option>
-
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="modelSolution">System Type</label> <select id="modelSolution" class="form-control" (change)="selectSystemType($event.target.value)">
-          <option selected>Choose...</option>
-          <option *ngFor="let systemType of systemTypes" value="{{ systemType.systemTypeId }}">{{systemType.name }}</option>
-
-        </select>
-      </div>
-    </div>
-    <div>
+<div class="plus">
+	<i class="fa fa-edit" (click)="editClicked()" aria-hidden="true"
+		style="font-size: 24px;" *ngIf="notVisible"></i> <a><fa
+			(click)="backClicked()" class="left-icons left-icon icons"
+			[name]="'arrow-left'"></fa></a>
+</div>
+<div class="form-div">
+ <div class="former">
+  
       <div class="form-row">
-
-        <label for="lastName">Model/Solution</label>
-        <input type="text" class="form-control" *ngIf="showTextBox" name="name" [(ngModel)]="applicationSolution.solutionsDTO.name">
-        <select id="inputState" *ngIf="showDropDown" class="form-control" (click)="equip(content)" name="modelSname" [(ngModel)]="applicationSolution.solutionsDTO.name"
-          (change)="selectModSolution($event.target.value)">
-
-          <option selected>Choose...</option>
-          <option *ngFor="let name of names" value="{{name.solutionId}}">{{name.name}}</option>
-
-        </select>
-
+        <div class="form-group col-md-6">
+  
+          <label for="inputState">Acronym</label>
+          <div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="{{ acronym}}" readonly="readonly">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastName">Last updated by</label>
+          <input type="text" class="form-control" id="lastName" value="{{ updatedTime}}" readonly="readonly">
+        </div>
+      </div>
+  
+  
+  
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="lastName">Name</label>
+          <div class="asterisk">*</div>
+          <input type="text" class="form-control" id="lastName" value="enter here">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Updated at</label>
+          <input type="email" class="form-control" id="email" value="enter here">
+        </div>
       </div>
 
-      <div *ngIf="showForm">
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="lastName">Version</label> <input type="text" class="form-control" name="versionNumber" [(ngModel)]="applicationSolution.solutionsDTO.versionNumber">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="lastName">Equipment Type</label> <input type="text" class="form-control" name="solutionTypeName"
-              [(ngModel)]="applicationSolution.solutionsDTO.solutionTypeName">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="lastName">Vendor</label> <input type="text" class="form-control" name="vendors" [(ngModel)]="applicationSolution.solutionsDTO.vendor.name">
-          </div>
-        </div>
-
-        <hr />
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="lastName">Hosting Type</label> <input type="text" class="form-control" *ngIf="showText" name="hostingTypeId"
-              [(ngModel)]="applicationSolution.solutionsDTO.hostingTypeDTO.name">
-            <select id="inputState" *ngIf="showDropDowner" class="form-control" (click)="equip(content)" name="modelHname" [(ngModel)]="applicationSolution.solutionsDTO.hostingTypeDTO.name">
-              <option selected>Choose...</option>
-              <option value="Wireless - Cloud">Wireless - Cloud</option>
-              <option value="Wireless - OnPrem">Wireless - OnPrem</option>
-
-            </select>
-
-
-          </div>
-        </div>
-
-
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="units">Add Unit</label>
-            <div class="plus">
-
-              <i [ngClass]="{disabled: editableForm}" class="fa fa-plus-square-o" aria-hidden="true" style="font-size: 24px;" (click)="open(content)"></i>
-
-            </div>
-            <table class="table table-striped table-hover table-bordere">
-              <thead>
-                <tr>
-
-                  <th scope="col">Model #</th>
-                  <th scope="col">Serial #</th>
-                  <th scope="col">Next due date</th>
-                  <th scope="col">Overall status</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                <tr *ngFor="let table of applicationSolution.appSolutionDevices">
-                  <td><a class="box" (click)="open1(content,table)">{{ table.modelNumber }}</a></td>
-                  <td><a class="box">{{ table.serialNumber }}</a></td>
-
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-
-        </div>
+</div>
 
 
 
-      </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
 
-    </div>
-  </fieldset>
+
+
+
+
+
+
+<form #formName="ngForm" class="former  clear-right"
+	(ngSubmit)="saveAppSolution()">
+	<fieldset>
+		<p>
+			<b>APPLICATION SOLUTIONS</b>
+		</p>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="modelSolution">Precinct Type</label> 
+				<div class="asterisk">*</div>
+				<input type="text"
+					[(ngModel)]="applicationSolution.solutionsDTO.precinctTypeName"
+					class="form-control" *ngIf="!isAddNewSolution" ngModel name="name"
+					required> <select id="modelSolution"
+					*ngIf="isAddNewSolution" class="form-control"
+					(change)="selectPrecinct($event.target.value)" ngModel name="name"
+					required>
+					<option selected>Choose...</option>
+					<option *ngFor="let precinct of precinctTypes"
+						value="{{ precinct.precinctTypeId }}">{{precinct.typeName}}</option>
+
+				</select>
+			</div>
+
+
+
+
+			<div class="form-group col-md-6">
+				<label for="modelSolution">System Type</label>
+				<div class="asterisk">*</div> <input type="text"
+					class="form-control" name="system" *ngIf="!isAddNewSolution"
+					[(ngModel)]="applicationSolution.solutionsDTO.systemTypeDTO.name">
+				<select id="modelSolution" *ngIf="isAddNewSolution"
+					class="form-control"
+					(change)="selectSystemType($event.target.value)" ngModel
+					name="system" required>
+					<option selected>Choose...</option>
+					<option *ngFor="let systemType of systemTypes"
+						value="{{ systemType.systemTypeId }}">{{systemType.name}}</option>
+
+				</select>
+			</div>
+		</div>
+
+	
+
+
+		<!-- 	 <input type="text"  -->
+		<!--  					class="form-control" *ngIf="!isAddNewSolution" name="name"  -->
+		<!-- 				[(ngModel)]="applicationSolution.solutionsDTO.name"> -->
+		<div>
+			<div class="form-row">
+				<label for="lastName">Model/Solution</label>
+				<div class="asterisk">*</div>
+				 <input type="text"
+					class="form-control" *ngIf="!isAddNewSolution" name="modelSname"
+					[(ngModel)]="applicationSolution.solutionsDTO.name"> <select
+					*ngIf="isAddNewSolution"
+					id="inputState" class="form-control"
+					[(ngModel)]="applicationSolution.solutionsDTO.name"
+					(change)="selectModSolution($event.target.value)" ngModel
+					name="modelSname" required>
+
+					<option selected>Choose...</option>
+					<option *ngFor="let name of names" value="{{name.solutionId}}">{{name.name}}</option>
+
+				</select>
+
+			</div>
+
+			<div *ngIf="showInnerForm">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="lastName">Version</label>
+						<div class="asterisk">*</div>
+						 <input type="text"
+							class="form-control" ngModel name="versionNumber" required
+							[(ngModel)]="applicationSolution.solutionsDTO.versionNumber">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="lastName">Equipment Type</label>
+						<div class="asterisk">*</div> <input type="text"
+							class="form-control" ngModel name="solutionTypeName" required
+							[(ngModel)]="applicationSolution.solutionsDTO.solutionTypeName">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="lastName">Vendor</label>
+						<div class="asterisk">*</div> <input type="text"
+							class="form-control" ngModel name="vendors" required
+							[(ngModel)]="applicationSolution.solutionsDTO.vendor.name">
+					</div>
+				</div>
+
+				<hr />
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="lastName">Hosting Type</label>
+						<div class="asterisk">*</div> <input type="text"
+							class="form-control" *ngIf="!isAddNewSolution" ngModel
+							name="hostingTypeId" required
+							[(ngModel)]="applicationSolution.solutionsDTO.hostingTypeDTO.name">
+						<select id="inputState" *ngIf="isAddNewSolution"
+							class="form-control" ngModel name="modelHname" required
+							[(ngModel)]="applicationSolution.solutionsDTO.hostingTypeDTO.name">
+							<option>Choose...</option>
+							<option value="Not Applicable">Not Applicable</option>
+							<option value="Wireless - Cloud">Wireless - Cloud</option>
+							<option value="Wireless - OnPrem">Wireless - OnPrem</option>
+
+						</select>
+
+
+					</div>
+				</div>
+
+
+				<div class="form-row" *ngIf="isVisible">
+					<div class="form-group col-md-6">
+						<label for="units">Add Unit</label>
+						<div class="plus">
+
+							<!-- 							 [ngClass]="{disabled: editableForm}" -->
+							<i class="fa fa-plus-square-o" aria-hidden="true"
+								style="font-size: 24px;" (click)="open(content)"></i>
+
+						</div>
+						<table class="table table-striped table-hover table-bordere">
+							<thead>
+								<tr>
+
+									<th scope="col">Model #</th>
+									<th scope="col">Serial #</th>
+									<th scope="col">Next due date</th>
+									<th scope="col">Overall status</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<tr *ngFor="let table of devices">
+									<td><a class="box" (click)="open1(content,table)">{{
+											table.modelNumber }}</a></td>
+									<td>{{ table.serialNumber }}</td>
+									<td>{{ table.nextScanningDt | filterDate }}</td>
+									<td>{{ table.overallStatus }}</td>
+
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+
+
+
+			</div>
+			<button type="submit" class="btn btn-primary"
+				[disabled]="!formName.valid">Submit</button>
+			<button type="submit" class="btn btn-primary" (click)="close()">Close</button>
+
+
+		</div>
+	</fieldset>
 </form>

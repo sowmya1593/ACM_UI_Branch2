@@ -92,6 +92,7 @@ import {DeviceComponent} from './device/device.component';
 import {UpdateDeviceComponent} from './update-device/update-device.component';
 import {AuditFirstComponent} from './locality-component/locality-tab/locality-audit/audit-first/audit-first.component';
 import {WorkflowGuardAudit} from './audit-guard';
+import {WorkflowGuardAssess} from './assess-guard';
 import {AssessTabComponent} from './locality-component/locality-tab/locality-assessment/assess-details/assess-tab/assess-tab.component';
 import {AssessDetailsComponent} from './locality-component/locality-tab/locality-assessment/assess-details/assess-details.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -300,39 +301,39 @@ const appRoutes: Routes = [
             },
             {
                     path: 'find1',
-                    component: AssessFindComponent 
+                    component: AssessFindComponent, canActivate: [WorkflowGuardAssess] 
                   },
                   {
                     path: 'recomendation1',
-                    component: AssessRecomendComponent
+                    component: AssessRecomendComponent, canActivate: [WorkflowGuardAssess]
                   },
                   {
                     path: 'management1',
-                    component: ManagementComponent
+                    component: ManagementComponent, canActivate: [WorkflowGuardAssess]
                   },
                   {
                     path: 'action1',
-                    component: AssessActionComponent
+                    component: AssessActionComponent, canActivate: [WorkflowGuardAssess]
                   },
                   {
                     path: 'brisk1',
-                    component: AssessBusinessComponent
+                    component: AssessBusinessComponent, canActivate: [WorkflowGuardAssess]
                   },
                   {
                     path: 'srisk1',
-                    component: AssessSecurityComponent
+                    component: AssessSecurityComponent, canActivate: [WorkflowGuardAssess]
                   },
                   {
                     path: 'budget1',
-                    component: AssessBudgetComponent
+                    component: AssessBudgetComponent, canActivate: [WorkflowGuardAssess]
                   },
                   {
                     path: 'attachment1',
-                    component: AssessAttachmentsComponent
+                    component: AssessAttachmentsComponent, canActivate: [WorkflowGuardAssess]
                   },
                   {
                     path: 'lessons1',
-                    component: AssessLessonsComponent
+                    component: AssessLessonsComponent, canActivate: [WorkflowGuardAssess]
                   }
                   ]
                   }
@@ -473,7 +474,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes, {useHash: true})],
   exports: [RouterModule],
-  providers: [WorkflowGuard, WorkflowGuardAudit,AuthGuard]
+  providers: [WorkflowGuard, WorkflowGuardAudit,AuthGuard, WorkflowGuardAssess]
 
 })
 //export class SystemComponentRoutingModule {}

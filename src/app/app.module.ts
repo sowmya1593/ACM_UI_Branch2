@@ -57,6 +57,8 @@ import { AuthenticationService } from './authentication.service';
 import { CanDeactivateGuard } from './deactive-guard-service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DummyComponent } from './policy-view-component/policy-view-forms-component/dummy/dummy.component';
+import {DialogService} from './dialog.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -132,7 +134,7 @@ import { DummyComponent } from './policy-view-component/policy-view-forms-compon
 
 
 
-  providers: [RegisterService, UtilService, ApiserviceService, AlertService,AuthenticationService,CanDeactivateGuard],
+  providers: [RegisterService, UtilService, ApiserviceService, AlertService,AuthenticationService,CanDeactivateGuard,DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

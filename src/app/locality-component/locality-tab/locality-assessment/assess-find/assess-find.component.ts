@@ -34,7 +34,7 @@ export class AssessFindComponent implements OnInit {
     this.router.navigate(['/locality/tab/assessment/']);
   }
   showLeft() {
-    this.router.navigate(['/locality/tab/assessment/Tabs/first1']);
+    this.router.navigate(['/locality/tab/assessment']);
   }
 
   getAppId() {

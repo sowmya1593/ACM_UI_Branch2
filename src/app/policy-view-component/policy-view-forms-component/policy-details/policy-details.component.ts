@@ -1,12 +1,13 @@
  import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PolicyGrp, Policy, PolicyDocumentsDTO } from '../../../data_modelPolicy';
+import { PolicyGrp, Policy, PolicyDocumentsDTO, PolicyReviewTerm } from '../../../data_modelPolicy';
 import { ApiserviceService } from '../../../apiservice.service';
 import { IMyDate } from 'mydatepicker';
 import {APP_CONFIG} from '../../../app.config';
 import {Http, HttpModule, Headers, RequestOptions} from '@angular/http';
 import { UtilService } from '../../../util.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import {FormsModule, ReactiveFormsModule, NgForm} from '@angular/forms';
 
 
 @Component({
@@ -36,7 +37,12 @@ export class PolicyDetailsComponent implements OnInit {
     public displayUpdatedAt: IMyDate = null;
     public policyDocumentsSubmit: PolicyGrp;
     private desc:boolean = false;
-    public loading:boolean = false;   
+    public loading:boolean = false;
+  public policyReviewTerm: any[] = [{id: 1, reviewTerm: "Yearly"},
+                                     {id: 2, reviewTerm: "Half-Yearly"},
+                                     {id: 3, reviewTerm: "Quarterly"}];
+  public policyObj: any;
+  public policyReview: PolicyReviewTerm;
 
   constructor(private modalService: NgbModal, private _apiservice: ApiserviceService, private  http: Http, 
     private utilservice: UtilService, private activatedRoute: ActivatedRoute) {
@@ -46,6 +52,7 @@ export class PolicyDetailsComponent implements OnInit {
   	this.policyGrpData = new PolicyGrp();
   	  this.policyDocumentDTO = [];
   	this.files = [] as File[];
+    this.policyReview = new PolicyReviewTerm();
    }
   
   open(content) {
@@ -68,7 +75,6 @@ export class PolicyDetailsComponent implements OnInit {
   ngOnInit() {
     this.fetchPolicies(UtilService.policyGrpId);
     this.policyDropDownId = UtilService.policyGrpId;
-    this.fetchPolicyGroup(UtilService.auditId);
     this.loading = true;
   }
   
@@ -93,23 +99,13 @@ export class PolicyDetailsComponent implements OnInit {
 
 }
   
-  fetchPolicyGroup(id){
-    this._apiservice.fetchPolicyGroup(id)
-      .subscribe((data: any) => {
-        console.log(data);
-        for(let i=0; i<data.length; i++){
-          console.log("inside for");
-          if(UtilService.policyGrpId == data[i].policyGrpId){
-            console.log("inside if");
-            this.policyGrpData = data[i];
-            console.log(this.policyGrpData);
-            break;
-          }
-        }
-      },error => console.log(error));
-      
+  displayReview(val){
+    /*console.log(this.policyDisplay.policyReviewTermId);
+    console.log(this.policyDisplay.policyReviewTerm);
+    console.log(value);*/
+    this.policyDisplay.policyReviewTermId = val.target.value;
+    this.policyDisplay.policyReviewTerm = val.target.options[val.target.selectedIndex].text;
     }
-  
   
 
 transferDocument(){
@@ -174,7 +170,7 @@ transferDocument(){
         this.displayNextReviewDate = {
            year: rd.getFullYear(),
           month: rd.getMonth() + 1,
-          day: rd.getDate() + 1
+          day: rd.getDate()
         }
   }
   
@@ -187,12 +183,29 @@ transferDocument(){
         console.log(this.policyDisplay.policyReviewDate);
   }
   
+  updatePolicyGrp(){
+    this.policyDisplay.policyGrpId = UtilService.policyGrpId;
+    if((this.lastReviewDate && this.nextReviewDate)!=null){
+        this.dateSubmit();
+    }
+    console.log(this.policyDisplay);
+    this.policyObj = JSON.stringify(this.policyDisplay);
+    let url = APP_CONFIG.updatePolicyGrp;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+     this.http.post(url, this.policyObj, options).subscribe((data: any) => {
+              console.log(data);
+            }, error => console.log(error));
+    /*this._apiservice.updatePolicyGrp(this.policyObj)
+      .subscribe((data: any) => {
+      console.log(data);
+      }, error => {
+        console.log(error)});*/
+  }
+  
   uploadPolicyFile(){
   	let url = APP_CONFIG.uploadPolicyFile;
   	var policyDocumentsData = new FormData();
-     /*if((this.policyDisplay.lastReviewDate && this.policyDisplay.policyReviewDate)!=null){
-        this.dateSubmit();
-      }*/
   	for (let i = 0; i < this.files.length; i++) {
      policyDocumentsData.append('file', this.files[i]);
     }

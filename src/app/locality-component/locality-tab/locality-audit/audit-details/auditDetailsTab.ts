@@ -11,11 +11,12 @@ import { UtilService } from "../../../../util.service";
     public mainData:any;
     public updatedTime:any;
     public editButton:boolean = false;
+    public disabled:boolean;
     @Output() parentClick = new EventEmitter<any>();
 
     constructor(private _apiservice: ApiserviceService, 
       private utilService: UtilService, private route: ActivatedRoute) {
-      
+        this.disabled=UtilService.disabled;
       this.getAppId();
       }
 

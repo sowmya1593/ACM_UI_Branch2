@@ -9,11 +9,13 @@ static systemName:string;
 static policyGrpId: number;
 static auditId: number;
 static showTab:boolean;
+static disabled: boolean = true;
 
 static active:boolean;
 static loginstate:boolean = false;
 static onEdit:boolean=false;
 static auditActive:boolean;
+public isLocalitySolutionAdd: boolean = false;
 
 static appAuditId:any;
 static appMouId:any;

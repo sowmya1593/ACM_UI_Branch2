@@ -1,6 +1,19 @@
 <div class="my-container">
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 </div>
+<ng-template #content1 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Info</h4>
+    </div>
+    <div class="modal-body">
+      <p>Discard Changes for budget</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark confbtn">Yes</button>
+      <button type="button" class="btn btn-outline-dark confbtn">No</button>
+    </div>
+  </ng-template>
+  
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title">Info</h4>
@@ -13,7 +26,7 @@
   </div>
 </ng-template>
 <div class="form-div">
-  <form class="former">
+  <form class="former" #myForm>
     <div class="panel-heading">
       <label class="details">BUDGET</label>
       <div class="plus">
@@ -40,7 +53,7 @@
           <a data-ng-click="close()" title="Change to view mode. This reverts the changes">
             <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
           </a>
-          <a title="Go back to audit section.">
+          <a title="Go back to audit section." (click)="showLeft()">
             <i class="fa fa-arrow-circle-o-left" aria-hidden="true" style="font-size: 24px;"></i>
           </a>
         </span>
@@ -57,7 +70,7 @@
 
           <label for="inputState">Description</label>
 
-          <textarea name="description" id="" rows="10" class="form-control" [(ngModel)]="appAssess.budgetDescription"></textarea>
+          <textarea name="description" id="description" rows="10" class="form-control" [(ngModel)]="appAssess.budgetDescription"></textarea>
         </div>
       </div>
       <div class="form-row">

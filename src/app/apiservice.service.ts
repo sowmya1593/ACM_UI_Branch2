@@ -139,7 +139,9 @@ return this._httpService.post(url,body, options).map((res:Response) => res.json(
   {
   
      let url = APP_CONFIG.addPolicyGroup;
-    return this._httpService.post(url, formData).map((res: Response) => res.json())
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+    return this._httpService.post(url, formData, options).map((res: Response) => res.json())
                             .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
   }
   
@@ -277,7 +279,9 @@ return this._httpService.post(url,body, options).map((res:Response) => res.json(
   updatePolicyGrp(data){
      console.log(data);
     let url = APP_CONFIG.updatePolicyGrp;
- return this._httpService.post(url, data).map((res: Response) => res.json())
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+ return this._httpService.post(url, data, options).map((res: Response) => res.json())
                             .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
     
     
@@ -295,5 +299,22 @@ let url = APP_CONFIG.getAssessData;
 return this._httpService.get(url + '?'+ 'assessmentID' + '=' + id)
 .map(res =><Response>res.json())
 }
+  
+  addAuditType(body) {
+  console.log("body",body);
+  let url =APP_CONFIG.addAuditType;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+return this._httpService.post(url,body, options).map((res:Response) => res.json()) 
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+                         }
+  saveAppSolutionDevices(data){
+  let url = APP_CONFIG.saveAppSolutionDevices;
+
+   return this._httpService.post(url, data).map((res: Response) => res.json())
+                           .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+  
+  }
+  
  
 }

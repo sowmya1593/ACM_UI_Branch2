@@ -10,11 +10,11 @@ import { UtilService } from "../../../../../util.service";
   export class AuditDetailsTab implements OnInit {
     public mainData:any;
     public updatedTime:any;
-
+    public disabled:boolean;
 
     constructor(private _apiservice: ApiserviceService, 
       private utilService: UtilService, private route: ActivatedRoute) {
-      
+        this.disabled=UtilService.disabled;
       this.getAppId();
       }
 

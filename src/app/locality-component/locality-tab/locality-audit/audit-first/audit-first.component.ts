@@ -66,7 +66,6 @@ export class AuditFirstComponent implements OnInit {
  public showButton:boolean = false;
  public updatedTime:any;
  public desc:boolean=false;
- public des:boolean=false;
  public appAuditDTOs:any;
  public editData:any;
  public showOriginal:boolean =true;
@@ -482,9 +481,9 @@ export class AuditFirstComponent implements OnInit {
       }
 
 
-      downloadFile(id)
+      downloadFile()
       {
-        window.open(APP_CONFIG.generatePolicyFile + '?' + 'policyGrpId' + '=' + id);
+        window.open(APP_CONFIG.generatePolicyFile + '?' + 'policyGrpId' + '=' + this.appAudit.policyGrpId);
         
       }
 
@@ -517,47 +516,5 @@ export class AuditFirstComponent implements OnInit {
         }
         return 0;
       }
-      
-      
-      
-      
-      
-      handleSorting(){
-        if(!this.des) {
-          this.policies.sort(this.doAs);
-          this.des = true;
-        }
-        else {
-           this.policies.sort(this.doDs);
-           this.des = false;
-        }
-    
-      }
-      doAs(a, b) {
-        if (a.policyName > b.policyName) {
-          return -1;
-        } else if (a.policyName < b.policyName) {
-          return 1;
-        }
-        return 0;
-      }
-    
-      doDs(a, b) {
-        if (a.policyName < b.policyName) {
-          return -1;
-        } else if (a.policyName > b.policyName) {
-          return 1;
-        }
-        return 0;
-      }
-      
-      
-      
-      
-      
-      
-      
-      
-      
 
   }

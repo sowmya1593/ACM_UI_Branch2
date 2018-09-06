@@ -10,6 +10,7 @@ export class ApplicationSolution	{
 	solutionId:number;
 	notes:string;
 
+
 	solutionsDTO:Solutions;
 	noOfUnits:number;
 
@@ -43,7 +44,7 @@ export class Device{
  appSolutionDevice:number;
 	modelNumber:any;
 	 serialNumber: any;
-	
+	 appSolutionId:number;
 	
 	 activeFlag: boolean;
 	
@@ -54,6 +55,10 @@ export class Device{
 	city:string;
 	 state:string;
 	  zipCode:string;
+	
+	nextScanningDt:any;
+	overallStatus:string;
+	notes:string;
 
 }
 export class Vendor{

@@ -1,31 +1,28 @@
-table {
-  display: table;
-
+table{
+	background-color: #ffffff;
+	text-align: center;
+	border: 1px solid black;
 }
 
-
-th {
-  font-weight: bold;
-  color: black;
-  background-color: #cecfd5;
-  text-align: left;
- 
-
-}
-tbody tr:nth-child(even) {
-  background-color: #ffffff; 
-  
-}
-td {
-  text-align: left;
-  border-bottom: 1px solid #cecfd5;
-  border-right: 1px solid #cecfd5;
-}
-td:first-child {
-  border-left: 1px solid #cecfd5;
+.table-bordered tbody tr:nth-of-type(odd){
+	background-color: #EEEEEE !important;
+	border: 1px solid black;
 }
 
+tbody tr:nth-of-type(odd){
+	background-color: #EEEEEE !important;
+}
 
+table thead tr th{
+	font-weight: 500;
+	color: black;
+	border: 1px solid black;
+	background-color: #cecfd5;
+}
+
+table thead tr td{
+	color: black;
+}
 
 .forms{
   padding: 20px;
@@ -51,52 +48,12 @@ table-fixed thead {
   border-bottom-width: 0;
 }
 
+.table-bordered td, .table-bordered th {
+    border: 1px solid black;
+}
+
 .sorting{
 	margin-left: 5px;
-}
-
-.rTable {
-  display: table;
-  width: 100%;
-  margin-left:50%;
-
-}
-.rTableRow {
-  display: table-row;
-
-}
-
-
-
-
-.rTableHeading {
-  display: table-header-group;
-
-}
-.rTableCell, .rTableHead {
-  display: table-cell;
-  padding: 10px 10px;
-  border: 1px solid ;
-
-}
-.rTableHead{
-
-  font-weight: bold;
-
-}
-
-.rTableHeading {
-  display: table-header-group;
-  /*background-color: white;*/
-  font-weight: bold;
-}
-.rTableFoot {
-  display: table-footer-group;
-  font-weight: bold;
-
-}
-.rTableBody {
-  display: table-row-group;
 }
 
 *{
@@ -269,43 +226,4 @@ span{
 
 
 
-.table-fixed thead {
-  width: 97%;
-}
-.table-fixed tbody {
-  height: 230px;
-  overflow-y: auto;
-  width: 100%;
-}
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-  display: block;
-}
-.table-fixed tbody td, .table-fixed thead > tr> th {
-  float: left;
-  border-bottom-width: 0;
-}
 
-
-
-
-
-.fixed_header tbody{
-  display:block;
-  width: 100%;
-  overflow: auto;
-}
-
-.fixed_header thead tr {
-  display: block;
-}
-
-.fixed_header thead {
-  background: black;
-  color:#fff;
-}
-
-.fixed_header th, .fixed_header td {
-  padding: 5px;
-  text-align: left;
-  width: 500px;
-}

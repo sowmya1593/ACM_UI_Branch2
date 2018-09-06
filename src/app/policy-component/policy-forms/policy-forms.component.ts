@@ -4,6 +4,8 @@ import { APP_CONFIG } from '../../app.config';
 import { FormBuilder, FormGroup, Validators,FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
+import { AuditType } from '../../data_modelAudit';
+import { Http, RequestOptions, Headers } from '@angular/http';
 @Component({
   selector: 'app-policy-forms',
   templateUrl: './policy-forms.component.html',
@@ -15,10 +17,13 @@ export class PolicyFormsComponent implements OnInit {
   public auditTypes: any;
   public auditTypeId: number;
   public  policyGroupForm: FormGroup;
+  public audit: AuditType;
+  public auditObj: any;
     @ViewChild('content') content:TemplateRef<any>;
-  constructor(private _apiservice: ApiserviceService, private fb: FormBuilder, private modalService: NgbModal, private router: Router) { 
+  constructor(private _apiservice: ApiserviceService, private fb: FormBuilder, private modalService: NgbModal, private router: Router, private  http: Http) { 
   
   this.createForm();
+    this.audit = new AuditType();
   }
   
 
@@ -45,8 +50,11 @@ export class PolicyFormsComponent implements OnInit {
       this.policyEntity = true;
       }
     }
+  
+   display(policyEntity) {
+   this.modalService.open(policyEntity);
     
-    
+  }
     
     showDropdown()
 {
@@ -58,6 +66,19 @@ this.auditTypes = data;
 
 
 }
+  
+  addAuditType(){
+    console.log(this.audit);
+    this.auditObj = JSON.stringify(this.audit);
+    console.log(this.auditObj);
+    let url = APP_CONFIG.addAuditType;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+  const options = new RequestOptions({ headers: headers });
+     this.http.post(url, this.auditObj, options).subscribe((data: any) => {
+              console.log(data);
+              this.showDropdown();
+            }, error => console.log(error));
+  }
 
 createPolicyGroup(value)
 {

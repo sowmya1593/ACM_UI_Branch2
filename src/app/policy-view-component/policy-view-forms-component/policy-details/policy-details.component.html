@@ -85,36 +85,31 @@
             <label class="label-form" for="definitiveSourceInput">Definitive Source</label><div class="asterisk">*</div>
               <input type="text" class="edit-disable form-control" id="definitiveSourceInput" readonly [(ngModel)] = "policy.definitiveSource">
               <div class="hover-icon"><fa class="ban" [name]="'ban'"></fa></div>
-            	</div> -->
+            	</div> commented -->
             	<div class="form-group col-md-6">
             		<label for="definitiveSource">Definitive Source</label>
-            		<input type="text" class="form-control" id="definitiveSource" [(ngModel)] = "policyDisplay.definitiveSource" [name] = "'definitive_source'">
+            		<input type="text" class="form-control" id="definitiveSource" [(ngModel)] = "policyGrpData.definitiveSource" [name] = "'definitive_source'">
             		</div>
   			    <div class="form-group col-md-6">
   			    	<label for="typePolicy">Type/Policy</label>
-            		<input type="text" class="form-control" id="typePolicy" [(ngModel)] = "policyDisplay.policyGrpName" [name] = "'type_policy'">
+            		<input type="text" class="form-control" id="typePolicy" [(ngModel)] = "policyGrpData.policyGrpName" [name] = "'type_policy'">
   			    </div>
             	<div class="version form-group col-md-6">
             		<label class="label-form" for="updatedBy">Updated By</label><div class="asterisk">*</div>
-		              <!-- <input type="text" class="edit-disable form-control" id="updatedBy" readonly [(ngModel)] = "policyDisplay.updatedBy" [name] = "'updated_by'"> -->
-		              <input type="text" class="edit-disable form-control" id="updatedBy" readonly [(ngModel)] = "policyDisplay.updatedBy" [name] = "'updated_by'">
-            	</div>
-            	<!-- <div class="form-group col-md-6">
-            <label class="label-form" for="Type/Policy">Type/Policy</label><div class="asterisk">*</div>
-              <input type="text" class="edit-disable form-control" id="Type/Policy" readonly [(ngModel)] = "policy.description">
-            	</div>
- -->            	<div class="form-group col-md-6">
+		             <!--  <input type="text" class="edit-disable form-control" id="updatedBy" readonly [(ngModel)] = "policyGrpData.updatedBy" [name] = "'updated_by'"> -->
+		              <input type="text" class="edit-disable form-control" id="updatedBy" readonly [(ngModel)] = "policyGrpData.updatedBy" [name] = "'updated_by'">
+            	</div>        
+            	    	<div class="form-group col-md-6">
             		<label class="label-form" for="updtedAt">Updated At</label><div class="asterisk">*</div>
-		              <!-- <input type="text" class="edit-disable form-control" id="updatedAt" readonly [(ngModel)] = "policyDisplay.updatedTs" [name] = "'updated_ts'"> -->
-		              <!-- <input type="text" class="edit-disable form-control" id="updatedAt" readonly [(ngModel)] = "date" [name] = "'updated_at'"> -->
-		              <my-date-picker name="myname" [ngModel] = "policyDisplay.updatedTs" [selDate] = "displayUpdatedAt"></my-date-picker>
+		              <my-date-picker name="myname" [ngModel] = "policyGrpData.updatedTs" [selDate] = "displayUpdatedAt"></my-date-picker>
             	</div> 
             </div>
 	</div>
 	<hr />
-			<!-- <fieldset [disabled]='showForm'>
-			<label for="description"></label>
-			<textarea id="description" cols="156" rows="7" *ngIf="!showForm"></textarea>
+		<form (ngSubmit)="updatePolicyGrp()">
+			<fieldset [disabled]='showForm'>
+			<label for="description">Description</label>
+			<textarea id="description" cols="156" rows="7" *ngIf="!showForm" [(ngModel)] = "policyDisplay.description" [name]="'policy_description'"></textarea>
 			<div class="model-solution-row form-row">
             	<div class="model form-group col-md-6">
             <label class="label-form" for="lastReviewDate">Last Review Date</label><div class="asterisk">*</div>
@@ -131,21 +126,27 @@
             	<div class="form-group col-md-6">
             		<label class="label-form" for="policyReviewTerm">Policy Review Term</label><div class="asterisk">*</div>
 		              <input type="text" class="edit-disable form-control" id="policyReviewTerm" *ngIf="showForm" [(ngModel)] = "policyDisplay.policyReviewTerm" [name] = "'review_term'">
-		              <select class="form-control" id="priority" *ngIf="!showForm">
-		                <option>Choose</option>
+		              <select class="form-control" id="priority" *ngIf="!showForm" [(ngModel)] = "policyDisplay.policyReviewTermId" [name] = "'review_term'" (change) = "displayReview($event)" required>
+		              	<option>Select</option>
+		                <option *ngFor="let review of policyReviewTerm" [value]="review.id">{{review.reviewTerm}}</option>
+		                <!-- <option value="2">Half-Yearly</option>
+		                <option value="3">Quarterly</option> -->
 		              </select>
+		              <!-- <button class="btn btn-primary" (click)="displayReview(selectedReviewTerm.value)">Display</button> -->
             	</div>
             	<div class="form-group col-md-6">
             		<label class="label-form" for="status">Status</label><div class="asterisk">*</div>
 		              <input type="text" class="form-control" id="status" [(ngModel)] = "policyDisplay.status" [name] = "'policy_status'" *ngIf="showForm">
 		              <select class="form-control" id="priority" (change)="policyDisplay.status = $event.target.value" *ngIf="!showForm">
-		                <option value = "false">Open</option>
-		                <option value = "true">Close</option>
+		                <option value = "Open">Open</option>
+		                <option value = "Close">Close</option>
 		              </select>
             	</div>
             </div>
-		</fieldset> -->
+		</fieldset>
 		<hr />
+		<button type="submit" class="cancel btn btn-primary">Submit</button>
+		</form>
 		
 		<!-- <div *ngIf = "showDocument" class="display-file">
             	<ul

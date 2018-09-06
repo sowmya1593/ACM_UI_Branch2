@@ -40,22 +40,6 @@ i.fa {
     font-size:20px;
 }
 
-
-
-.table-bordered td, .table-bordered th {
-    border: 1px solid #e9ecef;
-}
-
-
-
-
-
-
-
-
-
-
-
 .form-control:disabled, .form-control[readonly] {
     background-color: #ffffff;
    
@@ -84,11 +68,31 @@ input[readonly] {
 table{
 	background-color: #ffffff;
 	text-align: center;
+	border: 1px solid black;
+}
+
+.table-bordered tbody tr:nth-of-type(odd){
+	background-color: #EEEEEE !important;
+	border: 1px solid black;
+}
+
+tbody tr:nth-of-type(odd){
+	background-color: #EEEEEE !important;
 }
 
 table thead tr th{
 	font-weight: 500;
-	color: black
+	color: black;
+	border: 1px solid black;
+	background-color: #cecfd5;
+}
+
+table thead tr td{
+	color: black;
+}
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid black;
 }
 
 .modal-header{

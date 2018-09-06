@@ -154,6 +154,10 @@ saveActionPlan()
     this.showSave=true;
     this.showEdit=false;
   }
+
+  showLeft(){
+    this.router.navigate(['locality/tab/assessment']);
+    }
   
 
 }

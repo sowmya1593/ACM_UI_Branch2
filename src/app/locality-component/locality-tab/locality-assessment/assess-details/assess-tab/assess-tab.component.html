@@ -48,15 +48,15 @@
                 <thead>
                     <tr>
     
-                        <th scope="col" >Audit Type </th>
-                        <th scope="col"  >Assessment Name</th>
+                        <th scope="col">Audit Type</th>
+                        <th scope="col">Assessment Name</th>
                         <th scope="col">Assessment Date</th>
                         <th scope="col">Next Assessment Date</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let  assess of assessmentDTOs">
+                    <tr *ngFor="let  assess of assessmentDTOs | paginate: { itemsPerPage: 10, currentPage: p }">
                          <td>
                             <a (click)="getAudit(assess.assessmentId)" style="cursor:pointer;color:blue;">{{ assess.auditName}}</a>
                         </td>
@@ -67,7 +67,7 @@
                     </tr>
                 </tbody>
             </table>
-                
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </form>
     </div>
     <router-outlet></router-outlet>

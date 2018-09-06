@@ -39,7 +39,7 @@ export class AssessRecomendComponent implements OnInit {
 }
 
 showLeft(){
-this.router.navigate(['locality/tab/assessment/Tabs/first1/']);
+this.router.navigate(['locality/tab/assessment']);
 }
 
 getAppId() {
@@ -66,12 +66,7 @@ getAppId() {
         let auid = +id;
         this.showEdit=true;
         this.loading=true;
-      // this.editData = this.appAuditDTOs.filter(item => item.appAuditId === auid);
       
-      // for(let i=0;i<this.editData.length;i++)
-      // {
-      //   this.appAudit = this.editData[i];
-      // }
       this._apiservice.getAssessData(auid)
       .subscribe((data: any) => {
         this.loading = false;

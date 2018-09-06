@@ -82,3 +82,8 @@ export class PolicyDocumentsDTO{
 	updatedBy: string;
 	updatedTs: any;
 	}
+  
+export class PolicyReviewTerm{
+  policyReviewTermId: number;
+  policyReviewTerm: string;
+}

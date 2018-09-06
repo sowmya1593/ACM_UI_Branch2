@@ -41,6 +41,9 @@ export  class AppAudit {
     public   publicpolicyGrpId:number;
     public auditPolicyDTOs:any[]=[];
     public policyName:string;
+    public lessonsEnteredBy:string;
+    public lessonsEnteredDate:any;
+    private  lessonsLearnedDescription:string;
 }
 
 export class Policy {
@@ -72,4 +75,3 @@ export class AppAuditFileDTO {
   createdBy:string;
   createdTs:any;
 }
-
