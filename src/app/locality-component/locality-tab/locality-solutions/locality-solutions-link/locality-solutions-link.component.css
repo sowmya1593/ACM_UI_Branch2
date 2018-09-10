@@ -99,7 +99,7 @@ tbody tr:nth-of-type(odd) {
     background-color: #EEEEEE !important;
 }
 .box{
-    text-decoration: underline !important;
+    //text-decoration: underline !important;
     cursor: pointer;
     color: blue !important;
 }

@@ -110,6 +110,7 @@ import { AssessBudgetComponent } from './locality-component/locality-tab/localit
 import { AssessAttachmentsComponent } from './locality-component/locality-tab/locality-assessment/assess-attachments/assess-attachments.component';
 import { AssessLessonsComponent } from './locality-component/locality-tab/locality-assessment/assess-lessons/assess-lessons.component';
 import {DummyComponent} from './policy-view-component/policy-view-forms-component/dummy/dummy.component';
+import { CanDeactivateGuard} from './deactive-guard-service';
 import { LocalitysolutionsformComponent } from './locality-component/locality-tab/locality-solutions/localitysolutionsform/localitysolutionsform.component';
 const appRoutes: Routes = [
 
@@ -325,7 +326,7 @@ const appRoutes: Routes = [
                   },
                   {
                     path: 'budget1',
-                    component: AssessBudgetComponent, canActivate: [WorkflowGuardAssess]
+                    component: AssessBudgetComponent, canActivate: [WorkflowGuardAssess],canDeactivate: [CanDeactivateGuard],
                   },
                   {
                     path: 'attachment1',
@@ -474,7 +475,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes, {useHash: true})],
   exports: [RouterModule],
-  providers: [WorkflowGuard, WorkflowGuardAudit,AuthGuard, WorkflowGuardAssess]
+  providers: [WorkflowGuard, WorkflowGuardAudit,AuthGuard, WorkflowGuardAssess,CanDeactivateGuard]
 
 })
 //export class SystemComponentRoutingModule {}

@@ -17,8 +17,12 @@
                 <th scope="col" (click)="handleSort()">Solution Name <i
 					class="fa fa-arrow-down" *ngIf="!desc"></i> <i
 					class="fa fa-arrow-up" *ngIf="desc"></i></th>
-                <th scope="col">Vendor Name</th>
-                <th scope="col">Equipment Type</th>
+                <th scope="col" (click)="handleSorted()">Vendor Name<i
+					class="fa fa-arrow-down" *ngIf="!des"></i> <i
+					class="fa fa-arrow-up" *ngIf="des"></i></th>
+                <th scope="col"(click)="handleSorting()">Equipment Type<i
+					class="fa fa-arrow-down" *ngIf="!dec"></i> <i
+					class="fa fa-arrow-up" *ngIf="dec"></i></th>
                 <th scope="col">Precinct Type</th>
             </tr>
         </thead>

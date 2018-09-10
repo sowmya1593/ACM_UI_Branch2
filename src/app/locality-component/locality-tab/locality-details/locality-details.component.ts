@@ -122,6 +122,12 @@ export class LocalityDetailsComponent implements OnInit {
         if (data.applicationViewDTO === null) {
           this.editableForm = false;
           this.locality.acronym = local;
+            this.locality.workHoursDTOs = []
+            for (let day in this.daysArray) {
+              this.workHours = new WorkHours();
+              this.workHours.day = this.daysArray[day];
+              this.locality.workHoursDTOs.push(this.workHours);
+            }  
 
         }
         else {
@@ -164,10 +170,10 @@ export class LocalityDetailsComponent implements OnInit {
   }
 
 
-  redirect() {
-    this.router.navigate(['/locality/tab/solutions']);
-
-  }
+//  redirect() {
+//    this.router.navigate(['/locality/tab/solutions']);
+//
+//  }
 
 
 

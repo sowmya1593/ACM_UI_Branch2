@@ -79,6 +79,17 @@ return this._httpService.post(url,body, options).map((res:Response) => res.json(
   
   
   
+  updateAppSolutionDevice(data){
+     console.log(data);
+    let url = APP_CONFIG.updateAppSolutionDevice;
+ return this._httpService.post(url, data).map((res: Response) => res.json())
+                            .catch((error : any) => Observable.throw(error.json().error || 'Server error'));
+    
+    
+  }
+  
+  
+  
   
   updateMOU(data){
    console.log(data);

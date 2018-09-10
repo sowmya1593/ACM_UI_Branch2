@@ -45,6 +45,9 @@ i.fa {
 .table-bordered td, .table-bordered th {
     border: 1px solid #e9ecef;
 }
+th {
+    text-align: center !important;
+}
 
 
 
@@ -82,13 +85,39 @@ input[readonly] {
 	}
 
 table{
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	text-align: center;
 }
 
 table thead tr th{
 	font-weight: 500;
 }
+
+.table :nth-of-type(odd){
+	background-color: #EEEEEE !important;
+	border: 1px solid black;
+}
+
+tr:nth-of-type(odd){
+	background-color: #EEEEEE !important;
+}
+
+th{
+	background-color:#cecfd5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .modal-header{
 	background-color: #3A539B;

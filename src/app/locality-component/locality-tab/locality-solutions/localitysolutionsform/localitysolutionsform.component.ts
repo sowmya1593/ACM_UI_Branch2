@@ -29,6 +29,7 @@ export class LocalitysolutionsformComponent implements OnInit {
  applicationSolution:ApplicationSolution;
    device: Device;
     editableForm:boolean=true;
+  public showButton:boolean=true;
    public names: any;
    hostingnames:any;
    public precinctTypeId:number;
@@ -53,6 +54,7 @@ export class LocalitysolutionsformComponent implements OnInit {
    public showText:any;
    contentData: string = "";
    public devices:any;
+  public deviceId:any;
    public isVisible = false;
      public showLegal = false;
   public showInnerForm = false;
@@ -63,6 +65,8 @@ export class LocalitysolutionsformComponent implements OnInit {
    public selDate: any;
   public acronym: any;
   public updatedTime: any;
+  public applicationDeviceObj: any;
+   public loading:boolean= false;
    
  
   constructor(private _fb: FormBuilder,private router: Router,private modalService: NgbModal,
@@ -106,10 +110,10 @@ export class LocalitysolutionsformComponent implements OnInit {
   
   
   getAppId() {
-    //this.loading = true;
+    this.loading = true;
     this._apiservice.viewApplication(localStorage.getItem('localityName'))
       .subscribe((data: any) => {
-       // this.loading = false;
+        this.loading = false;
         this.acronym = data.applicationViewDTO.acronym;
         let d = new Date(data.applicationViewDTO.updatedTime);
         let day = d.getDate();
@@ -335,6 +339,7 @@ this.contentData = "Solution has been updated.";
   
   }
   open(content) {
+    this.showButton=true;
     this.createForm();
      let ngbModalOptions: NgbModalOptions = {
          backdrop : 'static',
@@ -348,10 +353,12 @@ this.contentData = "Solution has been updated.";
 
 open1(content, table) {
 
+  this.showButton=false;
     let ngbModalOptions: NgbModalOptions = {
       backdrop: 'static',
       keyboard: false
     };
+    this.deviceId=table.appSolutionDevice;
     this.modalService.open(content, ngbModalOptions);
     this.modalForm.controls['modelNumber'].setValue(table.modelNumber);
     this.modalForm.controls['serialNumber'].setValue(table.serialNumber);
@@ -365,15 +372,17 @@ open1(content, table) {
    
       
    let d = new Date(table.nextScanningDt);
-       this.selectDate = {
+       this.selectDate = { date:{
            year: d.getFullYear(),
            month : d.getMonth() + 1,
           day :d.getDate()
-          }
+          }}
+  console.log(this.selectDate)
         //   this.selectDate = {date:{month:month,day:day,year:year}};
         
-        
-   //this.modalForm.controls['nextScanningDt'].setValue(nextScanningDt);
+            
+
+   this.modalForm.controls['nextScanningDt'].setValue(this.selectDate);
     this.modalForm.controls['notes'].setValue(table.notes);
     
   //this.modalForm.disable();
@@ -439,7 +448,8 @@ selectSystemType(id)
       backdrop: 'static',
       keyboard: false
     };
-   
+      
+    
      this.device.modelNumber = value.modelNumber;
      this.device.serialNumber = value.serialNumber;
      this.device.street1 = value.street1;
@@ -454,14 +464,16 @@ selectSystemType(id)
      this.device.overallStatus = value.overallStatus;
      this.device.notes = value.notes;
      this.device.appSolutionId = this.appSolutionId;
-   var formData = new FormData();
-      if(this.appSolutionDevice === undefined){
-     let url_update = APP_CONFIG.saveAppSolutionDevices;
-   formData.append('appSolutionDeviceString',JSON.stringify(this.device));
-   console.log(JSON.stringify(this.device));
-   this.http.post(url_update, formData).subscribe((data: any) => {
+
+     
+        var formData = new FormData();
+     if(this.showButton){
+         let url_update = APP_CONFIG.saveAppSolutionDevices;
+       formData.append('appSolutionDeviceString',JSON.stringify(this.device));
+      
+       this.http.post(url_update, formData).subscribe((data: any) => {
        this.contentData = "Device Information has been created.";
-        this.modalService.open(this.box, ngbModalOptions);
+       this.modalService.open(this.box, ngbModalOptions);
    
    
      this.getDevices(this.appSolutionId);
@@ -470,28 +482,56 @@ selectSystemType(id)
       
       console.log(error);
       });
-       
      }
      else{
-   this.applicationSolution.appSolutionId = this.appSolutionId;
-      this.device.appSolutionDevice = this.appSolutionDevice;
-    
-    console.log(this.applicationSolution);
-     var formData = new FormData();
-     formData.append('appSolutionString',JSON.stringify(this.applicationSolution));
-       console.log(formData);
-         let url_update = APP_CONFIG.updateAppSolution;
-   this.http.post(url_update, formData).subscribe((data: any) => {
-
-  this.getDevices(this.appSolutionId);  
-    console.log(data);
+       this.device.appSolutionDevice=this.deviceId; 
+        let url_update = APP_CONFIG.updateAppSolutionDevice;
+            var formData = new FormData();
+       formData.append('appSolutionDeviceString',JSON.stringify(this.device));
+   
+   this.http.post(url_update,formData).subscribe((data: any) => {
+     this.contentData = "Device Information has been updated.";
+     this.showButton=true;
+        this.modalService.open(this.box, ngbModalOptions);
+        this.getDevices(this.appSolutionId);
+ 
       },error => {
       
       console.log(error);
       });
     
     }
-    }
+  }
+       
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    
 
   selectBox(systemType,precinctTypeId) {
     

@@ -19,6 +19,9 @@
       <label class="details">RECOMENDATIONS</label>
       <div class="plus">
 
+          <span class=" title elipsis pull-right" *ngIf="showEdit">
+              <a><fa class="edit-icon icons" [name]="'edit'" (click)="valueChanged()"></fa></a>
+          </span>
         <span class=" title elipsis pull-right">
           <a *ngIf="!showForm" (click)="saveRecommendations()" title="Save Audit" class="ng-hide">
             <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>

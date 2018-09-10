@@ -22,6 +22,7 @@ export class AuditManagementComponent implements OnInit {
   public editData:any;
   public resDate:any;
   public info:string="";
+  public showEdit:boolean=false;
   public showForm:boolean = true;
   public loading:boolean = false;
   public myDatePickerOptions: IMyDpOptions = {
@@ -31,15 +32,7 @@ export class AuditManagementComponent implements OnInit {
   constructor( private _apiservice: ApiserviceService, 
     private utilService: UtilService,private http: Http,private route: ActivatedRoute,
     private router:Router, private modalService: NgbModal,private datepipe: DatePipe) { 
-      this.utilService.getEdit().subscribe(val =>{
-        if(val)
-        {
-          this.showForm  = false;
-  
-        }
-        else{
-  
-        }});
+    
     this.appAudit = new AppAudit();
     this.getAppId();
   }
@@ -65,9 +58,10 @@ export class AuditManagementComponent implements OnInit {
     {
       if(localStorage.getItem('appAuditId') === null)
       {
-        console.log('Not edit mode');
+       
       }
       else{
+        this.showEdit=true;
         let id =localStorage.getItem('appAuditId');
         let auid = +id;
       this.editData = this.appAuditDTOs.filter(item => item.appAuditId === auid);
@@ -135,7 +129,11 @@ export class AuditManagementComponent implements OnInit {
  this.router.navigate(['/locality/tab/Audit']);
  }
 
-
+ valueChanged()
+ {
+   this.showForm = false;
+   this.showEdit = false;
+ }
 
 
 

@@ -404,7 +404,6 @@ export class AuditFirstComponent implements OnInit {
 
  valueChanged()
  {
- this.utilService.setEditTrue(true);
  this.showInitial = false;
  this.showEdit = false;
  this.showOriginal = false;

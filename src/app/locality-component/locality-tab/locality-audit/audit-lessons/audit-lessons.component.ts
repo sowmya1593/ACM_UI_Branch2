@@ -24,22 +24,12 @@ appAudit: AppAudit;
   public endDate:any;
   public info:string="";
   public showForm:boolean=true;
-  public myDatePickerOptions: IMyDpOptions = {
-    dateFormat: 'yyyy-mm-dd'
-  };
+  public showEdit:boolean=false;
  
   constructor( private _apiservice: ApiserviceService, 
     private utilService: UtilService,private http: Http,private modalService: NgbModal,
     private datepipe: DatePipe,private router:Router) { 
-      this.utilService.getEdit().subscribe(val =>{
-        if(val)
-        {
-          this.showForm  = false;
-  
-        }
-        else{
-  
-        }});
+     
     this.appAudit = new AppAudit();
     this.getAppId();
   }
@@ -67,9 +57,10 @@ appAudit: AppAudit;
     {
       if(localStorage.getItem('appAuditId') === null)
       {
-        console.log('Not edit mode');
+       
       }
       else{
+        this.showEdit=true;
         let id =localStorage.getItem('appAuditId');
         let auid = +id;
       this.editData = this.appAuditDTOs.filter(item => item.appAuditId === auid);
@@ -155,6 +146,11 @@ appAudit: AppAudit;
   showAudit(){
     this.router.navigate(['/locality/tab/Audit']);
     }
+    valueChanged()
+  {
+    this.showForm = false;
+    this.showEdit = false;
+  }
 
 
 

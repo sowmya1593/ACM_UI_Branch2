@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef , TemplateRef} from '@angular/core';
 import { MOUDocDTO, Mou } from '../../../../data_model_legal';
 import { ApiserviceService } from '../../../../apiservice.service';
 import { APP_CONFIG } from '../../../../app.config';
 import { IMyDate, IMyDpOptions } from 'mydatepicker';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal,NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { UtilService } from '../../../../util.service';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LegalformComponent implements OnInit {
   @ViewChild('fileInput') inputEl: ElementRef;
-
+ @ViewChild('content') content: TemplateRef<any>;
   public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'mm/dd/yyyy'
   };
@@ -34,6 +34,7 @@ export class LegalformComponent implements OnInit {
   public certify: any;
   public recipt: any;
   public loading:boolean = false;
+    contentData: string = "";
   public showLegalBox: boolean = true;
   constructor(private _apiservice: ApiserviceService,
     private http: Http, private modalService: NgbModal, private utilservice: UtilService,
@@ -74,6 +75,10 @@ export class LegalformComponent implements OnInit {
   }
 
   saveMOU() {
+    let ngbModalOptions: NgbModalOptions = {
+      backdrop: 'static',
+      keyboard: false
+    };
     let inputEl: HTMLInputElement = this.inputEl.nativeElement;
     var formData = new FormData();
     this.mou.applicationID = this.appId;
@@ -83,7 +88,9 @@ export class LegalformComponent implements OnInit {
       let url_update = APP_CONFIG.saveMOU;
       this.loading = true;
       this.http.post(url_update, formData).subscribe((data: any) => {
+this.contentData = "legal has been created.";
 
+        this.modalService.open(this.content, ngbModalOptions);
         this.loading = false;
 
       }, error => {
@@ -99,6 +106,9 @@ export class LegalformComponent implements OnInit {
       this.loading = true;
       this.http.post(url_update, formData).subscribe((data: any) => {
         this.loading = false;
+        this.contentData = "legal has been updated.";
+
+        this.modalService.open(this.content, ngbModalOptions);
       }, error => {
         this.loading = false;
         console.log(error);});
@@ -196,11 +206,11 @@ export class LegalformComponent implements OnInit {
     if (id === undefined) {
       let length = this.mou.mouDocDTOs.length;
       if (length === 1) {
-        this.mou.mouDocDTOs = [];
+        this.mou.mouDocDTOs = []; //a,b,c,d,f = [2] =[3]
       }
       else {
         for (let i = index; i < length; i++) {
-          this.mou.mouDocDTOs[i] = this.mou.mouDocDTOs[i + 1];
+          this.mou.mouDocDTOs[i]= this.mou.mouDocDTOs[i + 1];
         }
         this.mou.mouDocDTOs.splice(length - 1, 1);
       }

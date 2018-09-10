@@ -19,6 +19,7 @@ export class AuditSecurityriskComponent implements OnInit {
   public appAuditDTOs:any;
   public editData:any;
   public showForm:boolean=true;
+  public showEdit:boolean=false;
   public loading:boolean = false;
   public info:string="";
   
@@ -26,15 +27,7 @@ export class AuditSecurityriskComponent implements OnInit {
   constructor( private _apiservice: ApiserviceService, 
     private utilService: UtilService,private http: Http,private router:Router,
     private route: ActivatedRoute, private modalService: NgbModal) { 
-      this.utilService.getEdit().subscribe(val =>{
-        if(val)
-        {
-          this.showForm  = false;
-  
-        }
-        else{
-  
-        }});
+     
     this.appAudit = new AppAudit();
     this.getAppId();
   }
@@ -59,9 +52,10 @@ export class AuditSecurityriskComponent implements OnInit {
     {
       if(localStorage.getItem('appAuditId') === null)
       {
-        console.log('Not edit mode');
+        
       }
       else{
+        this.showEdit=true;
         let id =localStorage.getItem('appAuditId');
         let auid = +id;
       this.editData = this.appAuditDTOs.filter(item => item.appAuditId === auid);
@@ -108,6 +102,11 @@ export class AuditSecurityriskComponent implements OnInit {
           this.loading = false;
           console.log(error);
         });
+  }
+  valueChanged()
+  {
+    this.showForm = false;
+    this.showEdit = false;
   }
 
 }

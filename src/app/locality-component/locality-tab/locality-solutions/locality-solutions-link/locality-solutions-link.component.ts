@@ -13,6 +13,8 @@ export class LocalitySolutionsLinkComponent implements OnInit {
   public appSolutions:any;
   public loading:boolean=false;
     public  desc = false;
+  public  des = false;
+  public  dec = false;
    public p: number = 1;
   constructor(private _apiservice: ApiserviceService,private router:Router, private utilService: UtilService) {
     this.viewApplication(localStorage.getItem('localityName'));
@@ -69,6 +71,59 @@ export class LocalitySolutionsLinkComponent implements OnInit {
     }
     return 0;
   }
+  
+  
+  handleSorted(){
+
+    console.log("headerClick");
+    if(!this.des) {
+      this.appSolutions.sort(this.doAs);
+      this.des = true;
+    }
+    else {
+       this.appSolutions.sort(this.doDs);
+       this.des = false;
+    }
+
+  }
+
+  doAs(a, b) {
+    console.log(a.solutionsDTO.name, b.solutionsDTO.name);
+  
+    if (a.solutionsDTO.vendor.name > b.solutionsDTO.vendor.name) {
+      return -1;
+    } else if (a.solutionsDTO.vendor.name < b.solutionsDTO.vendor.name) {
+      return 1;
+    }
+    return 0;
+  }
+
+  doDs(a, b) {
+     console.log(a.solutionsDTO.vendor.name, b.solutionsDTO.vendor.name);
+    if (a.solutionsDTO.vendor.name < b.solutionsDTO.vendor.name) {
+      return -1;
+    } else if (a.solutionsDTO.vendor.name > b.solutionsDTO.vendor.name) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   showSolutionsPage(appSolutionId)
   {

@@ -36,6 +36,7 @@ export class AuditAttachmentsComponent implements OnInit {
   public appAuditDTOs: any;
   public editData: any;
   public showForm: boolean = true;
+  public showEdit:boolean = false;
   appAuditFileDTO: AppAuditFileDTO;
   public files: any;
   public info:string="";
@@ -43,15 +44,7 @@ export class AuditAttachmentsComponent implements OnInit {
   constructor(private _apiservice: ApiserviceService,
     private utilService: UtilService, private http: Http, private modalService: NgbModal,
     private router:Router) {
-    this.utilService.getEdit().subscribe(val => {
-      if (val) {
-        this.showForm = false;
-
-      }
-      else {
-
-      }
-    });
+    
     this.appAudit = new AppAudit();
     this.getAppId();
   }
@@ -75,9 +68,10 @@ export class AuditAttachmentsComponent implements OnInit {
 
   showOnPageLoad() {
     if (localStorage.getItem('appAuditId') === null) {
-      console.log('Not edit mode');
+   
     }
     else {
+      this.showEdit=true;
       let id =localStorage.getItem('appAuditId');
       let auid = +id;
       this.editData = this.appAuditDTOs.filter(item => item.appAuditId === auid);
@@ -270,6 +264,12 @@ export class AuditAttachmentsComponent implements OnInit {
   showAudit(){
     this.router.navigate(['/locality/tab/Audit']);
     }
+
+    valueChanged()
+  {
+    this.showForm = false;
+    this.showEdit = false;
+  }
 
 
 }

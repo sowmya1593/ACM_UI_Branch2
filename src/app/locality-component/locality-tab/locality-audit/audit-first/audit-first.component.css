@@ -10,6 +10,18 @@ i.fa {
     text-rendering: auto;
      color: #3A539B;
    }
+   
+   
+   .primary {
+  color: red !important;
+}
+.secondary {
+  color: green !important;
+}
+   
+   
+   
+   
 .plus{
 	float:right;
 	 vertical-align: middle;
@@ -43,6 +55,11 @@ i.fa {
 .form-control:disabled, .form-control[readonly] {
     background-color: #ffffff;
    
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #f8f9fa;
+    opacity: 1;
 }
 
 .nav-link{

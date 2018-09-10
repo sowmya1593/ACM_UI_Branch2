@@ -261,7 +261,7 @@
           <td>{{ policy.policyName }}</td>
           <td>{{ policy.priority }}</td>
           <td>{{ policy.policyVal }}</td>
-          <td>{{ policy.status }}</td>
+          <td><i [ngClass]=" policy.status ? 'primary' : 'secondary'"class="fa fa-check-circle"></i></td>
         </tr>
       </tbody>
     </table>

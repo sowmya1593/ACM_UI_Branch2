@@ -20,19 +20,9 @@ export class AuditFindingsComponent implements OnInit {
   public showEdit:boolean = false;
   public loading:boolean = false;
   public info:string ="";
+  //public showEdit:boolean=true;
   constructor( private _apiservice: ApiserviceService, private utilService: UtilService,
     private  http: Http,private router: Router, private modalService: NgbModal) { 
-    
-    this.utilService.getEdit().subscribe(val =>{
-      if(val)
-      {
-        this.showForm  = false;
-
-      }
-      else{
-
-      }
-    });
     this.appAudit = new AppAudit();
     this.getAppId();
   }
@@ -112,5 +102,6 @@ export class AuditFindingsComponent implements OnInit {
   showAudit(){
     this.router.navigate(['/locality/tab/Audit/']);
   }
+  
 
 }

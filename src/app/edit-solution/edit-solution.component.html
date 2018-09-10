@@ -143,6 +143,7 @@
            	<h4>Installation and Hosting</h4>
             	 <div class="installation form-group col-md-6">
 	            <label for="hostingType"><b>Hosting Type</b></label>
+	            <div class="asterisk">*</div>
 	            <input type="text" class="form-control" id="hostingType" *ngIf="showForm" [(ngModel)] = "solution.hostingTypeDTO.name" [name] = "'hosting_name'">
 	             <select class="form-control" id="hostingType" ngModel name = "hostingType" *ngIf="!showForm"
 	             	[(ngModel)] = "solution.hostingTypeDTO.hostingTypeId" (change) = "solution.hostingTypeDTO.hostingTypeId = $event.target.value" required>
@@ -202,18 +203,22 @@
           	<div class="certification-test form-row">
             <div class="form-group col-md-6">
                 <label for="firstName"><b>First Name</b></label>
+                <div class="asterisk">*</div>
                 <input type="text" class="form-control" id="firstName" ngModel name = "firstName" [(ngModel)] = "solution.labVendorsDTO.firstName" [name] = "'firstName'" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="lastName"><b>Last Name</b></label>
+                <div class="asterisk">*</div>
                 <input type="text" class="form-control" id="lastName" ngModel name = "lastName" [(ngModel)] = "solution.labVendorsDTO.lastName" [name] = "'lastName'" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="email"><b>Email Id</b></label>
+                <div class="asterisk">*</div>
                 <input type="email" class="form-control" id="email" ngModel name = "emailId" [(ngModel)] = "solution.labVendorsDTO.emailId" [name] = "'emailId'" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="phone"><b>Phone Number</b></label>
+                <div class="asterisk">*</div>
                 <input type="text" class="form-control" id="phone" ngModel name = "phoneNumber" [(ngModel)] = "solution.labVendorsDTO.phoneNumber" [name] = "'phoneNumber'" required>
             </div>
          </div>

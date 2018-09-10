@@ -1,3 +1,6 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
 <ng-template #insta let-c="close" let-d="dismiss">
 <div class="modal-header">
 	<h4 class="modal-title">Solution</h4>
@@ -214,8 +217,10 @@
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
-			<button type="submit" class="submit btn btn-primary"
-				[disabled]="modalForm.invalid">Submit</button>
+			<button *ngIf="showButton" type="submit" class="submit btn btn-primary"
+				[disabled]="modalForm.invalid">Save</button>
+						<button *ngIf="!showButton" type="submit" class="submit btn btn-primary"
+				[disabled]="modalForm.invalid">Update</button>
 
 
 		</div>
@@ -231,8 +236,8 @@
 			(click)="backClicked()" class="left-icons left-icon icons"
 			[name]="'arrow-left'"></fa></a>
 </div>
-<div class="form-div">
- <div class="former">
+<div class="former clear-right">
+
   
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -260,6 +265,7 @@
           <input type="email" class="form-control" id="email" value="enter here">
         </div>
       </div>
+
 
 </div>
 
@@ -353,14 +359,15 @@
 							class="form-control" ngModel name="versionNumber" required
 							[(ngModel)]="applicationSolution.solutionsDTO.versionNumber">
 					</div>
-				</div>
-				<div class="form-row">
+					
 					<div class="form-group col-md-6">
 						<label for="lastName">Equipment Type</label>
 						<div class="asterisk">*</div> <input type="text"
 							class="form-control" ngModel name="solutionTypeName" required
 							[(ngModel)]="applicationSolution.solutionsDTO.solutionTypeName">
 					</div>
+				</div>
+				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="lastName">Vendor</label>
 						<div class="asterisk">*</div> <input type="text"

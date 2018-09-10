@@ -1,26 +1,30 @@
 <div class="my-container">
-	<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+	<ngx-loading [show]="loading"
+		[config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 </div>
 <ng-template #content let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title">Success</h4>
-		<!--   <button type="button" class="close" aria-label="Close" (click)="d()"> -->
-		<!--     <span aria-hidden="true">&times;</span> -->
-		<!--   </button> -->
-	</div>
-	<div class="modal-body">
-		<p>{{contentData}}</p>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="c();redirect()">Ok</button>
-	</div>
+<div class="modal-header">
+	<h4 class="modal-title">Success</h4>
+	<!--   <button type="button" class="close" aria-label="Close" (click)="d()"> -->
+	<!--     <span aria-hidden="true">&times;</span> -->
+	<!--   </button> -->
+</div>
+<div class="modal-body">
+	<p>{{contentData}}</p>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark confbtn"
+		(click)="c()">Ok</button>
+</div>
 </ng-template>
 <div class="save-edit" style="float: right" *ngIf="showEditButton">
-	<fa class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0"
-	 [name]="'edit'" (click)="editClick()"></fa>
+	<fa class="edit-icon icons" data-toggle="tooltip"
+		data-placement="right" title="Save" data-animation="true"
+		data-delay="0" [name]="'edit'" (click)="editClick()"></fa>
 </div>
 
-<form #formName="ngForm" class="former clear-right" (ngSubmit)="createLocality()" enctype="multipart/form-data">
+<form #formName="ngForm" class="former clear-right"
+	(ngSubmit)="createLocality()" enctype="multipart/form-data">
 	<fieldset [disabled]="editableForm">
 
 
@@ -41,7 +45,8 @@
 			<div class="form-group col-md-6">
 				<label for="lastName">Updated at</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" name="updatedTime" [(ngModel)]="updatedTime">
+				<input type="text" class="form-control" name="updatedTime"
+					[(ngModel)]="updatedTime">
 			</div>
 		</div>
 		<div class="form-row">
@@ -49,20 +54,25 @@
 
 				<label for="inputState">Locality Name</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" name="acronym" [(ngModel)]="locality.acronym" readonly="readonly">
+				<input type="text" class="form-control" name="acronym"
+					[(ngModel)]="locality.acronym" readonly="readonly">
 			</div>
 			<div class="form-group col-md-6">
 
 				<label for="inputState">Locality Code</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" ngModel name="localityCd" [(ngModel)]="locality.localityCd" required>
+				<input type="text" class="form-control" ngModel name="localityCd"
+					[(ngModel)]="locality.localityCd" required>
 			</div>
 
 		</div>
 		<div class="form-row">
 
 			<div class="form-group col-md-6">
-				<label for="lastName">FIPS Code</label> <input type="text" class="form-control" ngModel name="fipsCd" [(ngModel)]="locality.fipsCd" required>
+				<label for="lastName">FIPS Code</label>
+				<div class="asterisk">*</div>
+				<input type="text" class="form-control" ngModel name="fipsCd"
+					[(ngModel)]="locality.fipsCd" required>
 
 			</div>
 		</div>
@@ -73,12 +83,14 @@
 
 				<label for="inputState">First Name</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" ngModel name="firstName" [(ngModel)]="locality.firstName" required>
+				<input type="text" class="form-control" ngModel name="firstName"
+					[(ngModel)]="locality.firstName" required>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="lastName">Last Name</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" ngModel name="lastName" [(ngModel)]="locality.lastName" required>
+				<input type="text" class="form-control" ngModel name="lastName"
+					[(ngModel)]="locality.lastName" required>
 			</div>
 		</div>
 
@@ -88,25 +100,29 @@
 			<div class="form-group col-md-6">
 				<label for="lastName">Email Id</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" ngModel name="emailId" [(ngModel)]="locality.emailId" required>
+				<input type="text" class="form-control" ngModel name="emailId"
+					[(ngModel)]="locality.emailId" required>
 			</div>
 			<div class="form-group col-md-6">
 
 				<label for="email">Phone No</label>
 				<div class="asterisk">*</div>
-				<input type="email" class="form-control" ngModel name="phoneNumber" [(ngModel)]="locality.phoneNumber" required>
+				<input type="email" class="form-control" ngModel name="phoneNumber"
+					[(ngModel)]="locality.phoneNumber" required>
 			</div>
 		</div>
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="lastName">Website Address</label>
 				<div class="asterisk">*</div>
-				<input type="text" class="form-control" ngModel name="websiteAdd" [(ngModel)]="locality.website" required>
+				<input type="text" class="form-control" ngModel name="websiteAdd"
+					[(ngModel)]="locality.website" required>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="email">Veris Id</label>
 				<div class="asterisk">*</div>
-				<input type="email" class="form-control" ngModel name="verisId" [(ngModel)]="locality.verisId" required>
+				<input type="email" class="form-control" ngModel name="verisId"
+					[(ngModel)]="locality.verisId" required>
 			</div>
 
 		</div>
@@ -116,14 +132,19 @@
 			<div class="form-group col-md-6">
 				<label for="lastName">Central Absentee Perceived(CAP)</label>
 				<div class="asterisk">*</div>
-				<input type="radio" required [value]="true" ngModel name="capInd" [(ngModel)]="locality.capInd" [checked]="locality.capInd">Yes<br>				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" [value]="false" ngModel name="capInd" [(ngModel)]="locality.capInd" [checked]="locality.capInd">				No
+				<input type="radio" required [value]="true" ngModel name="capInd"
+					[(ngModel)]="locality.capInd" [checked]="locality.capInd">Yes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" [value]="false" ngModel name="capInd"
+					[(ngModel)]="locality.capInd" [checked]="locality.capInd">No
 			</div>
 			<div class="form-group col-md-6">
 				<label for="email">Bail out</label>
 				<div class="asterisk">*</div>
-				<input type="radio" [value]="true" ngModel name="bailoutInd" [(ngModel)]="locality.bailoutInd" [checked]="locality.bailoutInd">Yes<br>				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" [value]="false" ngModel name="bailoutInd" [(ngModel)]="locality.bailoutInd" [checked]="locality.bailoutInd">				No
+				<input type="radio" [value]="true" ngModel name="bailoutInd"
+					[(ngModel)]="locality.bailoutInd" [checked]="locality.bailoutInd">Yes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" [value]="false" ngModel name="bailoutInd"
+					[(ngModel)]="locality.bailoutInd" [checked]="locality.bailoutInd">No
+
 			</div>
 		</div>
 
@@ -144,18 +165,20 @@
 							<th scope="col">Time</th>
 						</tr>
 					</thead>
-					<tbody> 
-					<tr *ngFor="let day of locality.workHoursDTOs;let i = index;"> 
- 							<th>{{day.day}}</th> 
- 							<td><label for="appt-time">Time</label> <input type="time" 
- 								 id="{{day.openTm}}" name="{{day.openTm}}" [(ngModel)]="day.openTm" [ngModelOptions]="{standalone:true}" 
- 								min="9:00" max="18:00" required 
- 								(input)="time = $event.target.value" /> To <label 
- 								for="appt-time"></label> <input type="time"  id="{{day.closeTm}}" name="{{day.closeTm}}" min="9:00" max="18:00" 
- 								[(ngModel)]="day.closeTm"  [ngModelOptions]="{standalone:true}" required
- 								(input)="time = $event.target.value" /></td> 
- 						</tr> 
- 					</tbody> 
+					<tbody>
+						<tr *ngFor="let day of locality.workHoursDTOs;let i = index;">
+							<th>{{day.day}}</th>
+							<td><label for="appt-time">Time</label> <input type="time"
+								id="{{day.openTm}}" name="{{day.openTm}}"
+								[(ngModel)]="day.openTm" [ngModelOptions]="{standalone:true}"
+								min="9:00" max="18:00" required
+								(input)="time = $event.target.value" /> To <label
+								for="appt-time"></label> <input type="time" id="{{day.closeTm}}"
+								name="{{day.closeTm}}" min="9:00" max="18:00"
+								[(ngModel)]="day.closeTm" [ngModelOptions]="{standalone:true}"
+								required (input)="time = $event.target.value" /></td>
+						</tr>
+					</tbody>
 				</table>
 				<!-- <button type="submit" class="btn btn-primary" (click)="setTime()">Submit</button> -->
 			</div>
@@ -163,16 +186,18 @@
 
 
 		<hr />
-		<p>
-			<b>Region</b>
-		</p>
+		<label>Region</label>
+		<div class="asterisk">*</div>
+
 		<div class="form-row">
 
 			<div class="form-group col-md-6">
 
 
-				<input type="checkbox" name="vebaRegion" [(ngModel)]="locality.vebaRegion">VEBA region<br> <input type="checkbox" name="vravRegion"
-				 [(ngModel)]="locality.vravRegion">VRAV region
+				<input type="checkbox" name="vebaRegion"
+					[(ngModel)]="locality.vebaRegion">VEBA region<br> <input
+					type="checkbox" name="vravRegion" [(ngModel)]="locality.vravRegion">VRAV
+				region
 			</div>
 
 
@@ -186,14 +211,22 @@
 			<div class="form-group col-md-6">
 				<label for="lastName">Paper PollBook</label>
 				<div class="asterisk">*</div>
-				<input type="radio" ngModel name="paperPollbook" [value]="true" [(ngModel)]="locality.paperPollbook" [checked]="locality.paperPollbook">Yes<br>				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" ngModel name="paperPollbook" [value]="false" [(ngModel)]="locality.paperPollbook" [checked]="locality.paperPollbook">				No
+				<input type="radio" ngModel name="paperPollbook" [value]="true"
+					[(ngModel)]="locality.paperPollbook"
+					[checked]="locality.paperPollbook">Yes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" ngModel name="paperPollbook" [value]="false"
+					[(ngModel)]="locality.paperPollbook"
+					[checked]="locality.paperPollbook"> No
 			</div>
 			<div class="form-group col-md-6">
 				<label for="email">Electronic PollBook</label>
 				<div class="asterisk">*</div>
-				<input type="radio" ngModel name="electronicPollbook" [value]="true" [(ngModel)]="locality.electronicPollbook" [checked]="locality.electronicPollbook">Yes<br>				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="radio" ngModel name="electronicPollbook" [value]="false" [(ngModel)]="locality.electronicPollbook" [checked]="locality.electronicPollbook">				No
+				<input type="radio" ngModel name="electronicPollbook" [value]="true"
+					[(ngModel)]="locality.electronicPollbook"
+					[checked]="locality.electronicPollbook">Yes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" ngModel name="electronicPollbook"
+					[value]="false" [(ngModel)]="locality.electronicPollbook"
+					[checked]="locality.electronicPollbook"> No
 			</div>
 		</div>
 
@@ -202,12 +235,14 @@
 		<p>
 			<b>Notes</b>
 		</p>
-		<textarea name="" id="" rows="10" class="form-control" name="notes" [(ngModel)]="locality.notes"></textarea>
-		</fieldset>
-		<div class="buttons">
+		<textarea name="" id="" rows="10" class="form-control" name="notes"
+			[(ngModel)]="locality.notes"></textarea>
+	</fieldset>
+	<div class="buttons">
 
-			<button type="submit" class="submit btn btn-primary" [disabled] = "!formName.valid">Submit</button>
-			<button type="cancel" class="cancel btn btn-primary">Cancel</button>
-		</div>
+		<button type="submit" class="submit btn btn-primary"
+			[disabled]="!formName.valid">Submit</button>
+		<button type="cancel" class="cancel btn btn-primary">Cancel</button>
+	</div>
 
 </form>

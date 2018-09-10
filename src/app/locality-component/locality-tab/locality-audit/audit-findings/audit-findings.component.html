@@ -1,17 +1,17 @@
 <div class="my-container">
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
-  </div>
-  <ng-template #content let-c="close" let-d="dismiss">
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
-      <h4 class="modal-title">Info</h4>
+        <h4 class="modal-title">Info</h4>
     </div>
     <div class="modal-body">
-      <p>{{info}}</p>
+        <p>{{info}}</p>
     </div>
     <div class="modal-footer">
-      <button  type="button" class="btn btn-outline-dark confbtn" (click)="c()">Ok</button>
+        <button type="button" class="btn btn-outline-dark confbtn" (click)="c()">Ok</button>
     </div>
-    </ng-template>
+</ng-template>
 <div class="form-div">
     <form class="former">
 
@@ -19,7 +19,9 @@
         <div class="panel-heading">
             <label class="details">FINDINGS</label>
             <div class="plus">
-
+                <span class=" title elipsis pull-right" *ngIf="showEdit">
+                    <a><fa class="edit-icon icons" [name]="'edit'" (click)="valueChanged()"></fa></a>
+                </span>
                 <span class=" title elipsis pull-right">
                     <a *ngIf="!showForm" (click)="saveFindings()" title="Save Audit" class="ng-hide">
                         <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>

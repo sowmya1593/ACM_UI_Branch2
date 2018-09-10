@@ -1,4 +1,17 @@
 <app-navigation-component></app-navigation-component>
-<app-option-list></app-option-list>
+<div class="navigate sticky-top">
+            <!--<div class="home">
+                <i class="fas fa-home home-icon icons"></i>
+                < class="fas fa-arrow-left left-icon icons"></i>
+            </div>-->
+            <div class="form-options">
+                <div class="home-back">
+                	<a routerLink="/dashboard"><fa class="left-icons home-icon icons" data-toggle="tooltip" data-placement="right" title="Home" data-animation="true" data-delay="0" [name]="'home'"></fa></a>
+                	<a href="javascript:void(0)" (click)="backClicked()"><fa class="left-icons left-icon icons" data-toggle="tooltip" data-placement="right" title="Back" data-animation="true" data-delay="0" [name]="'arrow-left'"></fa></a>
+                </div>
+               
+               <!--  <fa class="edit-icon icons" [name]="'edit'"></fa> -->
+            </div>
+        </div>
 
 <router-outlet></router-outlet>

@@ -48,8 +48,8 @@
                 <thead>
                     <tr>
     
-                        <th scope="col">Audit Type</th>
-                        <th scope="col">Assessment Name</th>
+                        <th scope="col"(click)="handleSort()">Audit Type  <i class="fa fa-arrow-down" *ngIf="!desc"></i> <i class="fa fa-arrow-up" *ngIf="desc"></i></th>
+                        <th scope="col" (click)="handleSorting()">Assessment Name  <i class="fa fa-arrow-down" *ngIf="!desc"></i> <i class="fa fa-arrow-up" *ngIf="desc"></i></th>
                         <th scope="col">Assessment Date</th>
                         <th scope="col">Next Assessment Date</th>
                         <th scope="col">Status</th>
